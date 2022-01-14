@@ -13,7 +13,25 @@
       <pubDate>Fri, 14 Jan 2022 13:07:53 +0800</pubDate>
       
       <guid>/post/my-first-post/</guid>
-      <description>asdadsadadad</description>
+      <description>&lt;p&gt;asdadsadadad&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My First Post2</title>
+      <link>/post/my-first-post2/</link>
+      <pubDate>Fri, 14 Jan 2022 13:07:53 +0800</pubDate>
+      
+      <guid>/post/my-first-post2/</guid>
+      <description>&lt;p&gt;asdadsadadad2&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My First Post3</title>
+      <link>/post/my-first-post3/</link>
+      <pubDate>Fri, 14 Jan 2022 11:07:53 +0800</pubDate>
+      
+      <guid>/post/my-first-post3/</guid>
+      <description>&lt;p&gt;asdadsadadad3&lt;/p&gt;</description>
     </item>
     
   </channel>

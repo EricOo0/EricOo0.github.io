@@ -2,18 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/categories/</loc>
+    <lastmod>2022-01-14T13:07:53+08:00</lastmod>
+  </url><url>
     <loc>/</loc>
     <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
     <loc>/post/my-first-post/</loc>
     <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
+    <loc>/post/my-first-post2/</loc>
+    <lastmod>2022-01-14T13:07:53+08:00</lastmod>
+  </url><url>
     <loc>/post/</loc>
     <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
-    <loc>/archives/</loc>
+    <loc>/categories/subtopic1/</loc>
+    <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>/categories/subtopic2/</loc>
+    <lastmod>2022-01-14T13:07:53+08:00</lastmod>
+  </url><url>
+    <loc>/categories/topic1/</loc>
+    <lastmod>2022-01-14T13:07:53+08:00</lastmod>
+  </url><url>
+    <loc>/post/my-first-post3/</loc>
+    <lastmod>2022-01-14T11:07:53+08:00</lastmod>
+  </url><url>
+    <loc>/categories/topic2/</loc>
+    <lastmod>2022-01-14T11:07:53+08:00</lastmod>
+  </url><url>
+    <loc>/archives/</loc>
   </url><url>
     <loc>/tags/</loc>
   </url>
