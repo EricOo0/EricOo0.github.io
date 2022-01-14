@@ -272,67 +272,111 @@
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <p>Hugo+gitpage搭建属于自己的个人博客</p>
-<p>对于想要</p>
-<p><img src="/img/showcase.png" alt="test"></p>
-<p>三个静态博客生成器：</p>
+<p>对于不熟悉前端技术的同学来说，可以通过静态博客生成器自动将我们写的markdown笔记转化成静态html页面，放到网站上，给我们省去了很多麻烦事。</p>
+<p>常用的三个静态博客生成器：</p>
 <ul>
 <li><a href="https://jekyllrb.com/"><em>Jekyll</em></a></li>
 <li><a href="https://gohugo.io/"><em>Hugo</em></a></li>
 <li><a href="https://hexo.io/"><em>Hexo</em></a></li>
 </ul>
-<p>gitpage + Hugo</p>
+<p>而gitpage有静态页面托管的功能，省去了我们部署web服务器的精力和开销。</p>
+<p>本文将介绍如何使用gitpage + Hugo来搭建属于自己的blog。</p>
+<hr>
+<h4 id="1创建github仓库">1、创建github仓库</h4>
+<p>创建一个github仓库，用于存放hugo生成的代码以及托管我们的博客。</p>
+<p>仓库的名字为yourusername.github.io：</p>
+<p><!-- raw HTML omitted --></p>
+<p>如果有自己的域名可以修改为自己的域名，这样就可以通过域名访问到你的博客：</p>
+<p><!-- raw HTML omitted --></p>
+<h4 id="2本地安装hugo">2、本地安装HUGO</h4>
 <p>1、 安装HUGO</p>
-<p>安装指南：<a href="https://gohugo.io/getting-started/installing/">Install hugo</a></p>
-<p>macos安装方法：</p>
+<p>根据安装指南安装hugo工具：<a href="https://gohugo.io/getting-started/installing/">Install hugo</a></p>
+<p>博主在macos下的安装方法：</p>
 <blockquote>
 <p>brew install hugo</p>
 <p>Hugo version</p>
 </blockquote>
-<p>2、建立自己的网站</p>
+<p>当出现hugo版本号则证明安装成功</p>
+<p><!-- raw HTML omitted --></p>
+<p>Git 的安装方法此处不赘述了。</p>
+<h4 id="3利用hugo建立自己的网站目录">3、利用hugo建立自己的网站目录</h4>
+<ul>
+<li>进入想要存放网站的目录，如home目录下</li>
+</ul>
 <blockquote>
-<p>进入存放网站的目录</p>
-<p>Cd /</p>
-<p>hugo new site my-blog</p>
-<p>选择一个自己喜欢的模版：</p>
+<p>cd /</p>
+<p>hugo new site my-blog    #my-blog是你的网站文件夹名字</p>
+</blockquote>
+<ul>
+<li>然后去选择一个自己喜欢的模版：<strong>Tranquilpeak</strong> 会相对容易上手一点</li>
+</ul>
+<blockquote>
 <p>Hugo Themes: <a href="https://link.zhihu.com/?target=https%3A//themes.gohugo.io/">https://themes.gohugo.io</a></p>
-<p>将主题clone到本地</p>
+</blockquote>
+<ul>
+<li>将主题clone到本地</li>
+</ul>
+<blockquote>
 <p>cd /my-blog  # 进入网站目录
 mkdir -p themes  # 创建 &ldquo;themes&rdquo; 目录。
 cd themes</p>
 <p>git clone <a href="https://github.com/Track3/hermit.git">https://github.com/Track3/hermit.git</a> hermit # 将 hermit 主题克隆到 hermit目录</p>
-<p>在 Hugo 网站文件夹的根目录下/my-blog ，打开 <code>config.toml</code> 文件</p>
-<p>根据所选主题编辑config.toml</p>
 </blockquote>
-<p>新建一篇文章</p>
+<h4 id="4配置网站">4、配置网站</h4>
+<ul>
+<li>
+<p>将下载好的模版中的配置文件( themes/hermit/exampleSite/config.toml )复制到网站根目录下(/my-blog)</p>
+</li>
+<li>
+<p>在 Hugo 网站文件夹的根目录下/my-blog ，打开 <code>config.toml</code> 文件</p>
+</li>
+<li>
+<p>根据所选主题编辑config.toml,修改一些配置；一般将baseurl修改为“/”，以及一些必要信息</p>
+</li>
+</ul>
+<h4 id="5新建一篇文章">5、新建一篇文章</h4>
+<p>此时你的网站框架已经大致建立好了，当你要新建文章时，利用hugo new可以生成一篇文章模版，放在 my-blog/content/post下</p>
 <blockquote>
 <p>hugo new post/my-first-post.md  # &ldquo;my-first-post.md&rdquo; 是新建文章的文件名。</p>
 </blockquote>
-<p>本地预览</p>
+<p>写完文章后可以本地预览我们的博客了</p>
 <blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server -D
+<p>hugo server -D
 使用浏览器打开 http://localhost:1313 预览
 如果你对预览效果满意，进入下一步。
-如果不满意，编辑 config.toml 配置文件，再次预览
-</code></pre></div></blockquote>
-<p>构建hugo网站</p>
+如果不满意，编辑 config.toml 配置文件，再次预览</p>
+</blockquote>
+<p><img src="/img/hugo_preview.png" alt="image-20220114164901488"></p>
+<h4 id="6构建hugo网站">6、构建hugo网站</h4>
+<p>在网站根目录下执行hugo命令</p>
 <blockquote>
 <p>hugo   # 构建你的 Hugo 网站，默认将静态站点保存到 &ldquo;public&rdquo; 目录。</p>
 </blockquote>
-<p>转化为git库</p>
+<h4 id="7转化为git库">7、转化为git库</h4>
 <blockquote>
 <p>cd ~/my-blog/public  # 生成的 HTML 文件保存在 &ldquo;public&rdquo; 目录中，&ldquo;public&rdquo; 文件夹会被转换为 Git 库。
 git init  # 初始化 Git 库。</p>
 <p>关联到远方库</p>
-<p>git remote add origin <a href="https://github.com/EricOo0/EricOo0.github.io.git">https://github.com/EricOo0/EricOo0.github.io.git</a></p>
-<p>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:EricOo0/EricOo0.github.io.git</p>
+<p>git remote add origin <a href="https://github.com/yourusername/yourusername.github.io.git">https://github.com/yourusername/yourusername.github.io.git</a></p>
 <p>git status  # 查看当前修改状态。
 git add .  # 添加所有修改过的文件。你也可以只添加某个文件。
 git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 commit message.</p>
 <p>git push -u origin master</p>
 </blockquote>
-<p>域名</p>
-<p>服务器</p>
-<p>前端</p>
+<p>此时到github上的setting查看你的gitpage是否生效，生效后即可通过gitpage访问你的博客了，博客页面由你选择的模版决定，也可以自己进行修改。对于不懂前端的人就可以只关注写博文啦。</p>
+<h4 id="8域名">8、域名</h4>
+<p>gitpage默认的域名时yourusername.github.io,你也可以去腾讯云或者阿里云之类的地方购买自己的域名，添加dns解析后替换掉默认的域名</p>
+<h4 id="9日常操作">9、日常操作</h4>
+<p>新建文章：hugo new post/文章名.md</p>
+<p>删除文章：</p>
+<blockquote>
+<p>删除两处文件</p>
+<p>在目录 /post 、/public  下找到对应文件进行删除</p>
+<p>其中 public 下文件不删除也不影响显示，只是该文件就会一直存在，另外该目录下即便文件（除.git)删错或者全部删除也是不影响的，应为 hugo 命令会全部重建</p>
+</blockquote>
+<p>修改文章则直接在post下的文章修改即可</p>
+<p>操作完成后使用hugo命令重构</p>
+<p>git 上传到github更新博客</p>
               
 
 
