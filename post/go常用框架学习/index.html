@@ -287,7 +287,7 @@
 </span><span style="color:#75715e"></span>   <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">&#34;this is a error msg!&#34;</span>) <span style="color:#75715e">// ERROR 级别日志，这个会打印，并附带堆栈信息
 </span><span style="color:#75715e"></span>   <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;this is a fatal msg! I will exit after this log&#34;</span>)<span style="color:#75715e">// FATAL 级别日志，这个会打印，附带堆栈信息，并调用 os.Exit 退出
 </span><span style="color:#75715e"></span>}
-</code></pre></div><p><!-- raw HTML omitted --></p>
+</code></pre></div><p><img src="/img/go_zap.png" alt="go_zap"></p>
 <p><strong>SugaredLogger</strong></p>
 <p>定制日志格式</p>
 <p>前面的zap.NewProduction() &ndash; 实际上是创建了一个带了预置配置的 zap.Logger，使用zap.New(core zapcore.Core, options &hellip;Option)可以手动传递所有配置项，zapcore.Core需要 3 个配置：</p>
@@ -305,7 +305,7 @@
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">sugaredLogger</span>.<span style="color:#a6e22e">Warnf</span>(<span style="color:#e6db74">&#34;i am warn, using %s&#34;</span>, <span style="color:#e6db74">&#34;sugar&#34;</span>)    <span style="color:#75715e">// WARN  级别日志，这个会正常打印
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">sugaredLogger</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;i am error, using %s&#34;</span>, <span style="color:#e6db74">&#34;sugar&#34;</span>)   <span style="color:#75715e">// ERROR 级别日志，这个会打印，并附带堆栈信息
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">sugaredLogger</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;i am fatal, using %s&#34;</span>, <span style="color:#e6db74">&#34;sugar&#34;</span>)    <span style="color:#75715e">// FATAL 级别日志，这个会打印，附带堆栈信息，并调用
-</span></code></pre></div><p><!-- raw HTML omitted --></p>
+</span></code></pre></div><p><img src="/img/go_zap2.png" alt="go_zap2"></p>
 <p>堆栈和caller信息需要显示的调用才会显示：</p>
 <pre><code>logger := zap.New(core, zap.AddCaller())  // 增加 caller 信息
 </code></pre><p>需要添加其他自定义字段也可以在New的时候添加</p>
@@ -481,7 +481,7 @@ logger := zap.New(core, zap.AddCaller(), zap.Fields(zapcore.Field{  // 添加 uu
 <p>启动服务器后api接口文档可以在localhost:8080/swagger/index.html看到</p>
 <p>关于接口注释的写法：https://swaggo.github.io/swaggo.io/declarative_comments_format/api_operation.html</p>
 <p><a href="https://blog.csdn.net/qq_45100706/article/details/115481714">https://blog.csdn.net/qq_45100706/article/details/115481714</a></p>
-<p><!-- raw HTML omitted --></p>
+<p><img src="/img/swager.png" alt="swagger"></p>
 <hr>
 <h4 id="命令行参数处理库flag">命令行参数处理库flag</h4>
 <blockquote>
