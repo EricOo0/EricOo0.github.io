@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"\/",
+  "author": {
+    "@type": "Person",
+    "name": "Eric w",
+    
+    "image": "/img/icon.png"
+    
+  },
+  "name":"Eric w -- BLOG",
+  "description":"\u003cp\u003eGolang 常用的框架学习\u003c\/p\u003e",
+  "url":"\/post\/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.84.3 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Eric w">
+<meta name="keywords" content="">
+<meta name="description" content="Golang 常用的框架学习">
+
+
+<meta property="og:description" content="Golang 常用的框架学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go 常用框架学习记录">
+<meta name="twitter:title" content="Go 常用框架学习记录">
+<meta property="og:url" content="/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">
+<meta property="twitter:url" content="/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">
+<meta property="og:site_name" content="Eric w -- BLOG">
+<meta property="og:description" content="Golang 常用的框架学习">
+<meta name="twitter:description" content="Golang 常用的框架学习">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-01-14T17:43:53">
+  
+  
+    <meta property="article:modified_time" content="2022-01-14T17:43:53">
+  
+  
+  
+    
+      <meta property="article:section" content="Go">
+    
+      <meta property="article:section" content="框架">
+    
+  
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="/img/icon.png">
+  <meta property="twitter:image" content="/img/icon.png">
+
+
+
+
+
+
+    <title>Go 常用框架学习记录</title>
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/" aria-label="Go to homepage">Eric w -- BLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Eric w</h4>
+        
+          <h5 class="sidebar-profile-bio">Super bio with markdown support <strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" title="Stack Overflow">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-stack-overflow" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      Go 常用框架学习记录
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-01-14T17:43:53&#43;08:00">
+        
+  January 14, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/go">Go</a>, 
+    
+      <a class="category-link" href="/categories/%e6%a1%86%e6%9e%b6">框架</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>Golang 常用的框架学习</p>
+<h4 id="日志框架zap">日志框架Zap</h4>
+<p>import  &ldquo;go.uber.org/zap&rdquo;</p>
+<p><strong>日志等级分为Debug，Info，Warn，Error，Fatal</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span>(
+   <span style="color:#e6db74">&#34;go.uber.org/zap&#34;</span>
+)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">logger</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">Logger</span>
+   <span style="color:#a6e22e">logger</span>,<span style="color:#a6e22e">_</span>=<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">NewProduction</span>()
+   <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Debug</span>(<span style="color:#e6db74">&#34;this is a debug msg!&#34;</span>) <span style="color:#75715e">// 这行不会打印，因为默认日志级别是 INFO
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#e6db74">&#34;this is a Inofo msg!&#34;</span>)  <span style="color:#75715e">// INFO  级别日志，这个会正常打印
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Warn</span>(<span style="color:#e6db74">&#34;this is a Warn msg!&#34;</span>)<span style="color:#75715e">// WARN  级别日志，这个会正常打印
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">&#34;this is a error msg!&#34;</span>) <span style="color:#75715e">// ERROR 级别日志，这个会打印，并附带堆栈信息
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;this is a fatal msg! I will exit after this log&#34;</span>)<span style="color:#75715e">// FATAL 级别日志，这个会打印，附带堆栈信息，并调用 os.Exit 退出
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<p><strong>SugaredLogger</strong></p>
+<p>定制日志格式</p>
+<p>前面的zap.NewProduction() &ndash; 实际上是创建了一个带了预置配置的 zap.Logger，使用zap.New(core zapcore.Core, options &hellip;Option)可以手动传递所有配置项，zapcore.Core需要 3 个配置：</p>
+<p><em>Encoder</em>: 编码器，用于告诉 zap 以什么样的形式写入日志。zap 提供了 jsonEncoder 和 consoleEncoder 两种内置的编码器</p>
+<p><em>WriterSyncer</em>: 告诉 zap 将日志写到哪里，比如文件(os.File) 或标准输出(os.stdout)</p>
+<p><em>LevelEnabler:</em> 用于设置 zap.Logger 的日志级别</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sugaredLogger</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">SugaredLogger</span>
+<span style="color:#a6e22e">writer</span> <span style="color:#f92672">:=</span><span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>) <span style="color:#75715e">//日志的输出设备可以是file或标准输出
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">encoder</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewJSONEncoder</span>(<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">NewProductionEncoderConfig</span>())<span style="color:#75715e">//创建编码格式
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">core</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewCore</span>(<span style="color:#a6e22e">encoder</span>,<span style="color:#a6e22e">writer</span>,<span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">DebugLevel</span>)<span style="color:#75715e">//创建一个core，日志格式
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">logger</span><span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>)
+<span style="color:#a6e22e">sugaredLogger</span> = <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">Sugar</span>()
+<span style="color:#a6e22e">sugaredLogger</span>.<span style="color:#a6e22e">Debugf</span>(<span style="color:#e6db74">&#34;i am debug, using %s&#34;</span>, <span style="color:#e6db74">&#34;sugar&#34;</span>)   <span style="color:#75715e">// 这行不会打印，因为默认日志级别是 INFO
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">sugaredLogger</span>.<span style="color:#a6e22e">Infof</span>(<span style="color:#e6db74">&#34;i am info, using %s&#34;</span>, <span style="color:#e6db74">&#34;sugar&#34;</span>)      <span style="color:#75715e">// INFO  级别日志，这个会正常打印
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">sugaredLogger</span>.<span style="color:#a6e22e">Warnf</span>(<span style="color:#e6db74">&#34;i am warn, using %s&#34;</span>, <span style="color:#e6db74">&#34;sugar&#34;</span>)    <span style="color:#75715e">// WARN  级别日志，这个会正常打印
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">sugaredLogger</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;i am error, using %s&#34;</span>, <span style="color:#e6db74">&#34;sugar&#34;</span>)   <span style="color:#75715e">// ERROR 级别日志，这个会打印，并附带堆栈信息
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">sugaredLogger</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;i am fatal, using %s&#34;</span>, <span style="color:#e6db74">&#34;sugar&#34;</span>)    <span style="color:#75715e">// FATAL 级别日志，这个会打印，附带堆栈信息，并调用
+</span></code></pre></div><p><!-- raw HTML omitted --></p>
+<p>堆栈和caller信息需要显示的调用才会显示：</p>
+<pre><code>logger := zap.New(core, zap.AddCaller())  // 增加 caller 信息
+</code></pre><p>需要添加其他自定义字段也可以在New的时候添加</p>
+<pre><code>uuid:=&quot;test&quot;
+logger := zap.New(core, zap.AddCaller(), zap.Fields(zapcore.Field{  // 添加 uuid 字段
+	Key:       &quot;uuid&quot;,
+	Type:      zapcore.StringType,
+	String:    uuid,
+}))
+</code></pre>
+<p><!-- raw HTML omitted --></p>
+<p><strong>文件切割</strong></p>
+<p>因为<code>zap</code>本身不支持切割归档日志文件，为了添加日志切割归档功能，用第三方库<code>lumberjack</code>来实现</p>
+<pre><code>&quot;github.com/natefinch/lumberjack&quot;
+</code></pre><p>修改前面代码中的writer，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sugaredLogger</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">SugaredLogger</span>
+<span style="color:#75715e">//lumberjack 修改writer
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">lumberJackLogger</span><span style="color:#f92672">:=&amp;</span><span style="color:#a6e22e">lumberjack</span>.<span style="color:#a6e22e">Logger</span>{
+   <span style="color:#a6e22e">Filename</span>: <span style="color:#e6db74">&#34;./test.log&#34;</span>,
+   <span style="color:#a6e22e">MaxSize</span>: <span style="color:#ae81ff">10</span>,<span style="color:#75715e">//在进行切割之前，日志文件的最大大小（以MB为单位）
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">MaxBackups</span>:<span style="color:#ae81ff">5</span>,<span style="color:#75715e">//旧文件的个数
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">MaxAge</span>: <span style="color:#ae81ff">1</span>, <span style="color:#75715e">//天数
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">Compress</span>: <span style="color:#66d9ef">false</span>,
+}
+
+<span style="color:#a6e22e">writer</span> <span style="color:#f92672">:=</span><span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#a6e22e">lumberJackLogger</span>) <span style="color:#75715e">//日志的输出设备可以是file或标准输出
+</span></code></pre></div><p>服务启动日志是追加不是覆盖</p>
+<p>日志格式也可以自定义</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">writer</span> <span style="color:#f92672">:=</span><span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#a6e22e">lumberJackLogger</span>)
+<span style="color:#75715e">//自定义时间格式
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">EncoderConfig</span>{
+   <span style="color:#a6e22e">MessageKey</span>:   <span style="color:#e6db74">&#34;msg&#34;</span>,  <span style="color:#75715e">//结构化（json）输出：msg的key
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">LevelKey</span>:     <span style="color:#e6db74">&#34;level&#34;</span>,<span style="color:#75715e">//结构化（json）输出：日志级别的key（INFO，WARN，ERROR等）
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">TimeKey</span>:      <span style="color:#e6db74">&#34;ts&#34;</span>,   <span style="color:#75715e">//结构化（json）输出：时间的key（INFO，WARN，ERROR等）
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">CallerKey</span>:    <span style="color:#e6db74">&#34;file&#34;</span>, <span style="color:#75715e">//结构化（json）输出：打印日志的文件对应的Key
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">EncodeLevel</span>:  <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">CapitalLevelEncoder</span>, <span style="color:#75715e">//将日志级别转换成大写（INFO，WARN，ERROR等）
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">EncodeCaller</span>: <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">ShortCallerEncoder</span>, <span style="color:#75715e">//采用短文件路径编码输出（test/main.go:14 ）
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">EncodeTime</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">t</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Time</span>, <span style="color:#a6e22e">enc</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">PrimitiveArrayEncoder</span>) {
+      <span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">AppendString</span>(<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Format</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>))
+   },<span style="color:#75715e">//输出的时间格式
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">EncodeDuration</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">d</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>, <span style="color:#a6e22e">enc</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">PrimitiveArrayEncoder</span>) {
+      <span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">AppendInt64</span>(int64(<span style="color:#a6e22e">d</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">1000000</span>)
+   },<span style="color:#75715e">//
+</span><span style="color:#75715e"></span>
+}
+<span style="color:#a6e22e">encoder</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewJSONEncoder</span>(<span style="color:#a6e22e">config</span>)<span style="color:#75715e">//创建编码格式
+</span></code></pre></div><hr>
+<h4 id="配置解决方案框架viper">配置解决方案框架Viper</h4>
+<p>Viper是适用于Go应用程序（包括<code>Twelve-Factor App</code>）的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。</p>
+<p><strong>github.com/spf13/viper</strong></p>
+<p><code>viper</code>提供的配置方式的优先级顺序如下(由高到低)：</p>
+<ul>
+<li>1.设置显示调用(explicit call to Set)</li>
+<li>2.命令行标志(flag)</li>
+<li>3.环境变量(env)</li>
+<li>4.配置文件(config)</li>
+<li>5.远程键/值存储(key/value store)</li>
+<li>6.默认值(default)</li>
+</ul>
+<p>使用方式：</p>
+<p>定义一个要读取的配置文件：config_text.yaml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">IpAddr</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>
+<span style="color:#f92672">Port</span>: <span style="color:#ae81ff">3306</span>
+<span style="color:#f92672">UserName</span>: <span style="color:#e6db74">&#34;root&#34;</span>
+<span style="color:#f92672">Password</span>: <span style="color:#ae81ff">123456</span>
+<span style="color:#f92672">DataBaseName</span>: <span style="color:#e6db74">&#34;go_test&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DBconnection</span> <span style="color:#66d9ef">struct</span>{
+	<span style="color:#a6e22e">IpAddr</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">Port</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">Username</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">Password</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">Dbname</span> <span style="color:#66d9ef">string</span>
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>{
+<span style="color:#a6e22e">config</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">viper</span>.<span style="color:#a6e22e">New</span>()
+<span style="color:#75715e">//设置要读取的配置名，不加后缀
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">SetConfigName</span>(<span style="color:#e6db74">&#34;config_text&#34;</span>)
+<span style="color:#75715e">//设置配置文件路径,可以设置多个搜索路径
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">AddConfigPath</span>(<span style="color:#e6db74">&#34;./p1_test&#34;</span>)
+<span style="color:#75715e">//设置配置文件类型
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">SetConfigType</span>(<span style="color:#e6db74">&#34;yaml&#34;</span>)
+
+<span style="color:#75715e">//读取配置
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">dbconfig</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">DBconnection</span>)
+<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">ReadInConfig</span>()
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+   panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Fatal error config file: %s \n&#34;</span>, <span style="color:#a6e22e">err</span>))
+}
+<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">dbconfig</span>) <span style="color:#75715e">//加码配置并存到dbconfig
+</span><span style="color:#75715e">//打印配置
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">dbconfig</span>)
+  
+}
+</code></pre></div><p>要让viper持续监控配置实时更新，则在添加config路径后面添加</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span>(
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/fsnotify/fsnotify&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/spf13/viper&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+<span style="color:#75715e">//用于接受配置的数据结构
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DBconnection</span> <span style="color:#66d9ef">struct</span>{
+	<span style="color:#a6e22e">IpAddr</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">Port</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">Username</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">Password</span> <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">Dbname</span> <span style="color:#66d9ef">string</span>
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;test&#34;</span>)
+	<span style="color:#a6e22e">config</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">viper</span>.<span style="color:#a6e22e">New</span>()
+
+	<span style="color:#75715e">//设置要读取的配置名，不加后缀
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">SetConfigName</span>(<span style="color:#e6db74">&#34;config_text&#34;</span>)
+	<span style="color:#75715e">//设置配置文件路径,可以设置多个搜索路径
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">AddConfigPath</span>(<span style="color:#e6db74">&#34;./p1_test&#34;</span>)
+	<span style="color:#75715e">//设置配置文件类型
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">SetConfigType</span>(<span style="color:#e6db74">&#34;yaml&#34;</span>)
+	<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">WatchConfig</span>()
+	<span style="color:#a6e22e">dbconfig</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">DBconnection</span>)
+	<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">OnConfigChange</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">e</span> <span style="color:#a6e22e">fsnotify</span>.<span style="color:#a6e22e">Event</span>) {
+		<span style="color:#75715e">//viper配置发生变化了 执行响应的操作
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Config file changed:&#34;</span>, <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Name</span>)
+		<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">ReadInConfig</span>()
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Fatal error config file: %s \n&#34;</span>, <span style="color:#a6e22e">err</span>))
+		}
+		<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">dbconfig</span>) <span style="color:#75715e">//加码配置并存到dbconfig
+</span><span style="color:#75715e"></span>		<span style="color:#75715e">//打印配置
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">dbconfig</span>)
+	})
+	<span style="color:#75715e">//读取配置
+</span><span style="color:#75715e"></span>
+	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">ReadInConfig</span>()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Fatal error config file: %s \n&#34;</span>, <span style="color:#a6e22e">err</span>))
+	}
+	<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">dbconfig</span>) <span style="color:#75715e">//加码配置并存到dbconfig
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//打印配置
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">dbconfig</span>)
+	<span style="color:#66d9ef">for</span>{
+		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1000</span>)
+	}
+}
+</code></pre></div><hr>
+<h4 id="自动化api文档框架swagger">自动化api文档框架Swagger</h4>
+<p><a href="https://so.csdn.net/so/search?q=swagger">swagger</a> 是一个golang版本的swagger文档生成器，提供了native code包装器，并且支持主流的web框架包裹器</p>
+<p><a href="https://so.csdn.net/so/search?q=github">github</a> 地址：https://github.com/swaggo/gin-swagger</p>
+<p>使用教程：https://blog.csdn.net/weixin_42661321/article/details/108887918</p>
+<blockquote>
+<p>首先需要下载一个文档生成工具swag</p>
+<p>go1.17后用</p>
+<p>go install github.com/swaggo/swag/cmd/swag</p>
+<p>下载完成后(mac适用)：</p>
+<p>export PATH=&quot;/Users/你的用户名/go/bin:$PATH&quot;</p>
+<p>source ~/.zshrc</p>
+</blockquote>
+<p>在Go项目根文件夹中运行Swag</p>
+<p>​	在<code>main.go</code>所在目录执行 <code>swag init</code></p>
+<p>​	执行后，会生成docs/doc.go以及docs/swagger.json,docs/swagger.yaml</p>
+<p>使用时，Import 两个库</p>
+<p>​		swaggerFiles &ldquo;github.com/swaggo/files&rdquo;</p>
+<p>​		ginSwagger &ldquo;github.com/swaggo/gin-swagger&rdquo;</p>
+<ul>
+<li>
+<p>同时要吧生成的doc也import 进来</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;github.com/flipped-aurora/gin-vue-admin/server/docs&#34;</span>
+</code></pre></div></li>
+</ul>
+<p>根据要求添加必要的注释后重新swag init</p>
+<p>启动服务器后api接口文档可以在localhost:8080/swagger/index.html看到</p>
+<p>关于接口注释的写法：https://swaggo.github.io/swaggo.io/declarative_comments_format/api_operation.html</p>
+<p><a href="https://blog.csdn.net/qq_45100706/article/details/115481714">https://blog.csdn.net/qq_45100706/article/details/115481714</a></p>
+<p><!-- raw HTML omitted --></p>
+<hr>
+<h4 id="命令行参数处理库flag">命令行参数处理库flag</h4>
+<blockquote>
+</blockquote>
+<hr>
+<h4 id="数据库gorm">数据库Gorm</h4>
+<p>ORM（Object Relation Mapping 关系对象映射），就是把对象模型表示的对象映射到基于SQL的关系模型数据库结构中，在具体的操作实体对象的时候，不需要直接与复杂的 SQL语句打交道，只需简单的操作实体对象的属性和方法。而GORM就是基于Go语言实现的ORM库。在使用Go语言开发项目的时候，我们可以利用GORM来实现对数据库的操作，进行简单的CRUD操作。</p>
+<p>依赖：</p>
+<p>​	gorm.io/driver/mysql</p>
+<p>​	gorm.io/gorm</p>
+<p>使用gorm打开数据库：</p>
+<p>func Open(dialector Dialector, config *Config) (db *DB, err error)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">db</span>,<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gorm</span>.<span style="color:#a6e22e">Open</span>(<span style="color:#e6db74">&#34;mysql&#34;</span>,<span style="color:#e6db74">&#34;root:bgbiao.top@(127.0.0.1:13306)/test_api?charset=utf8&amp;parseTime=True&amp;loc=Local&#34;</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;创建数据库连接失败:%v&#34;</span>,<span style="color:#a6e22e">err</span>)
+
+    }
+
+    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">Close</span>()
+</code></pre></div><p>打开数据库后可以利用db进行增改查删</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">AutoMigrate</span>()<span style="color:#f92672">--</span><span style="color:#a6e22e">自动迁移表</span>
+</code></pre></div><hr>
+<h4 id="验证码框架captcha">验证码框架captcha</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#e6db74">&#34;github.com/mojocn/base64Captcha&#34;</span>
+</code></pre></div><p>使用base64编码图片，减少了向服务器请求下载图片的次数，同时也起到了加密的作用</p>
+<p>base64Captcha提供几种验证码</p>
+<ol>
+<li><strong>dight</strong> 数字验证码</li>
+<li><strong>audio</strong> 语音验证码</li>
+<li><strong>string</strong> 字符验证码</li>
+<li><strong>math</strong> 数学验证码(加减乘除)</li>
+<li><strong>chinese</strong>中文验证码-有bug</li>
+</ol>
+<p>参数的意义：</p>
+<p>可视化各种参数的影响：https://captcha.mojotv.cn/</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">base64Captcha</span>.<span style="color:#a6e22e">DriverMath</span>{     
+  <span style="color:#a6e22e">Length</span>:          <span style="color:#ae81ff">4</span>,     <span style="color:#75715e">// 验证码长度     
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Height</span>:          <span style="color:#ae81ff">30</span>,    <span style="color:#75715e">// 验证码图片高度     
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Width</span>:           <span style="color:#ae81ff">60</span>,    <span style="color:#75715e">// 验证码图片宽度     
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Source</span><span style="color:#960050;background-color:#1e0010">：</span>         <span style="color:#e6db74">&#34;abcd&#34;</span>,<span style="color:#75715e">// 会出现字符      
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">NoiseCount</span>:      <span style="color:#ae81ff">0</span>,     <span style="color:#75715e">// 干扰词数量     
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">DotCount</span><span style="color:#960050;background-color:#1e0010">：</span>       <span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">，</span>    <span style="color:#75715e">// 干扰点数量     
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">MaxSkew</span><span style="color:#960050;background-color:#1e0010">：</span>        <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">，</span>    <span style="color:#75715e">// 倾斜角度 0-1     
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">ShowLineOptions</span>: <span style="color:#ae81ff">2</span> | <span style="color:#ae81ff">4</span>, <span style="color:#75715e">// 线条数量     
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">BgColor</span>: <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">color</span>.<span style="color:#a6e22e">RGBA</span>{   <span style="color:#75715e">// 背景颜色             
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">R</span>: <span style="color:#ae81ff">128</span>,             
+    <span style="color:#a6e22e">G</span>: <span style="color:#ae81ff">98</span>,             
+    <span style="color:#a6e22e">B</span>: <span style="color:#ae81ff">112</span>,             
+    <span style="color:#a6e22e">A</span>: <span style="color:#ae81ff">0</span>,     
+  },    
+  <span style="color:#a6e22e">Fonts</span>: []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;3Dumb.ttf&#34;</span>},  <span style="color:#75715e">// 字体     
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Language</span><span style="color:#960050;background-color:#1e0010">：</span>       <span style="color:#e6db74">&#34;zh&#34;</span>,  <span style="color:#75715e">// 音频语言 } 
+</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 开辟一个验证码使用的内存空间，base64Captcha.DefaultMemStore是默认的:10240 个 过期时间10分钟
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">store</span> = <span style="color:#a6e22e">base64Captcha</span>.<span style="color:#a6e22e">DefaultMemStore</span>
+<span style="color:#75715e">// 生成默认数字的driver
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">driver</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">base64Captcha</span>.<span style="color:#a6e22e">DefaultDriverDigit</span>
+<span style="color:#75715e">// 也可以自定义参数
+</span><span style="color:#75715e">//base64Captcha.NewDriverDigit(height , width , length , maxSkew , dotCount)
+</span><span style="color:#75715e">//生成验证码，同时保存至store
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">base64Captcha</span>.<span style="color:#a6e22e">NewCaptcha</span>(<span style="color:#a6e22e">driver</span>, <span style="color:#a6e22e">store</span>)
+<span style="color:#75715e">//生成base64图像和id
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">b64s</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Generate</span>()
+
+<span style="color:#75715e">//验证验证码正确性，注意：id,b64s是空 也会返回true 需要在加判断；true应该是验证完会把这个验证码从store中删去
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">Verify</span>(<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">b64s</span>, <span style="color:#66d9ef">true</span>) 
+</code></pre></div><hr>
+<h4 id="redis">Redis</h4>
+<hr>
+<h4 id="goroutine控制">goroutine控制</h4>
+<p><a href="https://www.flysnow.org/2017/05/12/go-in-action-go-context.html">https://www.flysnow.org/2017/05/12/go-in-action-go-context.html</a></p>
+<hr>
+<h4 id="web后台框架gin">web后台框架gin</h4>
+<p><a href="https://www.topgoer.com/gin%E6%A1%86%E6%9E%B6/">https://www.topgoer.com/gin%E6%A1%86%E6%9E%B6/</a></p>
+<pre><code>github.com/gin-gonic/gin
+
+</code></pre><ul>
+<li>参数获取：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">获取路径参数</span>
+<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/user/:name&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+		<span style="color:#a6e22e">name</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Param</span>(<span style="color:#e6db74">&#34;name&#34;</span>)
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#e6db74">&#34;Hello %s&#34;</span>, <span style="color:#a6e22e">name</span>)
+	})
+<span style="color:#a6e22e">获取get参数</span>
+<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/welcome&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+		<span style="color:#a6e22e">firstname</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">DefaultQuery</span>(<span style="color:#e6db74">&#34;firstname&#34;</span>, <span style="color:#e6db74">&#34;Guest&#34;</span>)
+		<span style="color:#a6e22e">lastname</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Query</span>(<span style="color:#e6db74">&#34;lastname&#34;</span>) <span style="color:#75715e">// 是 c.Request.URL.Query().Get(&#34;lastname&#34;) 的简写
+</span><span style="color:#75715e"></span>
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#e6db74">&#34;Hello %s %s&#34;</span>, <span style="color:#a6e22e">firstname</span>, <span style="color:#a6e22e">lastname</span>)
+	})
+<span style="color:#a6e22e">获取post参数</span>
+<span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/form_post&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+		<span style="color:#a6e22e">message</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">PostForm</span>(<span style="color:#e6db74">&#34;message&#34;</span>)
+		<span style="color:#a6e22e">nick</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">DefaultPostForm</span>(<span style="color:#e6db74">&#34;nick&#34;</span>, <span style="color:#e6db74">&#34;anonymous&#34;</span>) <span style="color:#75715e">// 此方法可以设置默认值
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#ae81ff">200</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{
+			<span style="color:#e6db74">&#34;status&#34;</span>:  <span style="color:#e6db74">&#34;posted&#34;</span>,
+			<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#a6e22e">message</span>,
+			<span style="color:#e6db74">&#34;nick&#34;</span>:    <span style="color:#a6e22e">nick</span>,
+		})
+	})
+<span style="color:#a6e22e">上传文件</span>
+<span style="color:#75715e">//限制上传最大尺寸
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">MaxMultipartMemory</span> = <span style="color:#ae81ff">8</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">20</span>
+	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/upload&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+		<span style="color:#a6e22e">file</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">FormFile</span>(<span style="color:#e6db74">&#34;file&#34;</span>) <span style="color:#75715e">//key的名字为file
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#ae81ff">500</span>, <span style="color:#e6db74">&#34;上传图片出错&#34;</span>)
+		}
+		<span style="color:#75715e">// c.JSON(200, gin.H{&#34;message&#34;: file.Header.Context})
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Filename</span>)
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">SaveUploadedFile</span>(<span style="color:#a6e22e">file</span>, <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Filename</span>)
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Filename</span>)
+	})
+<span style="color:#a6e22e">多文件用value提取文本</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">File提取文件</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/upload&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+		<span style="color:#a6e22e">form</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">MultipartForm</span>()
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusBadRequest</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;get err %s&#34;</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>()))
+		}
+		<span style="color:#75715e">// 获取所有图片
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">files</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">File</span>[<span style="color:#e6db74">&#34;files&#34;</span>]
+		<span style="color:#a6e22e">text</span> <span style="color:#f92672">:=</span><span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">Value</span>[<span style="color:#e6db74">&#34;text&#34;</span>]
+		<span style="color:#75715e">// 遍历所有图片
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">file</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">files</span> {
+			<span style="color:#75715e">// 逐个存
+</span><span style="color:#75715e"></span>
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">SaveUploadedFile</span>(<span style="color:#a6e22e">file</span>, <span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Filename</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+				<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusBadRequest</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;upload err %s&#34;</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>()))
+				<span style="color:#66d9ef">return</span>
+			}
+		}
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;a:&#34;</span>,<span style="color:#a6e22e">text</span>)
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#ae81ff">200</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;upload ok %d files&#34;</span>, len(<span style="color:#a6e22e">files</span>)))
+	})
+</code></pre></div><ul>
+<li>路由分组</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"> <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+   <span style="color:#75715e">// 路由组1 ，处理GET请求
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">v1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Group</span>(<span style="color:#e6db74">&#34;/v1&#34;</span>)
+   <span style="color:#75715e">// {} 是书写规范
+</span><span style="color:#75715e"></span>   {
+      <span style="color:#a6e22e">v1</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, <span style="color:#a6e22e">login</span>)
+      <span style="color:#a6e22e">v1</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;submit&#34;</span>, <span style="color:#a6e22e">submit</span>)
+   }
+ <span style="color:#a6e22e">v2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Group</span>(<span style="color:#e6db74">&#34;/v2&#34;</span>)
+   {
+      <span style="color:#a6e22e">v2</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, <span style="color:#a6e22e">login</span>)
+      <span style="color:#a6e22e">v2</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;/submit&#34;</span>, <span style="color:#a6e22e">submit</span>)
+   }
+
+<span style="color:#a6e22e">这样可以分别访问</span><span style="color:#f92672">/</span><span style="color:#a6e22e">v1</span><span style="color:#f92672">/</span><span style="color:#a6e22e">login</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">/</span><span style="color:#a6e22e">v2</span><span style="color:#f92672">/</span><span style="color:#a6e22e">login</span>
+</code></pre></div><p>路由拆分：当项目规模大起来的时候最好把不同模块的路由分到不同文件中去</p>
+<pre><code>gin
+├── go.mod
+├── go.sum
+├── main.go
+└── routers
+    ├── blog.go
+    └── shop.go
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">router文件夹下</span><span style="color:#960050;background-color:#1e0010">：</span>
+<span style="color:#a6e22e">shop</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">LoadShop</span>(<span style="color:#a6e22e">e</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>)  {
+  <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/hello&#34;</span>, <span style="color:#a6e22e">helloHandler</span>)
+  <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/goods&#34;</span>, <span style="color:#a6e22e">goodsHandler</span>)
+  <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/checkout&#34;</span>, <span style="color:#a6e22e">checkoutHandler</span>)
+  <span style="color:#f92672">...</span>
+}
+<span style="color:#a6e22e">blog</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">LoadBlog</span>(<span style="color:#a6e22e">e</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+  <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/post&#34;</span>, <span style="color:#a6e22e">postHandler</span>)
+  <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/comment&#34;</span>, <span style="color:#a6e22e">commentHandler</span>)
+  <span style="color:#f92672">...</span>
+}
+<span style="color:#a6e22e">根目录下</span>
+<span style="color:#a6e22e">main</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+    <span style="color:#a6e22e">routers</span>.<span style="color:#a6e22e">LoadBlog</span>(<span style="color:#a6e22e">r</span>)<span style="color:#75715e">//r的类型是gin.Engine的指针
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">routers</span>.<span style="color:#a6e22e">LoadShop</span>(<span style="color:#a6e22e">r</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;startup service failed, err:%v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
+    }
+}
+</code></pre></div><p>当规模更大时，拆分成不同app，存放不同业务，需要使用时注册到router中</p>
+<pre><code>gin_demo
+├── app
+│   ├── app1
+│   │   ├── handler.go
+│   │   └── router.go
+│   └── app2
+│       ├── handler.go
+│       └── router.go
+├── go.mod
+├── go.sum
+├── main.go
+└── routers
+    └── routers.go
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">app1</span><span style="color:#f92672">/</span><span style="color:#a6e22e">handler</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">app1</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;fmt&#34;</span>
+   <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">postHandler</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>){
+   <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;this is postHandler&#34;</span>)
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">commentHandler</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>){
+   <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;this is commentHandler&#34;</span>)
+}
+<span style="color:#a6e22e">app1</span><span style="color:#f92672">/</span><span style="color:#a6e22e">router</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">app1</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Routers</span>(<span style="color:#a6e22e">e</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+	<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/post&#34;</span>, <span style="color:#a6e22e">postHandler</span>) 
+	<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/comment&#34;</span>, <span style="color:#a6e22e">commentHandler</span>)
+}
+<span style="color:#a6e22e">app2</span><span style="color:#f92672">/</span><span style="color:#a6e22e">handler</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">app2</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">goodsHandler</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>){
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;this is postHandler&#34;</span>)
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">checkoutHandler</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>){
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;this is commentHandler&#34;</span>)
+}
+
+<span style="color:#a6e22e">app2</span><span style="color:#f92672">/</span><span style="color:#a6e22e">router</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">app2</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Routers</span>(<span style="color:#a6e22e">e</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) {
+	<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/goods&#34;</span>, <span style="color:#a6e22e">goodsHandler</span>)
+	<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/checkout&#34;</span>, <span style="color:#a6e22e">checkoutHandler</span>)
+}
+<span style="color:#a6e22e">routers</span><span style="color:#f92672">/</span><span style="color:#a6e22e">routers</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">routers</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Option</span> <span style="color:#66d9ef">func</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span>) <span style="color:#75715e">//函数指针
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">options</span> = []<span style="color:#a6e22e">Option</span>{} <span style="color:#75715e">//函数指针数组
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 注册app的路由配置
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Include</span>(<span style="color:#a6e22e">opts</span> <span style="color:#f92672">...</span><span style="color:#a6e22e">Option</span>) {
+	<span style="color:#a6e22e">options</span> = append(<span style="color:#a6e22e">options</span>, <span style="color:#a6e22e">opts</span><span style="color:#f92672">...</span>)
+}
+
+<span style="color:#75715e">// 初始化
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Init</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Engine</span> {
+	<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">New</span>() <span style="color:#75715e">//r的类型是gin.Engine
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">opt</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">options</span> {
+		<span style="color:#a6e22e">opt</span>(<span style="color:#a6e22e">r</span>) <span style="color:#75715e">//调用option指向的函数，即不同app的router函数，从而注册路由到r上
+</span><span style="color:#75715e"></span>	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">r</span>
+}
+<span style="color:#a6e22e">main</span>.<span style="color:#66d9ef">go</span>
+<span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;gin/app/app1&#34;</span>
+	<span style="color:#e6db74">&#34;gin/app/app2&#34;</span>
+	<span style="color:#e6db74">&#34;gin/routers&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#75715e">// 加载多个APP的路由配置
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">routers</span>.<span style="color:#a6e22e">Include</span>(<span style="color:#a6e22e">app1</span>.<span style="color:#a6e22e">Routers</span>, <span style="color:#a6e22e">app2</span>.<span style="color:#a6e22e">Routers</span>) <span style="color:#75715e">//注册指定app的路由
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// 初始化路由
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">routers</span>.<span style="color:#a6e22e">Init</span>()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;startup service failed, err:%v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
+	}
+	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>()
+}
+</code></pre></div><ul>
+<li>
+<p>数据绑定与解析：</p>
+</li>
+<li>
+<p>反引号的作用-Tag：</p>
+</li>
+</ul>
+<p>​		由反引号包含，由一对或几对的键值对组成，通过空格来分割键值，在把结构体编码成不同格式时会以不同格式匹配对应的key和value&ndash;即在转换成其它数据格式的时候，会使用其中特定的字段作为键值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Human</span> <span style="color:#66d9ef">struct</span> {
+<span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>  <span style="color:#e6db74">`json:&#34;english_name&#34;`</span> <span style="color:#75715e">//把struct编码成json字符串时，Name字段的key是english_name，而不是Name
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Age</span>    <span style="color:#66d9ef">int</span>     <span style="color:#e6db74">`json:&#34;-&#34;`</span>            <span style="color:#75715e">//把struct编码成json字符串时，会忽略Age这个字段
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Weight</span> <span style="color:#66d9ef">float64</span> <span style="color:#75715e">//`json:&#34;,string&#34;` //编码成字符串，这个string选项只适用字符串，浮点型和整型数据
+</span><span style="color:#75715e"></span>}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">/</span> <span style="color:#a6e22e">定义接收数据的结构体</span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Login</span> <span style="color:#66d9ef">struct</span> {
+   <span style="color:#75715e">// binding:&#34;required&#34;修饰的字段，若接收为空值，则报错，是必须字段
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">User</span>    <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`form:&#34;username&#34; json:&#34;user&#34; uri:&#34;user&#34; xml:&#34;user&#34; binding:&#34;required&#34;`</span>
+   <span style="color:#a6e22e">Pssword</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`form:&#34;password&#34; json:&#34;password&#34; uri:&#34;password&#34; xml:&#34;password&#34; binding:&#34;required&#34;`</span>
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#75715e">// 1.创建路由
+</span><span style="color:#75715e"></span>   <span style="color:#75715e">// 默认使用了2个中间件Logger(), Recovery()
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+   <span style="color:#75715e">// JSON绑定
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">POST</span>(<span style="color:#e6db74">&#34;loginJSON&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+      <span style="color:#75715e">// 声明接收的变量
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">json</span> <span style="color:#a6e22e">Login</span>
+     <span style="color:#75715e">// 将request的body中的数据，自动按照json格式解析到结构体 用C.Bind()会自动根据类型解析
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ShouldBindJSON</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">json</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+         <span style="color:#75715e">// 返回错误信息
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">// gin.H封装了生成json数据的工具
+</span><span style="color:#75715e"></span>         <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusBadRequest</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>()})
+         <span style="color:#66d9ef">return</span>
+      }
+      <span style="color:#75715e">// 判断用户名密码是否正确
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">User</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;root&#34;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Pssword</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;admin&#34;</span> {
+         <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusBadRequest</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;304&#34;</span>})
+         <span style="color:#66d9ef">return</span>
+      }
+      <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;200&#34;</span>})
+   })
+   <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#e6db74">&#34;:8000&#34;</span>)
+}
+</code></pre></div><ul>
+<li>Html渲染：</li>
+</ul>
+<ul>
+<li>LoadHTMLGlob()方法可以加载模板文件并进行变量替换</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;net/http&#34;</span>
+
+    <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">LoadHTMLGlob</span>(<span style="color:#e6db74">&#34;tem/*&#34;</span>)
+    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/index&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+        <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">HTML</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#e6db74">&#34;index.html&#34;</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;我是测试&#34;</span>, <span style="color:#e6db74">&#34;ce&#34;</span>: <span style="color:#e6db74">&#34;123456&#34;</span>})
+    })
+    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>()
+}
+</code></pre></div><ul>
+<li>重定向</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;net/http&#34;</span>
+
+    <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/index&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+        <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Redirect</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusMovedPermanently</span>, <span style="color:#e6db74">&#34;http://www.5lmh.com&#34;</span>)
+    })
+    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>()
+}
+</code></pre></div><ul>
+<li>中间件：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// 默认使用了2个中间件Logger(), Recovery()
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+    <span style="color:#75715e">// 注册中间件
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Use</span>(<span style="color:#a6e22e">myTime</span>) <span style="color:#f92672">--</span><span style="color:#a6e22e">注册中间件</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">这样每次有request都会执行myTime中间件定义的handler</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+    <span style="color:#e6db74">&#34;time&#34;</span>
+
+    <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#75715e">// 定义中间
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">myTime</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+    <span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+    <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Next</span>() <span style="color:#75715e">//会让程序先去执行其他中间件和后续代码，最后在回到这里统计运行用时
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 统计时间
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">since</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Since</span>(<span style="color:#a6e22e">start</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;程序用时：&#34;</span>, <span style="color:#a6e22e">since</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#75715e">// 1.创建路由
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 默认使用了2个中间件Logger(), Recovery()
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+    <span style="color:#75715e">// 注册中间件
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Use</span>(<span style="color:#a6e22e">myTime</span>)
+    <span style="color:#75715e">// {}为了代码规范
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">shoppingGroup</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Group</span>(<span style="color:#e6db74">&#34;/shopping&#34;</span>)
+    {
+        <span style="color:#a6e22e">shoppingGroup</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/index&#34;</span>, <span style="color:#a6e22e">shopIndexHandler</span>)
+        <span style="color:#a6e22e">shoppingGroup</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/home&#34;</span>, <span style="color:#a6e22e">shopHomeHandler</span>)
+    }
+    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#e6db74">&#34;:8000&#34;</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">shopIndexHandler</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">shopHomeHandler</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+}
+</code></pre></div><p>一些推荐的中间件使用：</p>
+<p><a href="https://www.topgoer.com/gin%E6%A1%86%E6%9E%B6/gin%E4%B8%AD%E9%97%B4%E4%BB%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8E%A8%E8%8D%90.html">https://www.topgoer.com/gin%E6%A1%86%E6%9E%B6/gin%E4%B8%AD%E9%97%B4%E4%BB%B6/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%8E%A8%E8%8D%90.html</a></p>
+<p>鉴权，限流等功能可以用中间件实现</p>
+<hr>
+<ul>
+<li>会话控制：</li>
+</ul>
+<p>cookie</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+   <span style="color:#e6db74">&#34;fmt&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#75715e">// 1.创建路由
+</span><span style="color:#75715e"></span>   <span style="color:#75715e">// 默认使用了2个中间件Logger(), Recovery()
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+   <span style="color:#75715e">// 服务端要给客户端cookie
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;cookie&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+      <span style="color:#75715e">// 获取客户端是否携带cookie
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">cookie</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Cookie</span>(<span style="color:#e6db74">&#34;key_cookie&#34;</span>)
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+         <span style="color:#a6e22e">cookie</span> = <span style="color:#e6db74">&#34;NotSet&#34;</span>
+         <span style="color:#75715e">// 给客户端设置cookie
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">//  maxAge int, 单位为秒
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">// path,cookie所在目录
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">// domain string,域名
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">//   secure 是否智能通过https访问
+</span><span style="color:#75715e"></span>         <span style="color:#75715e">// httpOnly bool  是否允许别人通过js获取自己的cookie
+</span><span style="color:#75715e"></span>         <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">SetCookie</span>(<span style="color:#e6db74">&#34;key_cookie&#34;</span>, <span style="color:#e6db74">&#34;value_cookie&#34;</span>, <span style="color:#ae81ff">60</span>, <span style="color:#e6db74">&#34;/&#34;</span>,
+            <span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>)
+      }
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;cookie的值是： %s\n&#34;</span>, <span style="color:#a6e22e">cookie</span>)
+   })
+   <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#e6db74">&#34;:8000&#34;</span>)
+}
+</code></pre></div><p>Cookie认证测试：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+   <span style="color:#e6db74">&#34;net/http&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">AuthMiddleWare</span>() <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">HandlerFunc</span> {
+   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+      <span style="color:#75715e">// 获取客户端cookie并校验
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cookie</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Cookie</span>(<span style="color:#e6db74">&#34;abc&#34;</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+         <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cookie</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;123&#34;</span> {
+            <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Next</span>()
+            <span style="color:#66d9ef">return</span>
+         }
+      }
+      <span style="color:#75715e">// 返回错误
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusUnauthorized</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;err&#34;</span>})
+      <span style="color:#75715e">// 若验证不通过，不再调用后续的函数处理
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Abort</span>()
+      <span style="color:#66d9ef">return</span>
+   }
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#75715e">// 1.创建路由
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+   <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+      <span style="color:#75715e">// 设置cookie
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">SetCookie</span>(<span style="color:#e6db74">&#34;abc&#34;</span>, <span style="color:#e6db74">&#34;123&#34;</span>, <span style="color:#ae81ff">60</span>, <span style="color:#e6db74">&#34;/&#34;</span>,
+         <span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">true</span>)
+      <span style="color:#75715e">// 返回信息
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#ae81ff">200</span>, <span style="color:#e6db74">&#34;Login success!&#34;</span>)
+   })
+   <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/home&#34;</span>, <span style="color:#a6e22e">AuthMiddleWare</span>(), <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+     <span style="color:#75715e">//AuthMiddleWare() 局部中间件--访问home前先确认cookier是否正确
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#ae81ff">200</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;data&#34;</span>: <span style="color:#e6db74">&#34;home&#34;</span>})
+   })
+   <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#e6db74">&#34;:8000&#34;</span>)
+}
+</code></pre></div><p>Session</p>
+<p>&ldquo;github.com/gorilla/sessions&rdquo;</p>
+<p>验证码：</p>
+<p>github.com/dchest/captcha</p>
+<p>这个库利用session进行验证&ndash;提供一个路由，先在session里写入键值对（k-&gt;v），把值写在图片上，然后生成图片，显示在浏览器上面，前端将图片中的内容发送给后后端，后端根据session中的k取得v，比对校验。如果通过继续下一步的逻辑，失败给出错误提示</p>
+<p>验证图片的html：index.html</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+    &lt;<span style="color:#f92672">title</span>&gt;www.topgoer.com验证码&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/captcha&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;this.src=&#39;/captcha?v=&#39;+Math.random()&#34;</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p>验证程序：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;bytes&#34;</span>
+   <span style="color:#e6db74">&#34;fmt&#34;</span>
+   <span style="color:#e6db74">&#34;github.com/dchest/captcha&#34;</span>
+   <span style="color:#e6db74">&#34;github.com/gin-contrib/sessions&#34;</span>
+   <span style="color:#e6db74">&#34;github.com/gin-contrib/sessions/cookie&#34;</span>
+   <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+   <span style="color:#e6db74">&#34;net/http&#34;</span>
+   <span style="color:#e6db74">&#34;strconv&#34;</span>
+   <span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#75715e">// 中间件，处理session
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Session</span>(<span style="color:#a6e22e">keyPairs</span> <span style="color:#66d9ef">string</span>) <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">HandlerFunc</span> {
+   <span style="color:#a6e22e">store</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">SessionConfig</span>()
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sessions</span>.<span style="color:#a6e22e">Sessions</span>(<span style="color:#a6e22e">keyPairs</span>, <span style="color:#a6e22e">store</span>)
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">SessionConfig</span>() <span style="color:#a6e22e">sessions</span>.<span style="color:#a6e22e">Store</span> {
+   <span style="color:#a6e22e">sessionMaxAge</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">3600</span>
+   <span style="color:#a6e22e">sessionSecret</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;topgoer&#34;</span>
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">store</span> <span style="color:#a6e22e">sessions</span>.<span style="color:#a6e22e">Store</span>
+   <span style="color:#a6e22e">store</span> = <span style="color:#a6e22e">cookie</span>.<span style="color:#a6e22e">NewStore</span>([]byte(<span style="color:#a6e22e">sessionSecret</span>))
+   <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">Options</span>(<span style="color:#a6e22e">sessions</span>.<span style="color:#a6e22e">Options</span>{
+      <span style="color:#a6e22e">MaxAge</span>: <span style="color:#a6e22e">sessionMaxAge</span>, <span style="color:#75715e">//seconds
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">Path</span>:   <span style="color:#e6db74">&#34;/&#34;</span>,
+   })
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">store</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Captcha</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">length</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">int</span>) {
+   <span style="color:#a6e22e">l</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">captcha</span>.<span style="color:#a6e22e">DefaultLen</span>
+   <span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">h</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">107</span>, <span style="color:#ae81ff">36</span>
+   <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">length</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> {
+      <span style="color:#a6e22e">l</span> = <span style="color:#a6e22e">length</span>[<span style="color:#ae81ff">0</span>]
+   }
+   <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">length</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> {
+      <span style="color:#a6e22e">w</span> = <span style="color:#a6e22e">length</span>[<span style="color:#ae81ff">1</span>]
+   }
+   <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">length</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span> {
+      <span style="color:#a6e22e">h</span> = <span style="color:#a6e22e">length</span>[<span style="color:#ae81ff">2</span>]
+   }
+   <span style="color:#a6e22e">captchaId</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">captcha</span>.<span style="color:#a6e22e">NewLen</span>(<span style="color:#a6e22e">l</span>)
+   <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;captchaId:&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">captchaId</span>)
+
+   <span style="color:#a6e22e">session</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sessions</span>.<span style="color:#a6e22e">Default</span>(<span style="color:#a6e22e">c</span>) <span style="color:#75715e">//生成一个seesion
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;captcha&#34;</span>, <span style="color:#a6e22e">captchaId</span>) <span style="color:#75715e">//设置session k-v对
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Save</span>() <span style="color:#75715e">//存储session
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">Serve</span>(<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Writer</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Request</span>, <span style="color:#a6e22e">captchaId</span>, <span style="color:#e6db74">&#34;.png&#34;</span>, <span style="color:#e6db74">&#34;zh&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">h</span>)<span style="color:#75715e">//返回一张图片
+</span><span style="color:#75715e"></span>}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">CaptchaVerify</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">code</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+   <span style="color:#a6e22e">session</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sessions</span>.<span style="color:#a6e22e">Default</span>(<span style="color:#a6e22e">c</span>)
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">captchaId</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;captcha&#34;</span>); <span style="color:#a6e22e">captchaId</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Delete</span>(<span style="color:#e6db74">&#34;captcha&#34;</span>)
+      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">Save</span>()
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;captchaId.(string):&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">captchaId</span>.(<span style="color:#66d9ef">string</span>))
+      <span style="color:#a6e22e">res</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">captcha</span>.<span style="color:#a6e22e">VerifyString</span>(<span style="color:#a6e22e">captchaId</span>.(<span style="color:#66d9ef">string</span>), <span style="color:#a6e22e">code</span>)
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;compare:&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">FormatBool</span>(<span style="color:#a6e22e">res</span>))
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">res</span> {
+         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+      } <span style="color:#66d9ef">else</span> {
+         <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+      }
+   } <span style="color:#66d9ef">else</span> {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+   }
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Serve</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>, <span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">ext</span>, <span style="color:#a6e22e">lang</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">download</span> <span style="color:#66d9ef">bool</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">error</span> {
+   <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Cache-Control&#34;</span>, <span style="color:#e6db74">&#34;no-cache, no-store, must-revalidate&#34;</span>)
+   <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Pragma&#34;</span>, <span style="color:#e6db74">&#34;no-cache&#34;</span>)
+   <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Expires&#34;</span>, <span style="color:#e6db74">&#34;0&#34;</span>)
+
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">content</span> <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">Buffer</span>
+   <span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">ext</span> {
+   <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;.png&#34;</span>:
+      <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;image/png&#34;</span>)
+      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">captcha</span>.<span style="color:#a6e22e">WriteImage</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">content</span>, <span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>) <span style="color:#75715e">//把id写到图片中去
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;.wav&#34;</span>:
+      <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;audio/x-wav&#34;</span>)
+      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">captcha</span>.<span style="color:#a6e22e">WriteAudio</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">content</span>, <span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">lang</span>)
+   <span style="color:#66d9ef">default</span>:
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">captcha</span>.<span style="color:#a6e22e">ErrNotFound</span>
+   }
+
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">download</span> {
+      <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;application/octet-stream&#34;</span>)
+   }
+   <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ServeContent</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">r</span>, <span style="color:#a6e22e">id</span><span style="color:#f92672">+</span><span style="color:#a6e22e">ext</span>, <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Time</span>{}, <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">NewReader</span>(<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">Bytes</span>()))
+   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#a6e22e">router</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+   <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">LoadHTMLGlob</span>(<span style="color:#e6db74">&#34;./*.html&#34;</span>)
+   <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">Use</span>(<span style="color:#a6e22e">Session</span>(<span style="color:#e6db74">&#34;topgoer&#34;</span>))
+   <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/captcha&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+      <span style="color:#a6e22e">Captcha</span>(<span style="color:#a6e22e">c</span>, <span style="color:#ae81ff">4</span>)
+   })<span style="color:#75715e">//更新验证码，生存一个kev-value对，value为图片内容，value长度为4
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+      <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">HTML</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#e6db74">&#34;index.html&#34;</span>, <span style="color:#66d9ef">nil</span>)
+   })<span style="color:#75715e">//访问根结点显示验证图片
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/captcha/verify/:value&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+      <span style="color:#75715e">//获得路径参数value，并进行验证
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">value</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Param</span>(<span style="color:#e6db74">&#34;value&#34;</span>)
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">value</span>)
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">CaptchaVerify</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">value</span>) {
+         <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;msg&#34;</span>: <span style="color:#e6db74">&#34;success&#34;</span>})
+      } <span style="color:#66d9ef">else</span> {
+         <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;msg&#34;</span>: <span style="color:#e6db74">&#34;failed&#34;</span>})
+      }
+   })
+   <span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#e6db74">&#34;:8080&#34;</span>)
+}
+</code></pre></div><p>另一种验证方式是令牌token：</p>
+<p>​	JSON Web令牌（JWT）作为令牌系统而不是在每次请求时都发送用户名和密码，因此比其他方法（如基本身份验证）具有固有的优势。</p>
+<p>​	格式：aaa.bbb.ccc</p>
+<p>​	aaa是header，一般由协议决定；bbb是payload，存储一些必要信息，jwt中的claims部分；ccc是用密钥对header+payload加密了的部分。</p>
+<p>Signature部分的生成需要base64编码之后的Header,base64编码之后的Payload,密钥（secret）&ndash;服务端唯一,Header需要指定签字的算法。</p>
+<pre><code>HMACSHA256(
+  base64UrlEncode(header) + &quot;.&quot; +
+  base64UrlEncode(payload),
+  secret)
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+    <span style="color:#e6db74">&#34;net/http&#34;</span>
+    <span style="color:#e6db74">&#34;time&#34;</span>
+
+    <span style="color:#e6db74">&#34;github.com/dgrijalva/jwt-go&#34;</span>
+    <span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#75715e">//自定义一个字符串
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">jwtkey</span> = []byte(<span style="color:#e6db74">&#34;www.topgoer.com&#34;</span>)
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">str</span> <span style="color:#66d9ef">string</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Claims</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">UserId</span> <span style="color:#66d9ef">uint</span>
+    <span style="color:#a6e22e">jwt</span>.<span style="color:#a6e22e">StandardClaims</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Default</span>()
+    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/set&#34;</span>, <span style="color:#a6e22e">setting</span>)
+    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/get&#34;</span>, <span style="color:#a6e22e">getting</span>)
+    <span style="color:#75715e">//监听端口默认为8080
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#e6db74">&#34;:8080&#34;</span>)
+}
+
+<span style="color:#75715e">//颁发token
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setting</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+    <span style="color:#a6e22e">expireTime</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">7</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Hour</span>)
+    <span style="color:#a6e22e">claims</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Claims</span>{
+        <span style="color:#a6e22e">UserId</span>: <span style="color:#ae81ff">2</span>,
+        <span style="color:#a6e22e">StandardClaims</span>: <span style="color:#a6e22e">jwt</span>.<span style="color:#a6e22e">StandardClaims</span>{
+            <span style="color:#a6e22e">ExpiresAt</span>: <span style="color:#a6e22e">expireTime</span>.<span style="color:#a6e22e">Unix</span>(), <span style="color:#75715e">//过期时间
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">IssuedAt</span>:  <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">Unix</span>(),
+            <span style="color:#a6e22e">Issuer</span>:    <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,  <span style="color:#75715e">// 签名颁发者
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">Subject</span>:   <span style="color:#e6db74">&#34;user token&#34;</span>, <span style="color:#75715e">//签名主题
+</span><span style="color:#75715e"></span>        },
+    }
+    <span style="color:#a6e22e">token</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">jwt</span>.<span style="color:#a6e22e">NewWithClaims</span>(<span style="color:#a6e22e">jwt</span>.<span style="color:#a6e22e">SigningMethodHS256</span>, <span style="color:#a6e22e">claims</span>)
+    <span style="color:#75715e">// fmt.Println(token)
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">tokenString</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">token</span>.<span style="color:#a6e22e">SignedString</span>(<span style="color:#a6e22e">jwtkey</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+    }
+    <span style="color:#a6e22e">str</span> = <span style="color:#a6e22e">tokenString</span>
+    <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#ae81ff">200</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;token&#34;</span>: <span style="color:#a6e22e">tokenString</span>})
+}
+
+<span style="color:#75715e">//解析token
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getting</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+    <span style="color:#a6e22e">tokenString</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">GetHeader</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>)
+    <span style="color:#75715e">//vcalidate token formate
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">tokenString</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> {
+        <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusUnauthorized</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">401</span>, <span style="color:#e6db74">&#34;msg&#34;</span>: <span style="color:#e6db74">&#34;权限不足&#34;</span>})
+        <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Abort</span>()
+        <span style="color:#66d9ef">return</span>
+    }
+
+    <span style="color:#a6e22e">token</span>, <span style="color:#a6e22e">claims</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ParseToken</span>(<span style="color:#a6e22e">tokenString</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">||</span> !<span style="color:#a6e22e">token</span>.<span style="color:#a6e22e">Valid</span> {
+        <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusUnauthorized</span>, <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">H</span>{<span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">401</span>, <span style="color:#e6db74">&#34;msg&#34;</span>: <span style="color:#e6db74">&#34;权限不足&#34;</span>})
+        <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">Abort</span>()
+        <span style="color:#66d9ef">return</span>
+    }
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#ae81ff">111</span>)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">claims</span>.<span style="color:#a6e22e">UserId</span>)
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ParseToken</span>(<span style="color:#a6e22e">tokenString</span> <span style="color:#66d9ef">string</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">jwt</span>.<span style="color:#a6e22e">Token</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">Claims</span>, <span style="color:#66d9ef">error</span>) {
+    <span style="color:#a6e22e">Claims</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Claims</span>{}
+    <span style="color:#a6e22e">token</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">jwt</span>.<span style="color:#a6e22e">ParseWithClaims</span>(<span style="color:#a6e22e">tokenString</span>, <span style="color:#a6e22e">Claims</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">token</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">jwt</span>.<span style="color:#a6e22e">Token</span>) (<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">jwtkey</span>, <span style="color:#66d9ef">nil</span>
+    })
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">token</span>, <span style="color:#a6e22e">Claims</span>, <span style="color:#a6e22e">err</span>
+}
+</code></pre></div>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-tooltip="如何使用hugo&#43;githubpage搭建个人博客" aria-label="PREVIOUS: 如何使用hugo&#43;githubpage搭建个人博客">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = '\/post\/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0\/';
+        
+          this.page.identifier = '\/post\/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Eric w. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-tooltip="如何使用hugo&#43;githubpage搭建个人博客" aria-label="PREVIOUS: 如何使用hugo&#43;githubpage搭建个人博客">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2Fpost%2Fgo%25E5%25B8%25B8%25E7%2594%25A8%25E6%25A1%2586%25E6%259E%25B6%25E5%25AD%25A6%25E4%25B9%25A0%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2Fpost%2Fgo%25E5%25B8%25B8%25E7%2594%25A8%25E6%25A1%2586%25E6%259E%25B6%25E5%25AD%25A6%25E4%25B9%25A0%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=%2Fpost%2Fgo%25E5%25B8%25B8%25E7%2594%25A8%25E6%25A1%2586%25E6%259E%25B6%25E5%25AD%25A6%25E4%25B9%25A0%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Eric w</h4>
+    
+      <div id="about-card-bio">Super bio with markdown support <strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        R&amp;D
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        China Shenzhen
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
