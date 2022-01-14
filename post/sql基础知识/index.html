@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"\/",
+  "author": {
+    "@type": "Person",
+    "name": "Eric w",
+    
+    "image": "/img/icon.png"
+    
+  },
+  "name":"Eric w -- BLOG",
+  "description":"\u003cp\u003e数据库的基本知识框架\u003c\/p\u003e",
+  "url":"\/post\/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.84.3 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Eric w">
+<meta name="keywords" content="">
+<meta name="description" content="数据库的基本知识框架">
+
+
+<meta property="og:description" content="数据库的基本知识框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库基础知识框架">
+<meta name="twitter:title" content="数据库基础知识框架">
+<meta property="og:url" content="/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+<meta property="twitter:url" content="/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+<meta property="og:site_name" content="Eric w -- BLOG">
+<meta property="og:description" content="数据库的基本知识框架">
+<meta name="twitter:description" content="数据库的基本知识框架">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-01-14T21:27:53">
+  
+  
+    <meta property="article:modified_time" content="2022-01-14T21:27:53">
+  
+  
+  
+    
+      <meta property="article:section" content="mysql">
+    
+  
+  
+    
+      <meta property="article:tag" content="mysql">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="/img/icon.png">
+  <meta property="twitter:image" content="/img/icon.png">
+
+
+
+
+
+
+    <title>数据库基础知识框架</title>
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/" aria-label="Go to homepage">Eric w -- BLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Eric w</h4>
+        
+          <h5 class="sidebar-profile-bio">Super bio with markdown support <strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" title="Stack Overflow">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-stack-overflow" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      数据库基础知识框架
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-01-14T21:27:53&#43;08:00">
+        
+  January 14, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/mysql">mysql</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>数据库的基本知识框架</p>
+<h4 id="sqlredis">SQL&amp;&amp;Redis</h4>
+<!-- raw HTML omitted -->
+<ul>
+<li>结构：</li>
+</ul>
+<blockquote>
+<p>连接层：连接处理&ndash;连接池，用户鉴权，安全处理
+MySQL服务层：提供数据管理，sql解释，优化等
+存储引擎层：实际存储数据的系统</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li>Sql搜索可以考虑的数据结构</li>
+</ul>
+<blockquote>
+<p>目标：高效，快速<br>
+哈希表：O（1）的处理速度，单点搜索快但是不适合范围查找，排序<br>
+二叉树：O（logn）的时间复杂度，天然的排序特性，但容易不平衡<br>
+AVL：严格平衡但是旋转耗时且IO消耗较大，如果深的话（一次查找一个值，进行一次IO）<br>
+B树：有序数组+平衡多叉树；<br>
+每个子节点可以存放多个值，树深度降低，适合查找<br>
+B+树：有序数组链表+平衡多叉树<br>
+每个子节点不存放值，只存放索引（地址），在叶子节点存放所有的数据，且用链表链接所有叶子节点（更适合范围查找，减少磁盘IO次数），每次查询需要的次数是一样的</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>1、概念：</p>
+<p>​	undo log是逻辑日志，记录是操作记录日志，redo log是物理日志，记录的是新数据；undo log不是redo log的逆向过程</p>
+<p>2、用处：</p>
+<p>​	undo log是为了保证事务原子性而设计的，redo log是为了保证事务持久性设置的。</p>
+<p>​	undo log在InnoDB中用来实现多版本控制mvcc，执行rollback操作时，undo log可以作为事务回滚的快照读参考。</p>
+<p>​	redo log是备份的最新数据位置，系统冗机时，只要重启mysql服务，就可以将未持久保存的数据持久到磁盘</p>
+<p>3、redo log：</p>
+<ul>
+<li>
+<p>只记录该存储引擎中表的修改，是在物理格式上的日志，它记录的是数据库中每个页的修改。</p>
+</li>
+<li>
+<p>MariaDB/MySQL是工作在用户空间的，MariaDB/MySQL的log buffer处于用户空间的内存中。要写入到磁盘上的log file中(redo:ib_logfileN文件,undo:share tablespace或.ibd文件)，中间还要经过操作系统内核空间的os buffer，调用fsync()的作用就是将OS buffer中的日志刷到磁盘上的log file中。</p>
+</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>垂直分库：</p>
+<p>垂直分库就是根据业务耦合性，将关联度低的不同表存储在不同的数据库。例如：</p>
+<p><!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>垂直分表：</p>
+<p>垂直分表是基于数据库中的&quot;列&quot;进行，某个表字段较多，可以新建一张扩展表，将不经常用或字段长度较大的字段拆分出去到扩展表中,通过拆分字段，也可以避免跨页问题。ps: <a href="https://jhrtech.cn/sql/135779.html">MySQL</a>底层是通过数据页存储的，一条记录占用空间过大会导致跨页，造成额外的性能开销。</p>
+</li>
+<li>
+<p>水平切分-库内分表：</p>
+<p>根据表内数据内在的逻辑关系，将同一个表按不同的条件分散到多个数据库或多个表中，每个表中只包含一部分数据，从而使得单个表的数据量变小。</p>
+<p><!-- raw HTML omitted --></p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>四大特性：</li>
+</ul>
+<blockquote>
+<p>ACID:原子性atomic，一致性consistency，隔离性：isolation，持久性duration<br>
+原子性：利用undo_log；失败回滚<br>
+持久性：redo_log和刷入磁盘持久化<br>
+隔离性：加锁和mvcc</p>
+</blockquote>
+<ul>
+<li>事务实现：</li>
+</ul>
+<blockquote>
+<p>事务的实现依靠redo log：数据库的操作先写到缓存中和redo log buffer里，commit后同步到数据库中，实现持久化</p>
+</blockquote>
+<ul>
+<li>三大范式:</li>
+</ul>
+<blockquote>
+<p>第一范式：字段不可再拆分成子字段<br>
+第二范式：各字段都和主键有联系<br>
+第三范式：各字段只和主键有全部联系（只依赖于主键）</p>
+<ul>
+<li>五大约束：</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>唯一约束：unique<br>
+主键约束 primary<br>
+外键约束:foreign<br>
+默认约束：default<br>
+非空约束：notnull</p>
+<ul>
+<li>索引类型</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>1.普通索引<br>
+2.唯一索引 ：索引列的值必须唯一 ，允许null！<br>
+3.主键索引 ：一个表只能有一个主键，不允许有空值<br>
+4.组合索引<br>
+5.全文索引</p>
+</blockquote>
+<ul>
+<li>聚蔟索引和非聚蔟索引</li>
+</ul>
+<blockquote>
+<p>聚蔟索引：将数据存储与索引放到了一块，找到索引也就找到了数据，一般主键就是聚蔟索引，叶子节点存放了数据；只有一个<br>
+非聚蔟索引：又叫二级索引，辅助索引，叶子节点存储的是主键的值<br>
+聚蔟索引是innodb的特性，mysiam没有，如果需要使用聚蔟索引，设置主键即可，如果没有主键，会用一个唯一且非空的列为主键，也没有的话innodb会创建一个虚拟主键</p>
+</blockquote>
+<ul>
+<li>
+<p>数据库回表<br>
+通过辅助索引(非聚蔟索引)，找到主键，在查询表中数据的过程叫回表，如果只需要辅助索引的键值，则不需要回表&ndash;这种是覆盖索引</p>
+</li>
+<li>
+<p>不走索引的情况</p>
+</li>
+</ul>
+<blockquote>
+<p>对索引列使用函数<br>
+or的列有的没有建立索引&ndash;可以用union查询
+索引列是string却用int去查询，(int 可以用 char查询)
+联合索引不满足最左匹配 a/ab/abc abc只走a</p>
+<ul>
+<li>数据库索引：加快检索表中数据的方法</li>
+<li>Mysql索引：</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>索引可以提高检索速度但会降低更新速度，需要更新索引文件</p>
+<ul>
+<li>Mysql主要包含四种隔离状态</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>读未提交Read Uncommitted：脏读-在该隔离级别，所有事务都可以看到其他未提交事务的执行结果。<br>
+读取提交内容Read committed：一个事务只能看见已经提交事务所做的改变<br>
+可重复读 ：幻读，提交前读取的数据不变<br>
+串行化</p>
+</blockquote>
+<ul>
+<li>数据库事务隔离：</li>
+</ul>
+<blockquote>
+<p>查询隔离等级：SHOW VARIABLES LIKE &lsquo;%isolation&rsquo;; or SELECT @@session.transaction_isolation;</p>
+<p>修改隔离等级：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SET</span> [<span style="color:#66d9ef">GLOBAL</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">SESSION</span>] <span style="color:#66d9ef">TRANSACTION</span> <span style="color:#66d9ef">ISOLATION</span> <span style="color:#66d9ef">LEVEL</span>
+<span style="color:#960050;background-color:#1e0010">{</span>
+ <span style="color:#66d9ef">REPEATABLE</span> <span style="color:#66d9ef">READ</span>   <span style="color:#75715e">--可重复读。幻读
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">COMMITTED</span>   <span style="color:#75715e">--已提交读 不可重复读
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> <span style="color:#66d9ef">READ</span> <span style="color:#66d9ef">UNCOMMITTED</span> <span style="color:#75715e">--未提交度 脏读
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> <span style="color:#66d9ef">SERIALIZABLE</span>
+<span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><p>同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰。比如A正在从一张银行卡中取钱，在A取钱的过程结束前，B不能向这张卡转账。</p>
+<ul>
+<li>mysql有哪几种锁
+myisam支持表级锁<br>
+innodb支持行锁<br>
+读锁写锁（或者叫排他锁共享锁）
+间隙锁</li>
+</ul>
+</blockquote>
+<ul>
+<li>MVCC理解</li>
+</ul>
+<blockquote>
+<p>1、什么是MVCC？
+多版本并发控制
+<a href="https://juejin.cn/post/6871046354018238472">https://juejin.cn/post/6871046354018238472</a>
+<a href="https://juejin.cn/post/6844903986143690765">https://juejin.cn/post/6844903986143690765</a>
+2、实现方式？
+事务隔离实现两种方式一种是加读写锁(串行化)，另一种就是MVCC.
+MVCC主要是通过在每一行记录中增加三个字段，与 undo log 中相关记录配合使用，同时加上可见性算法，使得各个事务可以在不加锁的情况下能够同时地读取到某行记录上的准确值（这个值对不同的事务而言可能是不同的）。使用 MVCC，在不加锁的情况下也能读取到准确的数据，大大提高了并发效率。</p>
+<blockquote>
+<p>1、对于数据库中的每条数据，添加三个字段（trx_id;roll_ptr;row_id）
+2、当事务对数据进行更新时，会将操作写入undo log，并且更新数据的trx_id和roll_ptr
+3、当事务进行查询的时候，通过roll_ptr去找到当前事务能读到的最近历史版本的数据(比较trx_id和read_view)
+关键:
+roll_ptr&ndash;<strong>版本链</strong>
+<strong>undo日志</strong>
+<strong>read_view</strong></p>
+<blockquote>
+<p>read_view-一致性视图
+用于可见性判断，事务在创建的时候会生成一个快照，由下列4个部分组成：
+creator_trx_id:当前事务id
+m_ids:所有事务的事务id
+min_trx_id:m_ids里最小的事务id值
+max_trx_id:最大事务id
+如果是已提交读，那么每一个语句执行前都会重新算出一个新的视图，如果是可重复读，则是执行事务时创建
+四种隔离级别，只有「读提交」和「可重复度」两个隔离级别能够使用 MVCC，因此也只有这两个隔离级别会创建一致性视图（read-view）
+可重复读会带来幻读的问题，可通过间隙锁解决 select &hellip; for update</p>
+<ul>
+<li>权限设置：</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>通过用户名密码登录到账户<br>
+Grand 权限（update，drop等）on 表 to 用户<br>
+Revoke 撤销权限</p>
+</blockquote>
+<ul>
+<li>存储引擎：负责数据库中的数据的存储和查提取。使用不同的技术将数据存储在</li>
+</ul>
+<blockquote>
+<p>文件或内存中(不同的表结构)；show engine看存储引擎<br>
+Myisam：不支持事务，（基于hash）但是插入数据快，适合在插入或选择密集（读或写的多单一业务）数据库，对硬件要求低，表锁：不会发生锁冲突<br>
+Innodb：支持事务，支持事务提交和回滚，加入外键约束，适合多重并发（更新密集）的数据库，行锁：容易死锁<br>
+Memory：运行在内存上，速度快但容易丢失，不支持事务</p>
+</blockquote>
+<p><img src="https://github.com/EricOo0/my_repo/blob/88853547c0b5a73f8ecd1492103a8e32f2dbd88c/Image/innodb.jpg" alt="image text"></p>
+<ul>
+<li>sql分区：</li>
+</ul>
+<blockquote>
+<p>MySQL在创建表的时候可以通过使用PARTITION BY子句定义每个分区存放的数据。在执行查询的时候，优化器根据分区定义过滤那些没有我们需要的数据的分区，这样查询就可以无需扫描所有分区，只需要查找包含需要数据的分区即可。<br>
+create TABLE tblname (upload_date string,FTarget string) PARTITION BY RANGE (upload_date) (partition p_20210615 values less than (20210615) )<br>
+常用分区类型：range；list
+查看某个分区信息：<br>
+show create table partition_test；查看创建表的语句<br>
+show table status；看表是不是分区表<br>
+information_schema.PARTITIONS 存储分区信息，可以去这张表查 <br>
+SELECT * FROM tr p2;查看这个分区的信息 <br>
+alter table partition_test add partition  (partition p_20210616 values less than (20210616));增加分区</p>
+</blockquote>
+<ul>
+<li>binlog有几种格式</li>
+</ul>
+<blockquote>
+<p>1、Statement：每一条会修改数据的sql都会记录在binlog中。<br>
+2、不记录sql语句上下文相关信息，仅保存哪条记录被修改<br>
+3、Mixedlevel: 是以上两种level的混合使用</p>
+</blockquote>
+<ul>
+<li>
+<p>从binlog恢复数据<br>
+mysqlbinlog命令<br>
+mysqlbinlog &ndash;start-position=154  &ndash;stop-position=513  bin-log.000001 &gt; /path/bak.sql;<br>
+mysql -uroot -p &lt; /path/bak.sql</p>
+</li>
+<li>
+<p>Mysql主从一致：</p>
+</li>
+</ul>
+<blockquote>
+<p>从库复制主库的binlog日志，执行日志命令来复制（两个线程）<br>
+1、主从同步作用：<br>
+从服务器起备份作用；<br>
+主服务器挂掉的时候，从服务器可以起作用；<br>
+可以用来做读写分离<br>
+2、分工-流程：<br>
+主数据服务器：主要用来从业务服务写入数据或者修改更新数据。<br>
+从数据服务器：主要用来读取业务所需要的数据<br>
+二进制日志：用来存储写入以及更新的数据信息<br>
+中继日志：承接主服务器数据信息，转存在从服务器上<br>
+I/O线程：监听主服务器是否发生数据更改的行为<br>
+SQL线程：将主服务器数据更改的数据从中继日志文件中读取数据写入到从数据服务器中
+当主数据服务器master进行写入数据或者更新数据操作的时候，数据更改会记录在二进制日志（binary log file）中，主服务器master与从服务器slave进行通讯的是I/O线程，它将修改的数据异步复制写入到slave服务器的中继日志（relay log file）中,从服务器slave与中继日志之间通信使用SQL线程，SQL线程可以异步从中继日志中读取数据后再写入到自己的数据库中，就完成了数据的主从同步功能。</p>
+<p>3、复制方式</p>
+<p>​	默认为异步复制：主库在执行完客户端提交的事务后会立即将结果返给给客户端，并不关心从库是否已经接收并处理，这样就会有一个问题，主如果crash掉了，此时主上已经提交的事务可能并没有传到从库上，如果此时，强行将从提升为主，可能导致新主上的数据不完整。</p>
+<p>​	全同步复制：当主库执行完一个事务，所有的从库都执行了该事务才返回给客户端。因为需要等待所有从库执行完该事务才能返回，所以全同步复制的性能必然会收到严重的影响。</p>
+<p>半同步复制：介于全同步复制与全异步复制之间的一种，主库只需要等待至少一个从库节点收到并且 Flush Binlog 到 Relay Log 文件即可，主库不需要等待所有从库给主库反馈。同时，这里只是一个收到的反馈，而不是已经完全完成并且提交的反馈，如此，节省了很多时间。</p>
+<p>4、主从同步在物理上必然有延迟的现象，1⃣️如果追求数据一致性，可以使用全同步复制或半同步复制；2⃣️利用数据库中间件，所有的读写都走数据库中间件，通常情况下，写请求路由到主库，读请求路由到从库。当有写操作发生时的一个时间窗口内，把读操作请求到主库，后面在放到从库。3⃣️利用缓存，读操作时看看缓存是否命中，命中就去主库读，复制从库读，缓存有超时时间，和同步到从库时间接近。</p>
+</blockquote>
+<p><img src="https://github.com/EricOo0/my_repo/blob/master/Image/master-slave.png" alt="master-slave"></p>
+<ul>
+<li>Mysql回滚</li>
+</ul>
+<blockquote>
+<p>使用begin开始一个事务，在commit之前可以回滚rollback</p>
+</blockquote>
+<ul>
+<li>连接池：</li>
+</ul>
+<blockquote>
+<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个<br>
+一个数据库连接对象均对应一个物理数据库连接，每次操作都打开一个物理连接，使用完都关闭连接，这样造成系统的性能低下。<br>
+数据库连接池的解决方案是在应用程序启动时建立足够的数据库连接，并讲这些连接组成一个连接池(简单说：在一个“池”里放了好多半成品的数据库联接对象)<br>
+1\程序初始化时创建连接池 <br>
+2\使用时向连接池申请可用连接<br>
+3\使用完毕，将连接返还给连接池<br>
+4\程序退出时，断开连接，并释放资源</p>
+<ul>
+<li>存储过程：<br>
+预先通过编译和存储在数据库的一段sql命令集合</li>
+</ul>
+</blockquote>
+<ul>
+<li>绑定变量</li>
+</ul>
+<blockquote>
+<p>减少解析次数，提高效率</p>
+</blockquote>
+<ul>
+<li>redis:</li>
+</ul>
+<blockquote>
+<p>非关系型数据库，是单线程的结构型数据存储(key-value)，用C实现的<br>
+模型：IO多路复用+单线程<br>
+用SET和GET设置和获取数据<br>
+支持五种数据结构：<br>
+key:string字符串  value: string list hashmap set zset（有序集合）等<br>
+string &ndash;sds，自动记录字符串长度
+list&ndash;双端链表实现  lpush rpush lrange<br>
+哈希表&ndash;数组+链表实现；解决哈希冲突：链表发，新节点加到头&ndash;rehash；hset，hget；key和value交替填入<br>
+set&ndash;集合sadd添加spop弹出；<br>
+zset&ndash;有序列表：用跳表实现<br>
+持久化方式：<br>
+RDB和AOF<br>
+RDB简而言之，就是在不同的时间点，将 redis 存储的数据生成快照并存储到磁盘等介质上；<br>
+AOF 方式是将执行过的写指令记录下来，在数据恢复时按照从前到后的顺序再将指令都执行一遍，<br>
+支持主从复制，读写分离</p>
+<ul>
+<li>内存管理机制上：<br>
+Redis 数据全部存在内存，定期写入磁盘，当内存不够时，可以选择指定的 LRU（最少使用） 算法删除数据</li>
+</ul>
+</blockquote>
+<ul>
+<li>位图和布隆过滤器</li>
+</ul>
+<blockquote>
+<p>面对海量数据的去重和过滤问题，系统内存不够，可以考虑使用位图和布隆过滤器解决：<br>
+1、布隆过滤器：可用来检查数据可能在集合中或者一定不在集合中<br>
+使用一个长度为m的向量或位列表，初始值全为0<br>
+为了将数据插入列表，提供了k个哈希散列函数(输出为单个索引值)，每个数据通过哈希函数得到k个索引，将k个索引位置1</p>
+<p>2、布隆过滤器误判率：</p>
+<p>假设布隆过滤器大小为m比特，存储了n个元素，使用k次散列函数来计算元素的存储位置。</p>
+<p>添加1个元素，则任一比特为1的概率为：1/m，任一比特为0的概率：1-1/m；</p>
+<p>添加1个元素，执行k次散列之后，则任一比特为0的概率：(1-1/m)^k，任一比特为1的概率：1-(1-1/m)^k；</p>
+<p>如果添加n个元素，那么任一比特为0的概率：(1-1/m)^kn，任一比特为1的概率：1-(1-1/m)^kn；</p>
+<p>如果将1个新的元素，添加到已存在n个元素的布隆过滤器中，则任一比特已经为1的概率与上面相同，概率为：1-(1-1/m)^kn。因此，k个比特都为1的概率为：(1-(1-1/m)^kn)^k，此即为新插入元素的误识别率。</p>
+</blockquote>
+<p><img src="https://github.com/EricOo0/zhifengwei.blog/blob/main/Image/boolen.png" alt="bloom"></p>
+<blockquote>
+<p>判断元素是否存在集合中，k个索引位都为1&ndash;可能存在误判
+应用：数据去重；缓解缓存穿透<br>
+3、位图：每一个bit代表一个数据，用一个bit数据来记录数据可以减少内存使用<br>
+如果用一个int数组存储：int  a[N]&ndash;可以记录N<em>4</em>8个数据
+数据记录：num/32=第几个字节  num%32=该字节的第几位
+数据判断：判断对应的字节和位是否为1
+问题：bitmap的大小和存储的最大数据有关，如果数据很大但量很小会浪费空间</p>
+</blockquote>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/mysql/">mysql</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-tooltip="计算机网络基础知识" aria-label="PREVIOUS: 计算机网络基础知识">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = '\/post\/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/';
+        
+          this.page.identifier = '\/post\/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Eric w. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-tooltip="计算机网络基础知识" aria-label="PREVIOUS: 计算机网络基础知识">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2Fpost%2Fsql%25E5%259F%25BA%25E7%25A1%2580%25E7%259F%25A5%25E8%25AF%2586%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2Fpost%2Fsql%25E5%259F%25BA%25E7%25A1%2580%25E7%259F%25A5%25E8%25AF%2586%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=%2Fpost%2Fsql%25E5%259F%25BA%25E7%25A1%2580%25E7%259F%25A5%25E8%25AF%2586%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Eric w</h4>
+    
+      <div id="about-card-bio">Super bio with markdown support <strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        R&amp;D
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        China Shenzhen
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

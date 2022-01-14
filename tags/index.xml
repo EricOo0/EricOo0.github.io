@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Eric w -- BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 20:57:53 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Jan 2022 21:27:53 +0800</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mysql</title>
+      <link>/tags/mysql/</link>
+      <pubDate>Fri, 14 Jan 2022 21:27:53 +0800</pubDate>
+      
+      <guid>/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>网络</title>
+      <link>/tags/%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Fri, 14 Jan 2022 21:27:53 +0800</pubDate>
+      
+      <guid>/tags/%E7%BD%91%E7%BB%9C/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>blog</title>
       <link>/tags/blog/</link>
@@ -26,11 +44,11 @@
     </item>
     
     <item>
-      <title>mysql</title>
-      <link>/tags/mysql/</link>
-      <pubDate>Fri, 14 Jan 2022 20:37:53 +0800</pubDate>
+      <title>操作系统</title>
+      <link>/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Fri, 14 Jan 2022 20:27:53 +0800</pubDate>
       
-      <guid>/tags/mysql/</guid>
+      <guid>/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
       <description></description>
     </item>
     
