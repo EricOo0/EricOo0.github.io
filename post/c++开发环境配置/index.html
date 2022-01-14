@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"\/",
+  "author": {
+    "@type": "Person",
+    "name": "Eric w",
+    
+    "image": "/img/icon.png"
+    
+  },
+  "name":"Eric w -- BLOG",
+  "description":"\u003cp\u003eMacOS下C\u002b\u002b 的vscode开发环境配置\u003c\/p\u003e",
+  "url":"\/post\/c\u002b\u002b%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.84.3 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Eric w">
+<meta name="keywords" content="">
+<meta name="description" content="MacOS下C&#43;&#43; 的vscode开发环境配置">
+
+
+<meta property="og:description" content="MacOS下C&#43;&#43; 的vscode开发环境配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacOS下C&#43;&#43;开发环境配置">
+<meta name="twitter:title" content="MacOS下C&#43;&#43;开发环境配置">
+<meta property="og:url" content="/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+<meta property="twitter:url" content="/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+<meta property="og:site_name" content="Eric w -- BLOG">
+<meta property="og:description" content="MacOS下C&#43;&#43; 的vscode开发环境配置">
+<meta name="twitter:description" content="MacOS下C&#43;&#43; 的vscode开发环境配置">
+<meta property="og:locale" content="en-us">
+
+  
+  
+  
+  
+    
+      <meta property="article:section" content="指南">
+    
+  
+  
+    
+      <meta property="article:tag" content="C&#43;&#43;">
+    
+      <meta property="article:tag" content="Vscode">
+    
+      <meta property="article:tag" content="blog">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="/img/icon.png">
+  <meta property="twitter:image" content="/img/icon.png">
+
+
+
+
+
+
+    <title>MacOS下C&#43;&#43;开发环境配置</title>
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/" aria-label="Go to homepage">Eric w -- BLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Eric w</h4>
+        
+          <h5 class="sidebar-profile-bio">Super bio with markdown support <strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" title="Stack Overflow">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-stack-overflow" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      MacOS下C&#43;&#43;开发环境配置
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="0001-01-01T00:00:00Z">
+        
+  January 1, 1
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/%e6%8c%87%e5%8d%97">指南</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>MacOS下C++ 的vscode开发环境配置</p>
+<h1 id="c开发环境搭建">C++开发环境搭建</h1>
+<ul>
+<li>
+<p>代码编辑神器 Vscode</p>
+<p>1、安装拓展</p>
+<p>mac自带已经有c的编译器了所以不用另外安装，终端g++/gcc &ndash;version可以查看相关信息，如果没有可以顺便安装xcode，省去一些麻烦，也可以用来写c++代码。win需要下载编译器mingw。</p>
+<p>Vscode只需要把c/c++相关的一些工具拓展安装下来：</p>
+<ul>
+<li>
+<p>C/C++</p>
+</li>
+<li>
+<p>C/C++ Clang Command Adapter</p>
+</li>
+<li>
+<p>C/C++ Extension Pack</p>
+</li>
+<li>
+<p>C++ Intellisense</p>
+</li>
+<li>
+<p>C/C++ Runner</p>
+</li>
+</ul>
+<p>2、新建一个.cpp文件<br>
+“command+shift+p”打开命令行工具窗口，输入或者选择“Edit Configurations”命令，生成c_cpp_properties.json文件</p>
+<p>也可以直接复制下面四个个文件到.vscode文件夹下</p>
+<p>c_cpp_properties.json:includepath路径下可以根据自己需要配置</p>
+</li>
+</ul>
+<pre><code>{
+  &quot;configurations&quot;: [
+    {
+      &quot;name&quot;: &quot;macos-gcc-x64&quot;,
+      &quot;includePath&quot;: [
+        &quot;${workspaceFolder}/**&quot;
+      ],
+      &quot;compilerPath&quot;: &quot;/usr/bin/clang&quot;,
+      &quot;cStandard&quot;: &quot;${default}&quot;,
+      &quot;cppStandard&quot;: &quot;c++11&quot;,
+      &quot;intelliSenseMode&quot;: &quot;macos-gcc-x64&quot;,
+      &quot;compilerArgs&quot;: [
+        &quot;-Wall&quot;,
+        &quot;-Wextra&quot;,
+        &quot;-Wpedantic&quot;,
+        &quot;-stdlib=libc++&quot;,
+        &quot;-std=c++11&quot;
+      ]
+    }
+  ],
+  &quot;version&quot;: 4
+}
+</code></pre><p>task.json</p>
+<pre><code>{
+    &quot;tasks&quot;: [
+        {
+            &quot;type&quot;: &quot;cppbuild&quot;,
+            &quot;label&quot;: &quot;C/C++: g++ 生成活动文件&quot;,
+            &quot;command&quot;: &quot;/usr/bin/g++&quot;,
+            &quot;args&quot;: [
+                &quot;-std=c++11&quot;,
+                &quot;-g&quot;,
+                &quot;${file}&quot;,
+                &quot;-stdlib=libc++&quot;,
+                &quot;-std=c++11&quot;,
+                &quot;-o&quot;,
+                &quot;${fileDirname}/${fileBasenameNoExtension}&quot;
+            ],
+            &quot;options&quot;: {
+                &quot;cwd&quot;: &quot;${fileDirname}&quot;
+            },
+            &quot;problemMatcher&quot;: [
+                &quot;$gcc&quot;
+            ],
+            &quot;group&quot;: &quot;build&quot;,
+            &quot;detail&quot;: &quot;调试器生成的任务。&quot;
+        },
+        {
+            &quot;type&quot;: &quot;cppbuild&quot;,
+            &quot;label&quot;: &quot;C/C++: g++ 生成活动文件 ver(1)&quot;,
+            &quot;command&quot;: &quot;/usr/bin/g++&quot;,
+            &quot;args&quot;: [
+                &quot;-g&quot;,
+                &quot;${file}&quot;,
+                &quot;-stdlib=libc++&quot;,
+                &quot;-std=c++11&quot;,
+                &quot;-o&quot;,
+                &quot;${fileDirname}/${fileBasenameNoExtension}&quot;,
+                &quot;-Wall&quot;,
+                &quot;-Wextra&quot;,
+                &quot;-Wpedantic&quot;
+            ],
+            &quot;options&quot;: {
+                &quot;cwd&quot;: &quot;${fileDirname}&quot;
+            },
+            &quot;problemMatcher&quot;: [
+                &quot;$gcc&quot;
+            ],
+            &quot;group&quot;: &quot;build&quot;,
+            &quot;detail&quot;: &quot;调试器生成的任务。&quot;
+        },
+        {
+            &quot;type&quot;: &quot;cppbuild&quot;,
+            &quot;label&quot;: &quot;C/C++: g++ 生成活动文件 ver(2)&quot;,
+            &quot;command&quot;: &quot;/usr/bin/g++&quot;,
+            &quot;args&quot;: [
+                &quot;-g&quot;,
+                &quot;${file}&quot;,
+                &quot;-o&quot;,
+                &quot;${fileDirname}/${fileBasenameNoExtension}&quot;,
+                &quot;-Wall&quot;,
+                &quot;-Wextra&quot;,
+                &quot;-Wpedantic&quot;,
+                &quot;-stdlib=libc++&quot;,
+                &quot;-std=c++11&quot;
+            ],
+            &quot;options&quot;: {
+                &quot;cwd&quot;: &quot;${fileDirname}&quot;
+            },
+            &quot;problemMatcher&quot;: [
+                &quot;$gcc&quot;
+            ],
+            &quot;group&quot;: {
+                &quot;kind&quot;: &quot;build&quot;,
+                &quot;isDefault&quot;: true
+            },
+            &quot;detail&quot;: &quot;调试器生成的任务。&quot;
+        }
+    ],
+    &quot;version&quot;: &quot;2.0.0&quot;
+}
+</code></pre><p>setting.json</p>
+<pre><code>{
+  &quot;C_Cpp_Runner.warnings&quot;: [
+    &quot;-Wall&quot;,
+    &quot;-Wextra&quot;,
+    &quot;-Wpedantic&quot;
+  ],
+  &quot;C_Cpp_Runner.compilerArgs&quot;: [
+    &quot;-stdlib=libc++&quot;,
+    &quot;-std=c++11&quot;
+  ],
+  &quot;C_Cpp_Runner.includePaths&quot;: [],
+  &quot;C_Cpp_Runner.linkerArgs&quot;: [],
+  &quot;C_Cpp_Runner.cStandard&quot;: &quot;&quot;,
+  &quot;C_Cpp_Runner.cppStandard&quot;: &quot;c++11&quot;,
+  &quot;C_Cpp_Runner.excludeSearch&quot;: [],
+  &quot;C_Cpp_Runner.enableWarnings&quot;: true,
+  &quot;C_Cpp_Runner.warningsAsError&quot;: false,
+  &quot;C_Cpp_Runner.cppCompilerPath&quot;: &quot;/usr/bin/clang++&quot;,
+  &quot;code-runner.executorMap&quot;: {
+    &quot;javascript&quot;: &quot;node&quot;,
+    &quot;java&quot;: &quot;cd $dir &amp;&amp; javac $fileName &amp;&amp; java $fileNameWithoutExt&quot;,
+    &quot;c&quot;: &quot;cd $dir &amp;&amp; gcc $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;cpp&quot;: &quot;cd $dir &amp;&amp; g++ $fileName -std=c++11 -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;objective-c&quot;: &quot;cd $dir &amp;&amp; gcc -framework Cocoa $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;php&quot;: &quot;php&quot;,
+    &quot;python&quot;: &quot;python -u&quot;,
+    &quot;perl&quot;: &quot;perl&quot;,
+    &quot;perl6&quot;: &quot;perl6&quot;,
+    &quot;ruby&quot;: &quot;ruby&quot;,
+    &quot;go&quot;: &quot;go run&quot;,
+    &quot;lua&quot;: &quot;lua&quot;,
+    &quot;groovy&quot;: &quot;groovy&quot;,
+    &quot;powershell&quot;: &quot;powershell -ExecutionPolicy ByPass -File&quot;,
+    &quot;bat&quot;: &quot;cmd /c&quot;,
+    &quot;shellscript&quot;: &quot;bash&quot;,
+    &quot;fsharp&quot;: &quot;fsi&quot;,
+    &quot;csharp&quot;: &quot;scriptcs&quot;,
+    &quot;vbscript&quot;: &quot;cscript //Nologo&quot;,
+    &quot;typescript&quot;: &quot;ts-node&quot;,
+    &quot;coffeescript&quot;: &quot;coffee&quot;,
+    &quot;scala&quot;: &quot;scala&quot;,
+    &quot;swift&quot;: &quot;swift&quot;,
+    &quot;julia&quot;: &quot;julia&quot;,
+    &quot;crystal&quot;: &quot;crystal&quot;,
+    &quot;ocaml&quot;: &quot;ocaml&quot;,
+    &quot;r&quot;: &quot;Rscript&quot;,
+    &quot;applescript&quot;: &quot;osascript&quot;,
+    &quot;clojure&quot;: &quot;lein exec&quot;,
+    &quot;haxe&quot;: &quot;haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt&quot;,
+    &quot;rust&quot;: &quot;cd $dir &amp;&amp; rustc $fileName &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;racket&quot;: &quot;racket&quot;,
+    &quot;scheme&quot;: &quot;csi -script&quot;,
+    &quot;ahk&quot;: &quot;autohotkey&quot;,
+    &quot;autoit&quot;: &quot;autoit3&quot;,
+    &quot;dart&quot;: &quot;dart&quot;,
+    &quot;pascal&quot;: &quot;cd $dir &amp;&amp; fpc $fileName &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;d&quot;: &quot;cd $dir &amp;&amp; dmd $fileName &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;haskell&quot;: &quot;runhaskell&quot;,
+    &quot;nim&quot;: &quot;nim compile --verbosity:0 --hints:off --run&quot;,
+    &quot;lisp&quot;: &quot;sbcl --script&quot;,
+    &quot;kit&quot;: &quot;kitc --run&quot;,
+    &quot;v&quot;: &quot;v run&quot;,
+    &quot;sass&quot;: &quot;sass --style expanded&quot;,
+    &quot;scss&quot;: &quot;scss --style expanded&quot;,
+    &quot;less&quot;: &quot;cd $dir &amp;&amp; lessc $fileName $fileNameWithoutExt.css&quot;,
+    &quot;FortranFreeForm&quot;: &quot;cd $dir &amp;&amp; gfortran $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;fortran-modern&quot;: &quot;cd $dir &amp;&amp; gfortran $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;fortran_fixed-form&quot;: &quot;cd $dir &amp;&amp; gfortran $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;,
+    &quot;fortran&quot;: &quot;cd $dir &amp;&amp; gfortran $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt&quot;
+  },
+  &quot;C_Cpp_Runner.cCompilerPath&quot;: &quot;/usr/bin/clang&quot;,
+  &quot;C_Cpp_Runner.debuggerPath&quot;: &quot;/usr/bin/lldb&quot;,
+  &quot;C_Cpp_Runner.makePath&quot;: &quot;/usr/bin/make&quot;
+}
+</code></pre><p>lauch.json</p>
+<pre><code>{
+  &quot;configurations&quot;: [
+    {
+      &quot;name&quot;: &quot;(lldb) 启动&quot;,
+      &quot;type&quot;: &quot;cppdbg&quot;,
+      &quot;request&quot;: &quot;launch&quot;,
+      &quot;program&quot;: &quot;输入程序名称，例如 ${workspaceFolder}/test&quot;,
+      &quot;args&quot;: [],
+      &quot;stopAtEntry&quot;: false,
+      &quot;cwd&quot;: &quot;${fileDirname}&quot;,
+      &quot;environment&quot;: [],
+      &quot;externalConsole&quot;: false,
+      &quot;MIMode&quot;: &quot;lldb&quot;
+    },
+    {
+      &quot;name&quot;: &quot;C/C++ Runner: Debug Session&quot;,
+      &quot;type&quot;: &quot;cppdbg&quot;,
+      &quot;request&quot;: &quot;launch&quot;,
+      &quot;args&quot;: [],
+      &quot;stopAtEntry&quot;: false,
+      &quot;cwd&quot;: &quot;/Users/weizhifeng/note&quot;,
+      &quot;environment&quot;: [],
+      &quot;program&quot;: &quot;/Users/weizhifeng/note/build/Debug/outDebug&quot;,
+      &quot;internalConsoleOptions&quot;: &quot;openOnSessionStart&quot;,
+      &quot;MIMode&quot;: &quot;lldb&quot;,
+      &quot;miDebuggerPath&quot;: &quot;/usr/bin/lldb&quot;,
+      &quot;externalConsole&quot;: false
+    }
+  ]
+}
+</code></pre><p>至此，vscode应该就可以运行c++代码了</p>
+<ul>
+<li>
+<p>终端</p>
+<p>c++开发少不了和终端打交道，可参考mac终端美化文章进行配置</p>
+</li>
+<li>
+<p>xcode</p>
+<p>苹果官方也提供了一个集成开发环境xcode，appstore可以安装&ndash;免费</p>
+<p>打开xcode，选择command line tool，选择cpp语言然后就可以在项目里编译和运行c++代码了</p>
+</li>
+</ul>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/vscode/">Vscode</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/blog/">blog</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-tooltip="Linux常用命令" aria-label="NEXT: Linux常用命令">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = '\/post\/c\u002b\u002b%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE\/';
+        
+          this.page.identifier = '\/post\/c\u002b\u002b%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Eric w. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-tooltip="Linux常用命令" aria-label="NEXT: Linux常用命令">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=%2Fpost%2Fc%2B%2B%25E5%25BC%2580%25E5%258F%2591%25E7%258E%25AF%25E5%25A2%2583%25E9%2585%258D%25E7%25BD%25AE%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=%2Fpost%2Fc%2B%2B%25E5%25BC%2580%25E5%258F%2591%25E7%258E%25AF%25E5%25A2%2583%25E9%2585%258D%25E7%25BD%25AE%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=%2Fpost%2Fc%2B%2B%25E5%25BC%2580%25E5%258F%2591%25E7%258E%25AF%25E5%25A2%2583%25E9%2585%258D%25E7%25BD%25AE%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="/img/icon.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Eric w</h4>
+    
+      <div id="about-card-bio">Super bio with markdown support <strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        R&amp;D
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        China Shenzhen
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

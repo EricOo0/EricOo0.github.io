@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Eric w -- BLOG</title>
+    <link>/tags/git/</link>
+    <description>Recent content in Git on Eric w -- BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Jan 2022 15:57:53 +0800</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何使用hugo&#43;githubpage搭建个人博客</title>
+      <link>/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 14 Jan 2022 15:57:53 +0800</pubDate>
+      
+      <guid>/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>&lt;p&gt;Hugo+gitpage搭建属于自己的个人博客&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

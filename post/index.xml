@@ -6,7 +6,34 @@
     <description>Recent content in Posts on Eric w -- BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 17:43:53 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Jan 2022 20:57:53 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac 终端美化</title>
+      <link>/post/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</link>
+      <pubDate>Fri, 14 Jan 2022 20:57:53 +0800</pubDate>
+      
+      <guid>/post/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</guid>
+      <description>&lt;p&gt;Mac 使用zsh美化终端&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mysql 主备同步</title>
+      <link>/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Fri, 14 Jan 2022 20:37:53 +0800</pubDate>
+      
+      <guid>/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</guid>
+      <description>&lt;p&gt;mysql搭建主备同步数据库&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vim配置</title>
+      <link>/post/vim%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 14 Jan 2022 19:57:53 +0800</pubDate>
+      
+      <guid>/post/vim%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;Mac/Linux 下Vim一些提高生产力的配置&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Go 常用框架学习记录</title>
       <link>/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</link>
@@ -50,6 +77,24 @@
       
       <guid>/post/my-first-post3/</guid>
       <description>&lt;p&gt;asdadsadadad3&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux常用命令</title>
+      <link>/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 13 Jan 2022 11:57:53 +0800</pubDate>
+      
+      <guid>/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>&lt;p&gt;一些Linux常用命令记录&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MacOS下C&#43;&#43;开发环境配置</title>
+      <link>/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>&lt;p&gt;MacOS下C++ 的vscode开发环境配置&lt;/p&gt;</description>
     </item>
     
   </channel>

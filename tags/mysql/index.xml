@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on Eric w -- BLOG</title>
+    <link>/tags/mysql/</link>
+    <description>Recent content in mysql on Eric w -- BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 14 Jan 2022 20:37:53 +0800</lastBuildDate><atom:link href="/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql 主备同步</title>
+      <link>/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Fri, 14 Jan 2022 20:37:53 +0800</pubDate>
+      
+      <guid>/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</guid>
+      <description>&lt;p&gt;mysql搭建主备同步数据库&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

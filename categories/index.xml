@@ -6,7 +6,34 @@
     <description>Recent content in Categories on Eric w -- BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 17:43:53 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Jan 2022 20:57:53 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>指南</title>
+      <link>/categories/%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Fri, 14 Jan 2022 20:57:53 +0800</pubDate>
+      
+      <guid>/categories/%E6%8C%87%E5%8D%97/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>/categories/mysql/</link>
+      <pubDate>Fri, 14 Jan 2022 20:37:53 +0800</pubDate>
+      
+      <guid>/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>/categories/vim/</link>
+      <pubDate>Fri, 14 Jan 2022 19:57:53 +0800</pubDate>
+      
+      <guid>/categories/vim/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Go</title>
       <link>/categories/go/</link>
@@ -31,15 +58,6 @@
       <pubDate>Fri, 14 Jan 2022 15:57:53 +0800</pubDate>
       
       <guid>/categories/blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>指南</title>
-      <link>/categories/%E6%8C%87%E5%8D%97/</link>
-      <pubDate>Fri, 14 Jan 2022 15:57:53 +0800</pubDate>
-      
-      <guid>/categories/%E6%8C%87%E5%8D%97/</guid>
       <description></description>
     </item>
     
@@ -76,6 +94,15 @@
       <pubDate>Fri, 14 Jan 2022 11:07:53 +0800</pubDate>
       
       <guid>/categories/topic2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>/categories/linux/</link>
+      <pubDate>Thu, 13 Jan 2022 11:57:53 +0800</pubDate>
+      
+      <guid>/categories/linux/</guid>
       <description></description>
     </item>
     
