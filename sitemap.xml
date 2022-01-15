@@ -2,129 +2,129 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/categories/</loc>
+    <loc>https://zhifengwei.site/categories/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>https://zhifengwei.site/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/mysql/</loc>
+    <loc>https://zhifengwei.site/tags/mysql/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/mysql/</loc>
+    <loc>https://zhifengwei.site/categories/mysql/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/post/</loc>
+    <loc>https://zhifengwei.site/post/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://zhifengwei.site/tags/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <loc>https://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://zhifengwei.site/tags/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://zhifengwei.site/categories/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <loc>https://zhifengwei.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2022-01-14T21:27:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/blog/</loc>
+    <loc>https://zhifengwei.site/tags/blog/</loc>
     <lastmod>2022-01-14T20:57:53+08:00</lastmod>
   </url><url>
-    <loc>/post/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://zhifengwei.site/post/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2022-01-14T20:57:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/zsh/</loc>
+    <loc>https://zhifengwei.site/tags/zsh/</loc>
     <lastmod>2022-01-14T20:57:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/%E6%8C%87%E5%8D%97/</loc>
+    <loc>https://zhifengwei.site/categories/%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2022-01-14T20:57:53+08:00</lastmod>
   </url><url>
-    <loc>/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</loc>
+    <loc>https://zhifengwei.site/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</loc>
     <lastmod>2022-01-14T20:37:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/os/</loc>
+    <loc>https://zhifengwei.site/categories/os/</loc>
     <lastmod>2022-01-14T20:27:53+08:00</lastmod>
   </url><url>
-    <loc>/post/os%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <loc>https://zhifengwei.site/post/os%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2022-01-14T20:27:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>https://zhifengwei.site/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2022-01-14T20:27:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/vim/</loc>
+    <loc>https://zhifengwei.site/tags/vim/</loc>
     <lastmod>2022-01-14T19:57:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/vim/</loc>
+    <loc>https://zhifengwei.site/categories/vim/</loc>
     <lastmod>2022-01-14T19:57:53+08:00</lastmod>
   </url><url>
-    <loc>/post/vim%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://zhifengwei.site/post/vim%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2022-01-14T19:57:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/go/</loc>
+    <loc>https://zhifengwei.site/tags/go/</loc>
     <lastmod>2022-01-14T17:43:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/go/</loc>
+    <loc>https://zhifengwei.site/categories/go/</loc>
     <lastmod>2022-01-14T17:43:53+08:00</lastmod>
   </url><url>
-    <loc>/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-01-14T17:43:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/web/</loc>
+    <loc>https://zhifengwei.site/tags/web/</loc>
     <lastmod>2022-01-14T17:43:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/%E6%A1%86%E6%9E%B6/</loc>
+    <loc>https://zhifengwei.site/categories/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2022-01-14T17:43:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/blog/</loc>
+    <loc>https://zhifengwei.site/categories/blog/</loc>
     <lastmod>2022-01-14T15:57:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/git/</loc>
+    <loc>https://zhifengwei.site/tags/git/</loc>
     <lastmod>2022-01-14T15:57:53+08:00</lastmod>
   </url><url>
-    <loc>/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2022-01-14T15:57:53+08:00</lastmod>
   </url><url>
-    <loc>/post/my-first-post/</loc>
+    <loc>https://zhifengwei.site/post/my-first-post/</loc>
     <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
-    <loc>/post/my-first-post2/</loc>
+    <loc>https://zhifengwei.site/post/my-first-post2/</loc>
     <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/subtopic1/</loc>
+    <loc>https://zhifengwei.site/categories/subtopic1/</loc>
     <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/subtopic2/</loc>
+    <loc>https://zhifengwei.site/categories/subtopic2/</loc>
     <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/topic1/</loc>
+    <loc>https://zhifengwei.site/categories/topic1/</loc>
     <lastmod>2022-01-14T13:07:53+08:00</lastmod>
   </url><url>
-    <loc>/post/my-first-post3/</loc>
+    <loc>https://zhifengwei.site/post/my-first-post3/</loc>
     <lastmod>2022-01-14T11:07:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/topic2/</loc>
+    <loc>https://zhifengwei.site/categories/topic2/</loc>
     <lastmod>2022-01-14T11:07:53+08:00</lastmod>
   </url><url>
-    <loc>/tags/linux/</loc>
+    <loc>https://zhifengwei.site/tags/linux/</loc>
     <lastmod>2022-01-13T11:57:53+08:00</lastmod>
   </url><url>
-    <loc>/categories/linux/</loc>
+    <loc>https://zhifengwei.site/categories/linux/</loc>
     <lastmod>2022-01-13T11:57:53+08:00</lastmod>
   </url><url>
-    <loc>/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <loc>https://zhifengwei.site/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2022-01-13T11:57:53+08:00</lastmod>
   </url><url>
-    <loc>/archives/</loc>
+    <loc>https://zhifengwei.site/archives/</loc>
   </url><url>
-    <loc>/tags/c&#43;&#43;/</loc>
+    <loc>https://zhifengwei.site/tags/c&#43;&#43;/</loc>
   </url><url>
-    <loc>/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://zhifengwei.site/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
   </url><url>
-    <loc>/tags/vscode/</loc>
+    <loc>https://zhifengwei.site/tags/vscode/</loc>
   </url>
 </urlset>

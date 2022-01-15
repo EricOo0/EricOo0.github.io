@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mysql on Eric w -- BLOG</title>
-    <link>/categories/mysql/</link>
+    <link>https://zhifengwei.site/categories/mysql/</link>
     <description>Recent content in mysql on Eric w -- BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 21:27:53 +0800</lastBuildDate><atom:link href="/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Jan 2022 21:27:53 +0800</lastBuildDate><atom:link href="https://zhifengwei.site/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>数据库基础知识框架</title>
-      <link>/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <link>https://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 14 Jan 2022 21:27:53 +0800</pubDate>
       
-      <guid>/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>&lt;p&gt;数据库的基本知识框架&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mysql 主备同步</title>
-      <link>/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</link>
+      <link>https://zhifengwei.site/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</link>
       <pubDate>Fri, 14 Jan 2022 20:37:53 +0800</pubDate>
       
-      <guid>/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</guid>
+      <guid>https://zhifengwei.site/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</guid>
       <description>&lt;p&gt;mysql搭建主备同步数据库&lt;/p&gt;</description>
     </item>
     
