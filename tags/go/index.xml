@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on Eric w -- BLOG</title>
-    <link>https://zhifengwei.site/tags/go/</link>
+    <link>http://zhifengwei.site/tags/go/</link>
     <description>Recent content in Go on Eric w -- BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 17:43:53 +0800</lastBuildDate><atom:link href="https://zhifengwei.site/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Jan 2022 17:43:53 +0800</lastBuildDate><atom:link href="http://zhifengwei.site/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go 常用框架学习记录</title>
-      <link>https://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</link>
+      <link>http://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Fri, 14 Jan 2022 17:43:53 +0800</pubDate>
       
-      <guid>https://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>http://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</guid>
       <description>&lt;p&gt;Golang 常用的框架学习&lt;/p&gt;</description>
     </item>
     
