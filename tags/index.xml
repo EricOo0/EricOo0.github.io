@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Eric w -- BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 21:27:53 +0800</lastBuildDate><atom:link href="http://zhifengwei.site/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jan 2022 17:31:53 +0800</lastBuildDate><atom:link href="http://zhifengwei.site/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>blog</title>
+      <link>http://zhifengwei.site/tags/blog/</link>
+      <pubDate>Sat, 15 Jan 2022 17:31:53 +0800</pubDate>
+      
+      <guid>http://zhifengwei.site/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>http://zhifengwei.site/tags/git/</link>
+      <pubDate>Sat, 15 Jan 2022 17:31:53 +0800</pubDate>
+      
+      <guid>http://zhifengwei.site/tags/git/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>mysql</title>
       <link>http://zhifengwei.site/tags/mysql/</link>
@@ -22,15 +40,6 @@
       <pubDate>Fri, 14 Jan 2022 21:27:53 +0800</pubDate>
       
       <guid>http://zhifengwei.site/tags/%E7%BD%91%E7%BB%9C/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blog</title>
-      <link>http://zhifengwei.site/tags/blog/</link>
-      <pubDate>Fri, 14 Jan 2022 20:57:53 +0800</pubDate>
-      
-      <guid>http://zhifengwei.site/tags/blog/</guid>
       <description></description>
     </item>
     
@@ -76,15 +85,6 @@
       <pubDate>Fri, 14 Jan 2022 17:43:53 +0800</pubDate>
       
       <guid>http://zhifengwei.site/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Git</title>
-      <link>http://zhifengwei.site/tags/git/</link>
-      <pubDate>Fri, 14 Jan 2022 15:57:53 +0800</pubDate>
-      
-      <guid>http://zhifengwei.site/tags/git/</guid>
       <description></description>
     </item>
     
