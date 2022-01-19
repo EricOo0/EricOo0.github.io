@@ -16,5 +16,14 @@
       <description>&lt;p&gt;Hugo+gitpage搭建属于自己的个人博客&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Image gallery showcase</title>
+      <link>https://zhifengwei.site/post/image-gallery/</link>
+      <pubDate>Thu, 14 Jan 2021 17:43:53 +0800</pubDate>
+      
+      <guid>https://zhifengwei.site/post/image-gallery/</guid>
+      <description>&lt;p&gt;And here is the image gallery!&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

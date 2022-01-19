@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>image gallery on Eric w -- BLOG</title>
+    <link>https://zhifengwei.site/tags/image-gallery/</link>
+    <description>Recent content in image gallery on Eric w -- BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Jan 2021 17:43:53 +0800</lastBuildDate><atom:link href="https://zhifengwei.site/tags/image-gallery/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Image gallery showcase</title>
+      <link>https://zhifengwei.site/post/image-gallery/</link>
+      <pubDate>Thu, 14 Jan 2021 17:43:53 +0800</pubDate>
+      
+      <guid>https://zhifengwei.site/post/image-gallery/</guid>
+      <description>&lt;p&gt;And here is the image gallery!&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
