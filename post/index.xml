@@ -2,125 +2,125 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Eric w -- BLOG</title>
-    <link>http://zhifengwei.site/post/</link>
+    <link>https://zhifengwei.site/post/</link>
     <description>Recent content in Posts on Eric w -- BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Jan 2022 17:31:53 +0800</lastBuildDate><atom:link href="http://zhifengwei.site/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jan 2022 17:31:53 +0800</lastBuildDate><atom:link href="https://zhifengwei.site/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何使用hugo&#43;githubpage搭建个人博客</title>
-      <link>http://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Sat, 15 Jan 2022 17:31:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
       <description>&lt;p&gt;Hugo+gitpage搭建属于自己的个人博客&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>数据库基础知识框架</title>
-      <link>http://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <link>https://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 14 Jan 2022 21:27:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>&lt;p&gt;数据库的基本知识框架&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>计算机网络基础知识</title>
-      <link>http://zhifengwei.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <link>https://zhifengwei.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 14 Jan 2022 21:27:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://zhifengwei.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>&lt;p&gt;计网的基本知识框架&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mac 终端美化</title>
-      <link>http://zhifengwei.site/post/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</link>
+      <link>https://zhifengwei.site/post/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</link>
       <pubDate>Fri, 14 Jan 2022 20:57:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</guid>
+      <guid>https://zhifengwei.site/post/mac%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</guid>
       <description>&lt;p&gt;Mac 使用zsh美化终端&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mysql 主备同步</title>
-      <link>http://zhifengwei.site/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</link>
+      <link>https://zhifengwei.site/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</link>
       <pubDate>Fri, 14 Jan 2022 20:37:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</guid>
+      <guid>https://zhifengwei.site/post/mysql%E4%B8%BB%E5%A4%87%E5%90%8C%E6%AD%A5/</guid>
       <description>&lt;p&gt;mysql搭建主备同步数据库&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>OS基础知识</title>
-      <link>http://zhifengwei.site/post/os%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <link>https://zhifengwei.site/post/os%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 14 Jan 2022 20:27:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/os%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://zhifengwei.site/post/os%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>&lt;p&gt;操作系统的基本知识框架&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Vim配置</title>
-      <link>http://zhifengwei.site/post/vim%E9%85%8D%E7%BD%AE/</link>
+      <link>https://zhifengwei.site/post/vim%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 14 Jan 2022 19:57:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/vim%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://zhifengwei.site/post/vim%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;p&gt;Mac/Linux 下Vim一些提高生产力的配置&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go 常用框架学习记录</title>
-      <link>http://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Fri, 14 Jan 2022 17:43:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://zhifengwei.site/post/go%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</guid>
       <description>&lt;p&gt;Golang 常用的框架学习&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>My First Post</title>
-      <link>http://zhifengwei.site/post/my-first-post/</link>
+      <link>https://zhifengwei.site/post/my-first-post/</link>
       <pubDate>Fri, 14 Jan 2022 13:07:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/my-first-post/</guid>
+      <guid>https://zhifengwei.site/post/my-first-post/</guid>
       <description>&lt;p&gt;asdadsadadad&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>My First Post2</title>
-      <link>http://zhifengwei.site/post/my-first-post2/</link>
+      <link>https://zhifengwei.site/post/my-first-post2/</link>
       <pubDate>Fri, 14 Jan 2022 13:07:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/my-first-post2/</guid>
+      <guid>https://zhifengwei.site/post/my-first-post2/</guid>
       <description>&lt;p&gt;asdadsadadad2&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MacOS下C&#43;&#43;开发环境配置</title>
-      <link>http://zhifengwei.site/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <link>https://zhifengwei.site/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 14 Jan 2022 12:57:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://zhifengwei.site/post/c&#43;&#43;%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
       <description>&lt;p&gt;MacOS下C++ 的vscode开发环境配置&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>My First Post3</title>
-      <link>http://zhifengwei.site/post/my-first-post3/</link>
+      <link>https://zhifengwei.site/post/my-first-post3/</link>
       <pubDate>Fri, 14 Jan 2022 11:07:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/my-first-post3/</guid>
+      <guid>https://zhifengwei.site/post/my-first-post3/</guid>
       <description>&lt;p&gt;asdadsadadad3&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux常用命令</title>
-      <link>http://zhifengwei.site/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>https://zhifengwei.site/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Thu, 13 Jan 2022 11:57:53 +0800</pubDate>
       
-      <guid>http://zhifengwei.site/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://zhifengwei.site/post/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>&lt;p&gt;一些Linux常用命令记录&lt;/p&gt;</description>
     </item>
     

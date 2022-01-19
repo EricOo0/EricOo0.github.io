@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gallery on Eric w -- BLOG</title>
-    <link>http://zhifengwei.site/gallery/</link>
+    <link>https://zhifengwei.site/gallery/</link>
     <description>Recent content in Gallery on Eric w -- BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://zhifengwei.site/gallery/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://zhifengwei.site/gallery/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
