@@ -131,8 +131,11 @@
     <loc>https://zhifengwei.site/friends/</loc>
     <priority>0</priority>
   </url><url>
-    <loc>https://zhifengwei.site/archives/</loc>
-  </url><url>
     <loc>https://zhifengwei.site/gallery/</loc>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://zhifengwei.site/post/image-gallery/</loc>
+  </url><url>
+    <loc>https://zhifengwei.site/archives/</loc>
   </url>
 </urlset>
