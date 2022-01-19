@@ -451,6 +451,28 @@ git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 c
 </ul>
 </li>
 </ul>
+<h4 id="11增加新的内容页">11、增加新的内容页</h4>
+<p>hugo也可自己定制内容页，想要自己新增内容页</p>
+<ul>
+<li>
+<p>content文件夹下新增内容页名字文件夹，如content/gallery</p>
+<p>新建空白的_index.md文件</p>
+<p>此时在本地调试就可以访问到 https://localhost:1313/gallery</p>
+</li>
+<li>
+<p>在使用的主题的layout中增加section文件夹 blog/themes/tranquilpeak/layouts/section</p>
+</li>
+</ul>
+<p>​		在这里增加你的页面html文件 gallery.html</p>
+<p>​		此时本地调试访问 https://localhost:1313/gallery就是你的html内容，可以利用主题带的partials等一系列文件进行定制化也可以自		己写html。</p>
+<p>如果需要在菜单栏配置跳转的秃标，配置param参数，url就是要跳转到的url</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+  <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">4</span>
+  <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;gallery&#34;</span>
+  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Gallery&#34;</span>
+  <span style="color:#a6e22e">pre</span> = <span style="color:#e6db74">&#34;&lt;i class=\&#34;sidebar-button-icon fas fa-lg fa-image\&#34; aria-hidden=\&#34;true\&#34;&gt;&lt;/i&gt;&#34;</span>
+  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/gallery&#34;</span>
+</code></pre></div>
               
 
 
