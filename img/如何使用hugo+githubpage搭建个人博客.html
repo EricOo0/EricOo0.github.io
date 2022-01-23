@@ -1,0 +1,880 @@
+
+<!-- saved from url=(0133)http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./如何使用hugo+githubpage搭建个人博客_files/analytics.js"></script><script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-217602882-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async="" src="./如何使用hugo+githubpage搭建个人博客_files/analytics.js"></script>
+
+
+
+
+  <script src="./如何使用hugo+githubpage搭建个人博客_files/livereload.js" data-no-instant="" defer=""></script>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"http:\/\/localhost:1313\/",
+  "author": {
+    "@type": "Person",
+    "name": "Eric w",
+    
+    "image": "http://localhost:1313/img/icon.png"
+    
+  },
+  "name":"Eric w -- BLOG",
+  "description":"\u003cp\u003eHugo\u002bgitpage搭建属于自己的个人博客\u003c\/p\u003e",
+  "url":"http:\/\/localhost:1313\/post\/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo\u002bgithubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/",
+  "keywords":"[]"
+}
+
+</script>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.84.3 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Eric w">
+<meta name="keywords" content="">
+<meta name="description" content="Hugo+gitpage搭建属于自己的个人博客">
+
+
+<meta property="og:description" content="Hugo+gitpage搭建属于自己的个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用hugo+githubpage搭建个人博客">
+<meta name="twitter:title" content="如何使用hugo+githubpage搭建个人博客">
+<meta property="og:url" content="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+<meta property="twitter:url" content="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+<meta property="og:site_name" content="Eric w -- BLOG">
+<meta property="og:description" content="Hugo+gitpage搭建属于自己的个人博客">
+<meta name="twitter:description" content="Hugo+gitpage搭建属于自己的个人博客">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-01-15T17:31:53">
+  
+  
+    <meta property="article:modified_time" content="2022-01-15T17:31:53">
+  
+  
+  
+    
+      <meta property="article:section" content="指南">
+    
+      <meta property="article:section" content="blog">
+    
+  
+  
+    
+      <meta property="article:tag" content="Git">
+    
+      <meta property="article:tag" content="blog">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="http://localhost:1313/img/icon.png">
+  <meta property="twitter:image" content="http://localhost:1313/img/icon.png">
+
+
+
+
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
+
+
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
+
+
+    <title>如何使用hugo+githubpage搭建个人博客</title>
+
+    <link rel="icon" href="http://localhost:1313/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+    
+    <link rel="stylesheet" href="./如何使用hugo+githubpage搭建个人博客_files/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="./如何使用hugo+githubpage搭建个人博客_files/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <link rel="stylesheet" href="./如何使用hugo+githubpage搭建个人博客_files/gitalk.css" integrity="sha512-MLcK/YRapzET1qTBXrOiZE6bGBgtATMo2bIyalVJ8EKDEGNoeA3SPQkvWAR0zNS650YG13ocXBMeioDuZcSRuQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    
+    
+    <link rel="stylesheet" href="./如何使用hugo+githubpage搭建个人博客_files/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css">
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-217602882-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+
+          <body><div class="post-toc" id="post-toc" style="position: fixed; top: 0px;">
+    <h2 class="post-toc-title"></h2>
+    
+    <div class="post-toc-content always-active">
+      <nav id="TableOfContents">
+  <ol>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#1%E5%88%9B%E5%BB%BAgithub%E4%BB%93%E5%BA%93">1、创建github仓库</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#2%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85hugo">2、本地安装HUGO</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#3%E5%88%A9%E7%94%A8hugo%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E7%9B%AE%E5%BD%95">3、利用hugo建立自己的网站目录</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#4%E9%85%8D%E7%BD%AE%E7%BD%91%E7%AB%99">4、配置网站</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#5%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0">5、新建一篇文章</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#6%E6%9E%84%E5%BB%BAhugo%E7%BD%91%E7%AB%99">6、构建hugo网站</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#7%E8%BD%AC%E5%8C%96%E4%B8%BAgit%E5%BA%93">7、转化为git库</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#8%E5%9F%9F%E5%90%8D">8、域名</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#9%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C">9、日常操作</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#10%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD">10、增加评论功能</a></li>
+    <li><a href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#11%E5%A2%9E%E5%8A%A0%E6%96%B0%E7%9A%84%E5%86%85%E5%AE%B9%E9%A1%B5">11、增加新的内容页</a></li>
+  </ol>
+</nav>
+    </div>
+  </div>
+  <script type="text/javascript">
+    window.onload = function () {
+      var fix = $('.post-toc');
+      var end = $('.post-comment');
+      var fixTop = fix.offset().top, fixHeight = fix.height();
+      var endTop, miss;
+      var offsetTop = fix[0].offsetTop;
+      $(window).scroll(function () {
+        var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+        if (end.length > 0) {
+          endTop = end.offset().top;
+          miss = endTop - docTop - fixHeight;
+        }
+        if (fixTop < docTop) {
+          fix.css({ 'position': 'fixed' });
+          if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+            fix.css({ top: miss });
+          } else {
+            fix.css({ top: 0 });
+          }
+        } else {
+          fix.css({ 'position': 'absolute' });
+          fix.css({ top: offsetTop });
+        }
+      })
+    }
+  </script> 
+	
+  
+    <div id="blog">
+      <header id="header" data-behavior="5" class="">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://localhost:1313/" aria-label="Go to homepage">Eric w -- BLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture" href="http://localhost:1313/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="./如何使用hugo+githubpage搭建个人博客_files/icon.png" alt="Author&#39;s picture">
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="http://localhost:1313/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="./如何使用hugo+githubpage搭建个人博客_files/icon.png" alt="Author&#39;s picture">
+        </a>
+        <h4 class="sidebar-profile-name">Eric w</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://localhost:1313/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://localhost:1313/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://localhost:1313/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://localhost:1313/gallery" title="Gallery">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-image" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Gallery</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://localhost:1313/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://localhost:1313/friends" title="友情链接">
+    
+      <i class="sidebar-button-icon fas fa fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">友情链接</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://localhost:1313/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" target="_blank" rel="noopener" title="Stack Overflow">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-stack-overflow" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://localhost:1313/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover text-left" style="background-image:url(&#39;//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg&#39;)" data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      如何使用hugo+githubpage搭建个人博客
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-01-15T17:31:53+08:00">
+        
+  January 15, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://localhost:1313/categories/%e6%8c%87%e5%8d%97">指南</a>, 
+    
+      <a class="category-link" href="http://localhost:1313/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5" class="hasCover hasCoverMetaIn">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+            
+              <p>Hugo+gitpage搭建属于自己的个人博客</p>
+<p>对于不熟悉前端技术的同学来说，可以通过静态博客生成器自动将我们写的markdown笔记转化成静态html页面，放到网站上，给我们省去了很多麻烦事。</p>
+<p>常用的三个静态博客生成器：</p>
+<ul>
+<li><a href="https://jekyllrb.com/"><em>Jekyll</em></a></li>
+<li><a href="https://gohugo.io/"><em>Hugo</em></a></li>
+<li><a href="https://hexo.io/"><em>Hexo</em></a></li>
+</ul>
+<p>而gitpage有静态页面托管的功能，省去了我们部署web服务器的精力和开销。</p>
+<p>本文将介绍如何使用gitpage + Hugo来搭建属于自己的blog。</p>
+<hr>
+<h4 id="1创建github仓库">1、创建github仓库</h4>
+<p>创建一个github仓库，用于存放hugo生成的代码以及托管我们的博客。</p>
+<p>仓库的名字为yourusername.github.io：</p>
+<p><img src="./如何使用hugo+githubpage搭建个人博客_files/create_github_repo.png" alt="create_github_repo"></p>
+<p>如果有自己的域名可以修改为自己的域名，这样就可以通过域名访问到你的博客：</p>
+<p><img src="./如何使用hugo+githubpage搭建个人博客_files/gitpage_settting.png" alt="gitpage_settting"></p>
+<h4 id="2本地安装hugo">2、本地安装HUGO</h4>
+<p>1、 安装HUGO</p>
+<p>根据安装指南安装hugo工具：<a href="https://gohugo.io/getting-started/installing/">Install hugo</a></p>
+<p>博主在macos下的安装方法：</p>
+<blockquote>
+<p>brew install hugo</p>
+<p>Hugo version</p>
+</blockquote>
+<p>当出现hugo版本号则证明安装成功</p>
+<p><img src="./如何使用hugo+githubpage搭建个人博客_files/hugo_version.png" alt="hugo_version"></p>
+<p>Git 的安装方法此处不赘述了。</p>
+<h4 id="3利用hugo建立自己的网站目录">3、利用hugo建立自己的网站目录</h4>
+<ul>
+<li>进入想要存放网站的目录，如home目录下</li>
+</ul>
+<blockquote>
+<p>cd /</p>
+<p>hugo new site my-blog    #my-blog是你的网站文件夹名字</p>
+</blockquote>
+<ul>
+<li>然后去选择一个自己喜欢的模版：<strong>Tranquilpeak</strong> 会相对容易上手一点</li>
+</ul>
+<blockquote>
+<p>Hugo Themes: <a href="https://themes.gohugo.io/">https://themes.gohugo.io</a></p>
+</blockquote>
+<ul>
+<li>将主题clone到本地</li>
+</ul>
+<blockquote>
+<p>cd /my-blog  # 进入网站目录
+mkdir -p themes  # 创建 “themes” 目录。
+cd themes</p>
+<p>git clone <a href="https://github.com/Track3/hermit.git">https://github.com/Track3/hermit.git</a> hermit # 将 hermit 主题克隆到 hermit目录</p>
+</blockquote>
+<h4 id="4配置网站">4、配置网站</h4>
+<ul>
+<li>
+<p>将下载好的模版中的配置文件( themes/hermit/exampleSite/config.toml )复制到网站根目录下(/my-blog)</p>
+</li>
+<li>
+<p>在 Hugo 网站文件夹的根目录下/my-blog ，打开 <code>config.toml</code> 文件</p>
+</li>
+<li>
+<p>根据所选主题编辑config.toml,修改一些配置；一般将baseurl修改为你的网站域名(最好带上协议：http://example.com)，以及一些必要信息</p>
+</li>
+</ul>
+<h4 id="5新建一篇文章">5、新建一篇文章</h4>
+<p>此时你的网站框架已经大致建立好了，当你要新建文章时，利用hugo new可以生成一篇文章模版，放在 my-blog/content/post下</p>
+<blockquote>
+<p>hugo new post/my-first-post.md  # “my-first-post.md” 是新建文章的文件名。</p>
+</blockquote>
+<p>写完文章后可以本地预览我们的博客了</p>
+<blockquote>
+<p>hugo server -D
+使用浏览器打开 http://localhost:1313 预览
+如果你对预览效果满意，进入下一步。
+如果不满意，编辑 config.toml 配置文件，再次预览</p>
+</blockquote>
+<p><img src="./如何使用hugo+githubpage搭建个人博客_files/hugo_preview.png" alt="image-20220114164901488"></p>
+<h4 id="6构建hugo网站">6、构建hugo网站</h4>
+<p>在网站根目录下执行hugo命令</p>
+<blockquote>
+<p>hugo   # 构建你的 Hugo 网站，默认将静态站点保存到 “public” 目录。</p>
+</blockquote>
+<h4 id="7转化为git库">7、转化为git库</h4>
+<blockquote>
+<p>cd ~/my-blog/public  # 生成的 HTML 文件保存在 “public” 目录中，“public” 文件夹会被转换为 Git 库。
+git init  # 初始化 Git 库。</p>
+<p>关联到远方库</p>
+<p>git remote add origin <a href="https://github.com/yourusername/yourusername.github.io.git">https://github.com/yourusername/yourusername.github.io.git</a></p>
+<p>git status  # 查看当前修改状态。
+git add .  # 添加所有修改过的文件。你也可以只添加某个文件。
+git commit -m “Add a new post”  # “Add a new post” 是 commit message.</p>
+<p>git push -u origin master</p>
+</blockquote>
+<p>此时到github上的setting查看你的gitpage是否生效，生效后即可通过gitpage访问你的博客了，博客页面由你选择的模版决定，也可以自己进行修改。对于不懂前端的人就可以只关注写博文啦。</p>
+<h4 id="8域名">8、域名</h4>
+<p>gitpage默认的域名时yourusername.github.io,你也可以去腾讯云或者阿里云之类的地方购买自己的域名，添加dns解析后替换掉默认的域名</p>
+<h4 id="9日常操作">9、日常操作</h4>
+<p>新建文章：hugo new post/文章名.md</p>
+<p>删除文章：</p>
+<blockquote>
+<p>删除两处文件</p>
+<p>在目录 /post 、/public  下找到对应文件进行删除</p>
+<p>其中 public 下文件不删除也不影响显示，只是该文件就会一直存在，另外该目录下即便文件（除.git)删错或者全部删除也是不影响的，应为 hugo 命令会全部重建</p>
+</blockquote>
+<p>修改文章则直接在post下的文章修改即可</p>
+<p>操作完成后使用hugo命令重构</p>
+<p>git 上传到github更新博客</p>
+<h4 id="10增加评论功能">10、增加评论功能</h4>
+<p>一般hugo模版都支持disqus和gitalk来做评论系统，但国内disqus被墙效果可能不太好</p>
+<ul>
+<li>
+<p>disqus</p>
+<p>在hugo搭建的静态页面添加hugos很简单，只需要在config.toml中修改 disqusShortname = “example-com” 即可</p>
+<p>因此需要先去disqus官网注册你的网站信息。</p>
+<ul>
+<li><a href="https://disqus.com/">https://disqus.com/</a> 选择get started注册账户</li>
+<li>选择 I want to install Disqus on my site</li>
+<li>填写相关信息然后获得disqusShortname，就是你填写的website name，点(.)会被替换成(-)</li>
+<li>修改config文件后即可使用</li>
+</ul>
+<p>如果出现无法加载问题，可能说没有挂梯子或者你的baseurl设置有问题，一般要带上协议如http://baseurl</p>
+</li>
+<li>
+<p>gitalk</p>
+<ul>
+<li>gitalk 首先在博客repo的设置里开启issue功能</li>
+<li><a href="https://github.com/settings/developers">https://github.com/settings/developers</a> 创建一个oath application
+<ul>
+<li>Homepage URL和Authorization callback URL填写网站地址</li>
+</ul>
+</li>
+<li>application 注册成功后
+<ul>
+<li>将Client ID，Client secrets，repo name，username等信息填到config.toml中，一般支持gitalk的模版都有相关选项</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="11增加新的内容页">11、增加新的内容页</h4>
+<p>hugo也可自己定制内容页，想要自己新增内容页</p>
+<ul>
+<li>
+<p>content文件夹下新增内容页名字文件夹，如content/gallery</p>
+<p>新建空白的_index.md文件</p>
+<p>此时在本地调试就可以访问到 https://localhost:1313/gallery</p>
+</li>
+<li>
+<p>在使用的主题的layout中增加section文件夹 blog/themes/tranquilpeak/layouts/section</p>
+</li>
+</ul>
+<p>​		在这里增加你的页面html文件 gallery.html</p>
+<p>​		此时本地调试访问 https://localhost:1313/gallery就是你的html内容，可以利用主题带的partials等一系列文件进行定制化也可以自		己写html。</p>
+<p>如果需要在菜单栏配置跳转的秃标，配置param参数，url就是要跳转到的url</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml codeblock hljs language-ini" data-lang="toml"><span class="section">[[menu.main]]</span>
+  <span class="attr">weight</span> = <span class="number">4</span>
+  <span class="attr">identifier</span> = <span class="string">"gallery"</span>
+  <span class="attr">name</span> = <span class="string">"Gallery"</span>
+  <span class="attr">pre</span> = <span class="string">"&lt;i class=\"sidebar-button-icon fas fa-lg fa-image\" aria-hidden=\"true\"&gt;&lt;/i&gt;"</span>
+  <span class="attr">url</span> = <span class="string">"/gallery"</span>
+</code></pre></div>
+              
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br>
+                    
+  <a class="tag tag--primary tag--small" href="http://localhost:1313/tags/git/">Git</a>
+
+  <a class="tag tag--primary tag--small" href="http://localhost:1313/tags/blog/">blog</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav>
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="http://localhost:1313/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-tooltip="数据库基础知识框架" aria-label="PREVIOUS: 数据库基础知识框架">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share">
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#gitalk" aria-label="Leave a comment">
+        <i class="fa fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="gitalk">Gitalk comments not available by default when the website is previewed locally.</div>
+    <script src="./如何使用hugo+githubpage搭建个人博客_files/gitalk.min.js" integrity="sha512-EcTCcXV46teiNwe0VcnM5A038tcY+BaQYO4nW6Gh2i7v4/HjBVg7xx3+JBLl9WofDds//INJAiEGAtdgr8PWyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+      (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('gitalk').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+          return;
+        }
+        new Gitalk({
+          clientID: '2a33128cf6c77debcaa3',
+          clientSecret: '71eb66f11b3c6d7a3da10dc5678717a3c3a51e4d',
+          repo: 'EricOo0.github.io',
+          owner: 'EricOo0',
+          admin: ['EricOo0'],
+          id: '93815ee4a22d9fd13bd2e09c6f967086',
+          ...{"distractionfreemode":false,"enablehotkey":true,"language":"en","pagerdirection":"first","perpage":10}
+        }).render('gitalk')
+      })()
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    © 2022 Eric w. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5" style="display: block;">
+        
+<div class="post-actions-wrap">
+  <nav>
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="http://localhost:1313/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-tooltip="数据库基础知识框架" aria-label="PREVIOUS: 数据库基础知识框架">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share">
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#gitalk" aria-label="Leave a comment">
+        <i class="fa fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="http://localhost:1313/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo+githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25A6%2582%25E4%25BD%2595%25E4%25BD%25BF%25E7%2594%25A8hugo%2Bgithubpage%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25A6%2582%25E4%25BD%2595%25E4%25BD%25BF%25E7%2594%25A8hugo%2Bgithubpage%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A1313%2Fpost%2F%25E5%25A6%2582%25E4%25BD%2595%25E4%25BD%25BF%25E7%2594%25A8hugo%2Bgithubpage%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="./如何使用hugo+githubpage搭建个人博客_files/icon.png" alt="Author&#39;s picture">
+    
+    <h4 id="about-card-name">Eric w</h4>
+    
+      <div id="about-card-bio"><strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br>
+        R&amp;D
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br>
+        China Shenzhen
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url(&#39;http://localhost:1313/images/cover_new.jpeg&#39;);"></div>
+    
+  
+
+
+    
+<script src="./如何使用hugo+githubpage搭建个人博客_files/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="./如何使用hugo+githubpage搭建个人博客_files/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="./如何使用hugo+githubpage搭建个人博客_files/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="./如何使用hugo+githubpage搭建个人博客_files/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="./如何使用hugo+githubpage搭建个人博客_files/apache.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="./如何使用hugo+githubpage搭建个人博客_files/go.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="./如何使用hugo+githubpage搭建个人博客_files/http.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="./如何使用hugo+githubpage搭建个人博客_files/less.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="./如何使用hugo+githubpage搭建个人博客_files/nginx.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="./如何使用hugo+githubpage搭建个人博客_files/puppet.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="./如何使用hugo+githubpage搭建个人博客_files/scss.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="./如何使用hugo+githubpage搭建个人博客_files/stylus.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="./如何使用hugo+githubpage搭建个人博客_files/swift.min.js"></script>
+  
+
+  
+    <script async="" crossorigin="anonymous" defer="" integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="./如何使用hugo+githubpage搭建个人博客_files/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  
+
+
+</body></html>
