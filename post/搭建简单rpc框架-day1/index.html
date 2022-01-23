@@ -30,7 +30,7 @@ if (!doNotTrack) {
     
   },
   "name":"Eric w -- BLOG",
-  "description":"\u003cp\u003eHugo\u002bgitpage搭建属于自己的个人博客\u003c\/p\u003e",
+  "description":"\u003cp\u003e本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务\u003c\/p\u003e",
   "url":"https:\/\/zhifengwei.site\/post\/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1\/",
   "keywords":"[]"
 }
@@ -42,39 +42,37 @@ if (!doNotTrack) {
 <meta name="generator" content="Hugo 0.84.3 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Eric w">
 <meta name="keywords" content="">
-<meta name="description" content="Hugo&#43;gitpage搭建属于自己的个人博客">
+<meta name="description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务">
 
 
-<meta property="og:description" content="Hugo&#43;gitpage搭建属于自己的个人博客">
+<meta property="og:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何使用hugo&#43;githubpage搭建个人博客">
-<meta name="twitter:title" content="如何使用hugo&#43;githubpage搭建个人博客">
+<meta property="og:title" content="搭建简单Rpc框架--Day1">
+<meta name="twitter:title" content="搭建简单Rpc框架--Day1">
 <meta property="og:url" content="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1/">
 <meta property="twitter:url" content="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1/">
 <meta property="og:site_name" content="Eric w -- BLOG">
-<meta property="og:description" content="Hugo&#43;gitpage搭建属于自己的个人博客">
-<meta name="twitter:description" content="Hugo&#43;gitpage搭建属于自己的个人博客">
+<meta property="og:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务">
+<meta name="twitter:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-01-15T17:31:53">
+    <meta property="article:published_time" content="2022-01-23T15:31:53">
   
   
-    <meta property="article:modified_time" content="2022-01-15T17:31:53">
+    <meta property="article:modified_time" content="2022-01-23T15:31:53">
   
-  
-  
-    
-      <meta property="article:section" content="指南">
-    
-      <meta property="article:section" content="blog">
-    
   
   
     
-      <meta property="article:tag" content="Git">
+      <meta property="article:section" content="Go">
     
-      <meta property="article:tag" content="blog">
+      <meta property="article:section" content="Rpc">
+    
+  
+  
+    
+      <meta property="article:tag" content="">
     
   
 
@@ -93,15 +91,12 @@ if (!doNotTrack) {
 
 
 
-  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
-  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
-
 
   <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
   <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
 
 
-    <title>如何使用hugo&#43;githubpage搭建个人博客</title>
+    <title>搭建简单Rpc框架--Day1</title>
 
     <link rel="icon" href="https://zhifengwei.site/favicon.png">
     
@@ -297,24 +292,28 @@ if (!doNotTrack) {
 </nav>
 
       
-  <div class="post-header-cover
-              text-left
-              "
-       style="background-image:url('//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg')"
-       data-behavior="5">
-    
-      <div class="post-header main-content-wrap text-left">
+
+      
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      如何使用hugo&#43;githubpage搭建个人博客
+      搭建简单Rpc框架--Day1
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-01-15T17:31:53&#43;08:00">
+      <time datetime="2022-01-23T15:31:53&#43;08:00">
         
-  January 15, 2022
+  January 23, 2022
 
       </time>
     
@@ -323,27 +322,15 @@ if (!doNotTrack) {
   
     <span>in</span>
     
-      <a class="category-link" href="https://zhifengwei.site/categories/%e6%8c%87%e5%8d%97">指南</a>, 
+      <a class="category-link" href="https://zhifengwei.site/categories/go">Go</a>, 
     
-      <a class="category-link" href="https://zhifengwei.site/categories/blog">blog</a>
+      <a class="category-link" href="https://zhifengwei.site/categories/rpc">Rpc</a>
     
   
 
   </div>
 
 </div>
-    
-  </div>
-
-
-      
-      <div id="main" data-behavior="5"
-        class="hasCover
-               hasCoverMetaIn
-               ">
-        <article class="post" id="top">
-          
-          
           
           
           <div class="post-content markdown">
@@ -351,165 +338,417 @@ if (!doNotTrack) {
               
 
               
-              <p>Hugo+gitpage搭建属于自己的个人博客</p>
-<p>对于不熟悉前端技术的同学来说，可以通过静态博客生成器自动将我们写的markdown笔记转化成静态html页面，放到网站上，给我们省去了很多麻烦事。</p>
-<p>常用的三个静态博客生成器：</p>
-<ul>
-<li><a href="https://jekyllrb.com/"><em>Jekyll</em></a></li>
-<li><a href="https://gohugo.io/"><em>Hugo</em></a></li>
-<li><a href="https://hexo.io/"><em>Hexo</em></a></li>
-</ul>
-<p>而gitpage有静态页面托管的功能，省去了我们部署web服务器的精力和开销。</p>
-<p>本文将介绍如何使用gitpage + Hugo来搭建属于自己的blog。</p>
+              <p>本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务</p>
+<h1 id="day1">Day1</h1>
+<p>今天主要是实现消息的序列化和反序列化；以及实现一个简易的服务端，仅接受消息</p>
 <hr>
-<h4 id="1创建github仓库">1、创建github仓库</h4>
-<p>创建一个github仓库，用于存放hugo生成的代码以及托管我们的博客。</p>
-<p>仓库的名字为yourusername.github.io：</p>
-<p><img src="https://zhifengwei.site/img/create_github_repo.png" alt="create_github_repo"></p>
-<p>如果有自己的域名可以修改为自己的域名，这样就可以通过域名访问到你的博客：</p>
-<p><img src="https://zhifengwei.site/img/gitpage_settting.png" alt="gitpage_settting"></p>
-<h4 id="2本地安装hugo">2、本地安装HUGO</h4>
-<p>1、 安装HUGO</p>
-<p>根据安装指南安装hugo工具：<a href="https://gohugo.io/getting-started/installing/">Install hugo</a></p>
-<p>博主在macos下的安装方法：</p>
-<blockquote>
-<p>brew install hugo</p>
-<p>Hugo version</p>
-</blockquote>
-<p>当出现hugo版本号则证明安装成功</p>
-<p><img src="https://zhifengwei.site/img/hugo_version.png" alt="hugo_version"></p>
-<p>Git 的安装方法此处不赘述了。</p>
-<h4 id="3利用hugo建立自己的网站目录">3、利用hugo建立自己的网站目录</h4>
+<p>一个RPC调用主要需要服务名，方法名，请求参数和回复参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Call</span>(<span style="color:#e6db74">&#34;Service.Method&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">args</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">reply</span>)
+</code></pre></div><p>所以首先需要定义一个Header结构体，其包包含了：</p>
 <ul>
-<li>进入想要存放网站的目录，如home目录下</li>
+<li>调用的函数和方法名</li>
+<li>用于区分不同请求的序列号</li>
+<li>错误信息err</li>
+</ul>
+<p>参数args和reply由于不同的rpc调用有不同的结构，所以在后续的body部分传输。</p>
+<p>服务器和客户端要通信需要确定通信的编码格式，所以先抽象出来一个编码器coderc的接口;</p>
+<p>Codec接口需要实现下列函数：</p>
+<ul>
+<li>ReadHeader函数读取消息头部</li>
+<li>ReadBody函数读取消息内容</li>
+<li>Write 写回复</li>
+<li>Close 关闭连接</li>
+</ul>
+<p>Day1/codec/codec.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">codec</span>
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;io&#34;</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Header</span> <span style="color:#66d9ef">struct</span>{
+	<span style="color:#a6e22e">ServiceMethod</span> <span style="color:#66d9ef">string</span>  <span style="color:#75715e">//&#34;调用方法 格式 service.method&#34;
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Seq</span> <span style="color:#66d9ef">uint64</span>   <span style="color:#75715e">//客户端选择的序列号
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Error</span> <span style="color:#66d9ef">string</span> <span style="color:#75715e">//服务端如果出错了就吧错误信息放到error中
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">//编码器是一个接口，需要实现:关闭数据流，读，写等方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Codec</span> <span style="color:#66d9ef">interface</span>{
+	<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Closer</span> <span style="color:#75715e">//关闭数据流的接口，即需要一个close函数
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">ReadBody</span>(<span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span>
+	<span style="color:#a6e22e">ReadHeader</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>) <span style="color:#66d9ef">error</span>
+	<span style="color:#a6e22e">Write</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>,<span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span> <span style="color:#75715e">// 写-写头部和body
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">//codec 的构造函数,传入一个io.readwritecloser 实例，返回一个codec实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NewCodecFunc</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>) <span style="color:#a6e22e">Codec</span>
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Type</span> <span style="color:#66d9ef">string</span>
+
+<span style="color:#75715e">//不同的序列化方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> (
+	<span style="color:#a6e22e">GobType</span>  <span style="color:#a6e22e">Type</span> = <span style="color:#e6db74">&#34;application/gob&#34;</span>
+	<span style="color:#a6e22e">JsonType</span> <span style="color:#a6e22e">Type</span> = <span style="color:#e6db74">&#34;application/json&#34;</span> <span style="color:#75715e">// not implemented
+</span><span style="color:#75715e"></span>)
+<span style="color:#75715e">//根据不同的序列化类型选择不同的构造函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">NewCodecFuncMap</span> <span style="color:#66d9ef">map</span>[<span style="color:#a6e22e">Type</span>]<span style="color:#a6e22e">NewCodecFunc</span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>(){
+	<span style="color:#a6e22e">NewCodecFuncMap</span> = make(<span style="color:#66d9ef">map</span>[<span style="color:#a6e22e">Type</span>]<span style="color:#a6e22e">NewCodecFunc</span>) <span style="color:#75715e">//string-func 的map
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">NewCodecFuncMap</span>[<span style="color:#a6e22e">GobType</span>] = <span style="color:#a6e22e">NewGobCodec</span> <span style="color:#75715e">//新建一个Gob编码器
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>init 是golang特殊的函数，先于main函数执行，会自动调用，一个包可以有多个init函数，不能被调用。</p>
+<hr>
+<p>不同的序列化方法都需要实现codec这个接口</p>
+<p>Gob是Go语言自己的以二进制形式序列化和反序列化程序数据的格式；可以在encoding 包中找到。</p>
+<p>Day1/codec/gob.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">codec</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;bufio&#34;</span>
+   <span style="color:#e6db74">&#34;encoding/gob&#34;</span>
+   <span style="color:#e6db74">&#34;io&#34;</span>
+   <span style="color:#e6db74">&#34;log&#34;</span>
+)
+
+<span style="color:#75715e">//gob实现了codec接口
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">GobCodec</span> <span style="color:#66d9ef">struct</span> {
+   <span style="color:#a6e22e">conn</span>  <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>
+   <span style="color:#a6e22e">enc</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gob</span>.<span style="color:#a6e22e">Encoder</span>
+   <span style="color:#a6e22e">dec</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gob</span>.<span style="color:#a6e22e">Decoder</span>
+   <span style="color:#a6e22e">buf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">Writer</span>
+}
+
+<span style="color:#75715e">//GobCodec 的构造方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewGobCodec</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>) <span style="color:#a6e22e">Codec</span>{
+   <span style="color:#a6e22e">buff</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewWriter</span>(<span style="color:#a6e22e">conn</span>)
+   <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">GobCodec</span>{
+      <span style="color:#a6e22e">conn</span>:<span style="color:#a6e22e">conn</span>,
+      <span style="color:#a6e22e">buf</span>:<span style="color:#a6e22e">buff</span>,
+      <span style="color:#a6e22e">enc</span>:<span style="color:#a6e22e">gob</span>.<span style="color:#a6e22e">NewEncoder</span>(<span style="color:#a6e22e">buff</span>), <span style="color:#75715e">//编码到buff里
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">dec</span>:<span style="color:#a6e22e">gob</span>.<span style="color:#a6e22e">NewDecoder</span>(<span style="color:#a6e22e">conn</span>),  <span style="color:#75715e">//从conn解码
+</span><span style="color:#75715e"></span>   }
+}
+
+<span style="color:#75715e">//实现GobCodec的读写方法
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">GobCodec</span>) <span style="color:#a6e22e">ReadHeader</span>(<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>) <span style="color:#66d9ef">error</span> {
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">dec</span>.<span style="color:#a6e22e">Decode</span>(<span style="color:#a6e22e">h</span>)
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">GobCodec</span>) <span style="color:#a6e22e">ReadBody</span>(<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span>{
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">dec</span>.<span style="color:#a6e22e">Decode</span>(<span style="color:#a6e22e">body</span>)
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">GobCodec</span>) <span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>,<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}) (<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>){
+   <span style="color:#75715e">// 写完要从buf里flush到io然后关闭
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>(){
+      <span style="color:#a6e22e">_</span> =<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">Flush</span>()
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+         <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Close</span>()
+      }
+   }()
+
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">h</span>);<span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc codec: gob error encoding header:&#34;</span>, <span style="color:#a6e22e">err</span>)
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+   }
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">body</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc codec: gob error encoding body:&#34;</span>, <span style="color:#a6e22e">err</span>)
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+   }
+   <span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">nil</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">GobCodec</span>) <span style="color:#a6e22e">Close</span>() <span style="color:#66d9ef">error</span>{
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
+
+}
+</code></pre></div><p>Day1/codec/json.go</p>
+<p>json的实现和gob一样</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">codec</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;bufio&#34;</span>
+   <span style="color:#e6db74">&#34;encoding/json&#34;</span>
+   <span style="color:#e6db74">&#34;io&#34;</span>
+   <span style="color:#e6db74">&#34;log&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">JsonCodec</span> <span style="color:#66d9ef">struct</span> {
+   <span style="color:#a6e22e">conn</span>  <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>
+   <span style="color:#a6e22e">enc</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Encoder</span>
+   <span style="color:#a6e22e">dec</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Decoder</span>
+   <span style="color:#a6e22e">buf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">Writer</span>
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewJsonCodec</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>) <span style="color:#a6e22e">Codec</span>{
+   <span style="color:#a6e22e">buff</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewWriter</span>(<span style="color:#a6e22e">conn</span>)
+   <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">JsonCodec</span>{
+      <span style="color:#a6e22e">conn</span>:<span style="color:#a6e22e">conn</span>,
+      <span style="color:#a6e22e">buf</span>:<span style="color:#a6e22e">buff</span>,
+      <span style="color:#a6e22e">enc</span>:<span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewEncoder</span>(<span style="color:#a6e22e">buff</span>), <span style="color:#75715e">//编码到buff里
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">dec</span>:<span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewDecoder</span>(<span style="color:#a6e22e">conn</span>), <span style="color:#75715e">//从conn解码
+</span><span style="color:#75715e"></span>   }
+}
+
+<span style="color:#75715e">//实现JsonCodec的读写方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">JsonCodec</span>) <span style="color:#a6e22e">ReadHeader</span>(<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>) <span style="color:#66d9ef">error</span> {
+   <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">dec</span>.<span style="color:#a6e22e">Decode</span>(<span style="color:#a6e22e">h</span>)
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">JsonCodec</span>) <span style="color:#a6e22e">ReadBody</span>(<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span>{
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">dec</span>.<span style="color:#a6e22e">Decode</span>(<span style="color:#a6e22e">body</span>)
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">JsonCodec</span>) <span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>,<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}) (<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>){
+   <span style="color:#75715e">// 写完要从buf里flush到io然后关闭
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>(){
+
+      <span style="color:#a6e22e">_</span> =<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">Flush</span>()
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+         <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Close</span>()
+      }
+
+   }()
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">h</span>);<span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc codec: json error encoding header:&#34;</span>, <span style="color:#a6e22e">err</span>)
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+   }
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">body</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc codec: json error encoding body:&#34;</span>, <span style="color:#a6e22e">err</span>)
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+   }
+   <span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">nil</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">JsonCodec</span>) <span style="color:#a6e22e">Close</span>() <span style="color:#66d9ef">error</span>{
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
+
+}
+</code></pre></div><hr>
+<p>协议格式：</p>
+<p>客户端和服务器通信内容主要按照以下方式进行序列化</p>
+<ul>
+<li>Option部分采用固定编码格式，Option决定了后面消息内容使用什么编码格式</li>
+<li>Header包含了调用的方法和服务名以及序列号</li>
+<li>body包含了参数argv和回复replyv的结构体</li>
 </ul>
 <blockquote>
-<p>cd /</p>
-<p>hugo new site my-blog    #my-blog是你的网站文件夹名字</p>
+<p>| Option{MagicNumber: xxx, CodecType: xxx} | Header{ServiceMethod &hellip;} | Body interface{} |
+| &lt;&mdash;&mdash;      固定 JSON 编码      &mdash;&mdash;&gt;  | &lt;&mdash;&mdash;-   编码方式由 CodeType 决定   &mdash;&mdash;-&gt;|</p>
 </blockquote>
-<ul>
-<li>然后去选择一个自己喜欢的模版：<strong>Tranquilpeak</strong> 会相对容易上手一点</li>
-</ul>
-<blockquote>
-<p>Hugo Themes: <a href="https://themes.gohugo.io/">https://themes.gohugo.io</a></p>
+<p>决定了通信协议并且实现了编码器接口后，可以写一个简单的server来负责接收客户端的请求并进行解码和回复</p>
+<p>Day1/server.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">geerpc</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;encoding/json&#34;</span>
+   <span style="color:#e6db74">&#34;fmt&#34;</span>
+   <span style="color:#e6db74">&#34;geerpc/codec&#34;</span>
+   <span style="color:#e6db74">&#34;io&#34;</span>
+   <span style="color:#e6db74">&#34;log&#34;</span>
+   <span style="color:#e6db74">&#34;net&#34;</span>
+   <span style="color:#e6db74">&#34;reflect&#34;</span>
+   <span style="color:#e6db74">&#34;sync&#34;</span>
+)
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MagicNumber</span> = <span style="color:#ae81ff">0x3bef5c</span>
+
+<span style="color:#75715e">//option 用于决定通信协议类型
+</span><span style="color:#75715e">//整个RPC编码的格式如下
+</span><span style="color:#75715e">//| Option{MagicNumber: xxx, CodecType: xxx} | Header{ServiceMethod ...} | Body interface{} |
+</span><span style="color:#75715e">//| &lt;------      固定 JSON 编码      ------&gt;  | &lt;-------   编码方式由 CodeType 决定   -------&gt;|
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Option</span> <span style="color:#66d9ef">struct</span> {
+   <span style="color:#a6e22e">MagicNumber</span> <span style="color:#66d9ef">int</span>        <span style="color:#75715e">// MagicNumber marks this&#39;s a geerpc request
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">CodecType</span>   <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Type</span> <span style="color:#75715e">// client may choose different Codec to encode body
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">DefaultOption</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Option</span>{
+   <span style="color:#a6e22e">MagicNumber</span>: <span style="color:#a6e22e">MagicNumber</span>,
+   <span style="color:#a6e22e">CodecType</span>:   <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">GobType</span>,
+   <span style="color:#75715e">//CodecType:   codec.JsonType,
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Server</span> <span style="color:#66d9ef">struct</span> {}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewServer</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>{
+   <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Server</span>{}
+}
+<span style="color:#75715e">// DefaultServer is the default instance of *Server. 默认的server，方便一会测试
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">DefaultServer</span> = <span style="color:#a6e22e">NewServer</span>()
+
+<span style="color:#75715e">// 服务端的任务就是接受请求，处理和回复请求
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">lis</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Listener</span>){
+   <span style="color:#75715e">// 无限循环一直监听网络
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">for</span>{
+      <span style="color:#a6e22e">conn</span>,<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">lis</span>.<span style="color:#a6e22e">Accept</span>()
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+         <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: accept error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+         <span style="color:#66d9ef">return</span>
+      }
+      <span style="color:#75715e">//每接受一个连接开一个goroutine处理请求
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">ServerConn</span>(<span style="color:#a6e22e">conn</span>)
+   }
+}
+<span style="color:#75715e">// Accept accepts connections on the listener and serves requests
+</span><span style="color:#75715e">// for each incoming connection.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">lis</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Listener</span>) { <span style="color:#a6e22e">DefaultServer</span>.<span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">lis</span>) }
+
+<span style="color:#75715e">// 消息的格式可能是如下| Option | Header1 | Body1 | Header2 | Body2 | ...
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">ServerConn</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>) {
+   <span style="color:#75715e">//先decode Option
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">option</span> <span style="color:#a6e22e">Option</span>
+  <span style="color:#75715e">//if err := gob.NewDecoder(conn).Decode(&amp;option); err!=nil
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewDecoder</span>(<span style="color:#a6e22e">conn</span>).<span style="color:#a6e22e">Decode</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">option</span>); <span style="color:#a6e22e">err</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: options error: &#34;</span>, <span style="color:#a6e22e">err</span>)
+      <span style="color:#66d9ef">return</span>
+   }
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">option</span>.<span style="color:#a6e22e">MagicNumber</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">MagicNumber</span> {
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;rpc server: invalid magic number %x&#34;</span>, <span style="color:#a6e22e">option</span>.<span style="color:#a6e22e">MagicNumber</span>)
+      <span style="color:#66d9ef">return</span>
+   }
+   <span style="color:#a6e22e">f</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">NewCodecFuncMap</span>[<span style="color:#a6e22e">option</span>.<span style="color:#a6e22e">CodecType</span>] <span style="color:#75715e">//根据编码类型选择编码器初始化函数
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>{
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;rpc server: invalid codec type %s&#34;</span>, <span style="color:#a6e22e">option</span>.<span style="color:#a6e22e">CodecType</span>)
+      <span style="color:#66d9ef">return</span>
+   }
+   <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">ServerCodec</span>(<span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">conn</span>))
+}
+<span style="color:#75715e">// invalidRequest is a placeholder for response argv when error occurs
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">invalidRequest</span> = <span style="color:#66d9ef">struct</span>{ }{}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">ServerCodec</span>( <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>){
+   <span style="color:#a6e22e">sending</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>) <span style="color:#75715e">// 添加互斥锁保证每条回复完整发送
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>)  <span style="color:#75715e">// wait until all request are handled
+</span><span style="color:#75715e"></span>
+   <span style="color:#66d9ef">for</span>{
+      <span style="color:#a6e22e">req</span>,<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">readRequest</span>(<span style="color:#a6e22e">c</span>)<span style="color:#75715e">//读请求
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+         <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">req</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>{
+            <span style="color:#66d9ef">break</span>
+         }
+         <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Error</span> = <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>()
+         <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">sendResponse</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">invalidRequest</span>, <span style="color:#a6e22e">sending</span>)
+         <span style="color:#66d9ef">continue</span>
+      }
+      <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+      <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">handleRequest</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">sending</span>, <span style="color:#a6e22e">wg</span>)<span style="color:#75715e">//处理请求
+</span><span style="color:#75715e"></span>   }
+   <span style="color:#75715e">//没有请求了会跳出循环
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+   <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Close</span>()
+}
+
+<span style="color:#75715e">//serveCodec 的过程
+</span><span style="color:#75715e">//读取请求 readRequest
+</span><span style="color:#75715e">//处理请求 handleRequest
+</span><span style="color:#75715e">//回复请求 sendResponse
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span>  <span style="color:#a6e22e">request</span> <span style="color:#66d9ef">struct</span>{
+   <span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>
+   <span style="color:#a6e22e">argv</span>,<span style="color:#a6e22e">replyv</span> <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">Value</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">readRequstHeader</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>,<span style="color:#66d9ef">error</span>){
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">h</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ReadHeader</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">h</span>) ; <span style="color:#a6e22e">err</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">EOF</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ErrUnexpectedEOF</span> {
+
+         <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: read header error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+      }
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+   }
+   <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">h</span>,<span style="color:#66d9ef">nil</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">readRequest</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">request</span>, <span style="color:#66d9ef">error</span>){
+   <span style="color:#75715e">//读头部
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">h</span>,<span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">readRequstHeader</span>(<span style="color:#a6e22e">c</span>)
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+   }
+   <span style="color:#a6e22e">req</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">request</span>{<span style="color:#a6e22e">h</span>: <span style="color:#a6e22e">h</span>}
+   <span style="color:#75715e">// TODO: now we don&#39;t know the type of request argv
+</span><span style="color:#75715e"></span>   <span style="color:#75715e">// day 1, just suppose it&#39;s string暂时现使用string作为参数
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">argv</span> = <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(<span style="color:#e6db74">&#34;&#34;</span>))
+   <span style="color:#75715e">//读body
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ReadBody</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">argv</span>.<span style="color:#a6e22e">Interface</span>()); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: read argv err:&#34;</span>, <span style="color:#a6e22e">err</span>)
+   }
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">req</span>, <span style="color:#66d9ef">nil</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">handleRequest</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">request</span>, <span style="color:#a6e22e">sending</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>, <span style="color:#a6e22e">wg</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>){
+   <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+   <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">argv</span>.<span style="color:#a6e22e">Elem</span>())
+   <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">replyv</span> = <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">ValueOf</span>(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;geerpc resp %d&#34;</span>, <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Seq</span>))
+   <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">sendResponse</span>(<span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>,<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">replyv</span>.<span style="color:#a6e22e">Interface</span>(),<span style="color:#a6e22e">sending</span>)
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">sendResponse</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>, <span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>, <span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">sending</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>){
+   <span style="color:#a6e22e">sending</span>.<span style="color:#a6e22e">Lock</span>()
+   <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">sending</span>.<span style="color:#a6e22e">Unlock</span>()
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">body</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: write response error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+   }
+}
+</code></pre></div><blockquote>
+<p>sync.WaitGroup 的作用：用于阻塞等待一组Go 程的结束</p>
+<p>​	主 Go 程调用 Add() 来设置等待的 Go 程数，然后该组中的每个 Go 程都需要在运行结束时调用 Done()， 递减 WaitGroup 的 Go 程计数器 counter。当 counter 变为 0 时，主 Go 程（需要在调用wait()）被唤醒继续执行。</p>
+<p>​	waitgroup可以让住go程等待所有子go程接受然后继续执行</p>
+<p>request结构体包含了请求头和传递的参数，参数是动态变化的所以采用reflect包来定义</p>
+<p>​	type  request struct{</p>
+<p>​	  	 h *codec.Header
+argv,replyv reflect.Value
+​	}</p>
+<p>releact反射机制：</p>
+<p>​	对于每个变量都有{Type,Value}两个部分，通过TypeOf和ValueOf可以获取</p>
 </blockquote>
-<ul>
-<li>将主题clone到本地</li>
-</ul>
-<blockquote>
-<p>cd /my-blog  # 进入网站目录
-mkdir -p themes  # 创建 &ldquo;themes&rdquo; 目录。
-cd themes</p>
-<p>git clone <a href="https://github.com/Track3/hermit.git">https://github.com/Track3/hermit.git</a> hermit # 将 hermit 主题克隆到 hermit目录</p>
-</blockquote>
-<h4 id="4配置网站">4、配置网站</h4>
-<ul>
-<li>
-<p>将下载好的模版中的配置文件( themes/hermit/exampleSite/config.toml )复制到网站根目录下(/my-blog)</p>
-</li>
-<li>
-<p>在 Hugo 网站文件夹的根目录下/my-blog ，打开 <code>config.toml</code> 文件</p>
-</li>
-<li>
-<p>根据所选主题编辑config.toml,修改一些配置；一般将baseurl修改为你的网站域名(最好带上协议：http://example.com)，以及一些必要信息</p>
-</li>
-</ul>
-<h4 id="5新建一篇文章">5、新建一篇文章</h4>
-<p>此时你的网站框架已经大致建立好了，当你要新建文章时，利用hugo new可以生成一篇文章模版，放在 my-blog/content/post下</p>
-<blockquote>
-<p>hugo new post/my-first-post.md  # &ldquo;my-first-post.md&rdquo; 是新建文章的文件名。</p>
-</blockquote>
-<p>写完文章后可以本地预览我们的博客了</p>
-<blockquote>
-<p>hugo server -D
-使用浏览器打开 http://localhost:1313 预览
-如果你对预览效果满意，进入下一步。
-如果不满意，编辑 config.toml 配置文件，再次预览</p>
-</blockquote>
-<p><img src="https://zhifengwei.site/img/hugo_preview.png" alt="image-20220114164901488"></p>
-<h4 id="6构建hugo网站">6、构建hugo网站</h4>
-<p>在网站根目录下执行hugo命令</p>
-<blockquote>
-<p>hugo   # 构建你的 Hugo 网站，默认将静态站点保存到 &ldquo;public&rdquo; 目录。</p>
-</blockquote>
-<h4 id="7转化为git库">7、转化为git库</h4>
-<blockquote>
-<p>cd ~/my-blog/public  # 生成的 HTML 文件保存在 &ldquo;public&rdquo; 目录中，&ldquo;public&rdquo; 文件夹会被转换为 Git 库。
-git init  # 初始化 Git 库。</p>
-<p>关联到远方库</p>
-<p>git remote add origin <a href="https://github.com/yourusername/yourusername.github.io.git">https://github.com/yourusername/yourusername.github.io.git</a></p>
-<p>git status  # 查看当前修改状态。
-git add .  # 添加所有修改过的文件。你也可以只添加某个文件。
-git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 commit message.</p>
-<p>git push -u origin master</p>
-</blockquote>
-<p>此时到github上的setting查看你的gitpage是否生效，生效后即可通过gitpage访问你的博客了，博客页面由你选择的模版决定，也可以自己进行修改。对于不懂前端的人就可以只关注写博文啦。</p>
-<h4 id="8域名">8、域名</h4>
-<p>gitpage默认的域名时yourusername.github.io,你也可以去腾讯云或者阿里云之类的地方购买自己的域名，添加dns解析后替换掉默认的域名</p>
-<h4 id="9日常操作">9、日常操作</h4>
-<p>新建文章：hugo new post/文章名.md</p>
-<p>删除文章：</p>
-<blockquote>
-<p>删除两处文件</p>
-<p>在目录 /post 、/public  下找到对应文件进行删除</p>
-<p>其中 public 下文件不删除也不影响显示，只是该文件就会一直存在，另外该目录下即便文件（除.git)删错或者全部删除也是不影响的，应为 hugo 命令会全部重建</p>
-</blockquote>
-<p>修改文章则直接在post下的文章修改即可</p>
-<p>操作完成后使用hugo命令重构</p>
-<p>git 上传到github更新博客</p>
-<h4 id="10增加评论功能">10、增加评论功能</h4>
-<p>一般hugo模版都支持disqus和gitalk来做评论系统，但国内disqus被墙效果可能不太好</p>
-<ul>
-<li>
-<p>disqus</p>
-<p>在hugo搭建的静态页面添加hugos很简单，只需要在config.toml中修改 disqusShortname = “example-com” 即可</p>
-<p>因此需要先去disqus官网注册你的网站信息。</p>
-<ul>
-<li><a href="https://disqus.com/">https://disqus.com/</a> 选择get started注册账户</li>
-<li>选择 I want to install Disqus on my site</li>
-<li>填写相关信息然后获得disqusShortname，就是你填写的website name，点(.)会被替换成(-)</li>
-<li>修改config文件后即可使用</li>
-</ul>
-<p>如果出现无法加载问题，可能说没有挂梯子或者你的baseurl设置有问题，一般要带上协议如http://baseurl</p>
-</li>
-<li>
-<p>gitalk</p>
-<ul>
-<li>gitalk 首先在博客repo的设置里开启issue功能</li>
-<li><a href="https://github.com/settings/developers">https://github.com/settings/developers</a> 创建一个oath application
-<ul>
-<li>Homepage URL和Authorization callback URL填写网站地址</li>
-</ul>
-</li>
-<li>application 注册成功后
-<ul>
-<li>将Client ID，Client secrets，repo name，username等信息填到config.toml中，一般支持gitalk的模版都有相关选项</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="11增加新的内容页">11、增加新的内容页</h4>
-<p>hugo也可自己定制内容页，想要自己新增内容页</p>
-<ul>
-<li>
-<p>content文件夹下新增内容页名字文件夹，如content/gallery</p>
-<p>新建空白的_index.md文件</p>
-<p>此时在本地调试就可以访问到 https://localhost:1313/gallery</p>
-</li>
-<li>
-<p>在使用的主题的layout中增加section文件夹 blog/themes/tranquilpeak/layouts/section</p>
-</li>
-</ul>
-<p>​		在这里增加你的页面html文件 gallery.html</p>
-<p>​		此时本地调试访问 https://localhost:1313/gallery就是你的html内容，可以利用主题带的partials等一系列文件进行定制化也可以自		己写html。</p>
-<p>如果需要在菜单栏配置跳转的秃标，配置param参数，url就是要跳转到的url</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
-  <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">4</span>
-  <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;gallery&#34;</span>
-  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Gallery&#34;</span>
-  <span style="color:#a6e22e">pre</span> = <span style="color:#e6db74">&#34;&lt;i class=\&#34;sidebar-button-icon fas fa-lg fa-image\&#34; aria-hidden=\&#34;true\&#34;&gt;&lt;/i&gt;&#34;</span>
-  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/gallery&#34;</span>
+<hr>
+<p>简单的接受rpc的server已经写好了，server会一直监听并且并发地处理请求，接下来写一个main函数测试一下</p>
+<p>Day1/main/main.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;encoding/gob&#34;</span>
+   <span style="color:#e6db74">&#34;encoding/json&#34;</span>
+   <span style="color:#e6db74">&#34;fmt&#34;</span>
+   <span style="color:#e6db74">&#34;geerpc&#34;</span>
+   <span style="color:#e6db74">&#34;geerpc/codec&#34;</span>
+   <span style="color:#e6db74">&#34;log&#34;</span>
+   <span style="color:#e6db74">&#34;net&#34;</span>
+   <span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">startServer</span>(<span style="color:#a6e22e">addr</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>) {
+   <span style="color:#75715e">// pick a free port
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">l</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Listen</span>(<span style="color:#e6db74">&#34;tcp&#34;</span>, <span style="color:#e6db74">&#34;:0&#34;</span>)
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;network error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+   }
+   <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;start rpc server on&#34;</span>, <span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Addr</span>())
+   <span style="color:#a6e22e">addr</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Addr</span>().<span style="color:#a6e22e">String</span>()
+   <span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">l</span>) <span style="color:#75715e">//调用服务器监听客户端
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#a6e22e">addr</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>) <span style="color:#75715e">//addr是一个 string类型的chan
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">startServer</span>(<span style="color:#a6e22e">addr</span>) <span style="color:#75715e">//一个go协程启动一个server， addr是个通道将服务器信息传出来
+</span><span style="color:#75715e"></span>
+  <span style="color:#75715e">//下面是模拟的客户端
+</span><span style="color:#75715e"></span>   <span style="color:#75715e">// in fact, following code is like a simple geerpc client
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#e6db74">&#34;tcp&#34;</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">addr</span>)<span style="color:#75715e">//连接服务器
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() { <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>() }()
+
+   <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+   <span style="color:#75715e">// send options
+</span><span style="color:#75715e">// 消息的格式可能是如下| Option | Header1 | Body1 | Header2 | Body2 | ...
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewEncoder</span>(<span style="color:#a6e22e">conn</span>).<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">DefaultOption</span>)  <span style="color:#75715e">//先发送option
+</span><span style="color:#75715e"></span>   <span style="color:#75715e">//_ = gob.NewEncoder(conn).Encode(geerpc.DefaultOption)  
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)  <span style="color:#75715e">//important！  如果option和header&amp;body用一种编码方式，可能合成一个包发送过去了，server那边解码option的时候把header忽略了，导致server在等header，client在等reply阻塞住
+</span><span style="color:#75715e"></span>   <span style="color:#75715e">//cc := codec.NewJsonCodec(conn)
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">cc</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">NewGobCodec</span>(<span style="color:#a6e22e">conn</span>)
+   <span style="color:#75715e">// send request &amp; receive response
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+      <span style="color:#a6e22e">h</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>{
+         <span style="color:#a6e22e">ServiceMethod</span>: <span style="color:#e6db74">&#34;Foo.Sum&#34;</span>,
+         <span style="color:#a6e22e">Seq</span>:           uint64(<span style="color:#a6e22e">i</span>),
+         <span style="color:#a6e22e">Error</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+      }
+      <span style="color:#a6e22e">t</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;geerpc req %d&#34;</span>, <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Seq</span>)
+      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">t</span>)
+      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">ReadHeader</span>(<span style="color:#a6e22e">h</span>)
+      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">reply</span> <span style="color:#66d9ef">string</span>
+      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">ReadBody</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">reply</span>)
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;reply:&#34;</span>, <span style="color:#a6e22e">reply</span>)
+   }
+}
 </code></pre></div>
               
               
@@ -526,9 +765,7 @@ git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 c
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://zhifengwei.site/tags/git/">Git</a>
-
-  <a class="tag tag--primary tag--small" href="https://zhifengwei.site/tags/blog/">blog</a>
+  <a class="tag tag--primary tag--small" href="https://zhifengwei.site/tags//"></a>
 
                   </div>
                 
@@ -541,7 +778,7 @@ git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 c
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-tooltip="如何使用hugo&#43;githubpage搭建个人博客" aria-label="NEXT: 如何使用hugo&#43;githubpage搭建个人博客">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -549,7 +786,7 @@ git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 c
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-tooltip="数据库基础知识框架" aria-label="PREVIOUS: 数据库基础知识框架">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-tooltip="如何使用hugo&#43;githubpage搭建个人博客" aria-label="PREVIOUS: 如何使用hugo&#43;githubpage搭建个人博客">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -646,7 +883,7 @@ git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 c
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-tooltip="如何使用hugo&#43;githubpage搭建个人博客" aria-label="NEXT: 如何使用hugo&#43;githubpage搭建个人博客">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -654,7 +891,7 @@ git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 c
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/sql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-tooltip="数据库基础知识框架" aria-label="PREVIOUS: 数据库基础知识框架">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-tooltip="如何使用hugo&#43;githubpage搭建个人博客" aria-label="PREVIOUS: 如何使用hugo&#43;githubpage搭建个人博客">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -764,345 +1001,13 @@ git commit -m &ldquo;Add a new post&rdquo;  # &ldquo;Add a new post&rdquo; 是 c
                     
                     <ul class="nav">
                     
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
                     
                         <li class="nav-item">
-                            <a class="nav-link text-left" href="#1%e5%88%9b%e5%bb%bagithub%e4%bb%93%e5%ba%93">
-                            1、创建github仓库
+                            <a class="nav-link text-left" href="#day1">
+                            Day1
                             </a>
                         </li>
                     
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#2%e6%9c%ac%e5%9c%b0%e5%ae%89%e8%a3%85hugo">
-                            2、本地安装HUGO
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#3%e5%88%a9%e7%94%a8hugo%e5%bb%ba%e7%ab%8b%e8%87%aa%e5%b7%b1%e7%9a%84%e7%bd%91%e7%ab%99%e7%9b%ae%e5%bd%95">
-                            3、利用hugo建立自己的网站目录
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#4%e9%85%8d%e7%bd%ae%e7%bd%91%e7%ab%99">
-                            4、配置网站
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#5%e6%96%b0%e5%bb%ba%e4%b8%80%e7%af%87%e6%96%87%e7%ab%a0">
-                            5、新建一篇文章
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#6%e6%9e%84%e5%bb%bahugo%e7%bd%91%e7%ab%99">
-                            6、构建hugo网站
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#7%e8%bd%ac%e5%8c%96%e4%b8%bagit%e5%ba%93">
-                            7、转化为git库
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#8%e5%9f%9f%e5%90%8d">
-                            8、域名
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#9%e6%97%a5%e5%b8%b8%e6%93%8d%e4%bd%9c">
-                            9、日常操作
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#10%e5%a2%9e%e5%8a%a0%e8%af%84%e8%ae%ba%e5%8a%9f%e8%83%bd">
-                            10、增加评论功能
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#11%e5%a2%9e%e5%8a%a0%e6%96%b0%e7%9a%84%e5%86%85%e5%ae%b9%e9%a1%b5">
-                            11、增加新的内容页
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
                     
                     </ul>
                     

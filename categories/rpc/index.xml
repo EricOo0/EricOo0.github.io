@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rpc on Eric w -- BLOG</title>
+    <link>https://zhifengwei.site/categories/rpc/</link>
+    <description>Recent content in Rpc on Eric w -- BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Jan 2022 15:31:53 +0800</lastBuildDate><atom:link href="https://zhifengwei.site/categories/rpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建简单Rpc框架--Day1</title>
+      <link>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1/</link>
+      <pubDate>Sun, 23 Jan 2022 15:31:53 +0800</pubDate>
+      
+      <guid>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1/</guid>
+      <description>&lt;p&gt;本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
