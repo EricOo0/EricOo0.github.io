@@ -30,7 +30,7 @@ if (!doNotTrack) {
     
   },
   "name":"Eric w -- BLOG",
-  "description":"\u003cp\u003e本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务\u003c\/p\u003e",
+  "description":"\u003cp\u003e本文参考7天用Go从零实现RPC框架GeeRPC的第二篇，搭建一个简单的Rpc服务\u003c\/p\u003e",
   "url":"https:\/\/zhifengwei.site\/post\/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day2\/",
   "keywords":"[]"
 }
@@ -42,25 +42,25 @@ if (!doNotTrack) {
 <meta name="generator" content="Hugo 0.84.3 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Eric w">
 <meta name="keywords" content="">
-<meta name="description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务">
+<meta name="description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第二篇，搭建一个简单的Rpc服务">
 
 
-<meta property="og:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务">
+<meta property="og:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第二篇，搭建一个简单的Rpc服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建简单Rpc框架--Day1">
-<meta name="twitter:title" content="搭建简单Rpc框架--Day1">
+<meta property="og:title" content="搭建简单Rpc框架--Day2">
+<meta name="twitter:title" content="搭建简单Rpc框架--Day2">
 <meta property="og:url" content="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day2/">
 <meta property="twitter:url" content="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day2/">
 <meta property="og:site_name" content="Eric w -- BLOG">
-<meta property="og:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务">
-<meta name="twitter:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务">
+<meta property="og:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第二篇，搭建一个简单的Rpc服务">
+<meta name="twitter:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第二篇，搭建一个简单的Rpc服务">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-01-23T15:31:53">
+    <meta property="article:published_time" content="2022-01-24T14:11:53">
   
   
-    <meta property="article:modified_time" content="2022-01-23T15:31:53">
+    <meta property="article:modified_time" content="2022-01-24T14:11:53">
   
   
   
@@ -96,7 +96,7 @@ if (!doNotTrack) {
   <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
 
 
-    <title>搭建简单Rpc框架--Day1</title>
+    <title>搭建简单Rpc框架--Day2</title>
 
     <link rel="icon" href="https://zhifengwei.site/favicon.png">
     
@@ -305,15 +305,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      搭建简单Rpc框架--Day1
+      搭建简单Rpc框架--Day2
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-01-23T15:31:53&#43;08:00">
+      <time datetime="2022-01-24T14:11:53&#43;08:00">
         
-  January 23, 2022
+  January 24, 2022
 
       </time>
     
@@ -338,371 +338,277 @@ if (!doNotTrack) {
               
 
               
-              <p>本文参考7天用Go从零实现RPC框架GeeRPC的第一篇，搭建一个简单的Rpc服务</p>
-<h1 id="day1">Day1</h1>
-<p>今天主要是实现消息的序列化和反序列化；以及实现一个简易的服务端，仅接受消息</p>
+              <p>本文参考7天用Go从零实现RPC框架GeeRPC的第二篇，搭建一个简单的Rpc服务</p>
+<h1 id="day2">Day2</h1>
+<p>今天主要是实现一个实现一个支持异步和并发的高性能客户端</p>
 <hr>
-<p>一个RPC调用主要需要服务名，方法名，请求参数和回复参数</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Call</span>(<span style="color:#e6db74">&#34;Service.Method&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">args</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">reply</span>)
-</code></pre></div><p>所以首先需要定义一个Header结构体，其包包含了：</p>
-<ul>
-<li>调用的函数和方法名</li>
-<li>用于区分不同请求的序列号</li>
-<li>错误信息err</li>
-</ul>
-<p>参数args和reply由于不同的rpc调用有不同的结构，所以在后续的body部分传输。</p>
-<p>服务器和客户端要通信需要确定通信的编码格式，所以先抽象出来一个编码器coderc的接口;</p>
-<p>Codec接口需要实现下列函数：</p>
-<ul>
-<li>ReadHeader函数读取消息头部</li>
-<li>ReadBody函数读取消息内容</li>
-<li>Write 写回复</li>
-<li>Close 关闭连接</li>
-</ul>
-<p>Day1/codec/codec.go</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">codec</span>
-<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;io&#34;</span>
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Header</span> <span style="color:#66d9ef">struct</span>{
-	<span style="color:#a6e22e">ServiceMethod</span> <span style="color:#66d9ef">string</span>  <span style="color:#75715e">//&#34;调用方法 格式 service.method&#34;
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Seq</span> <span style="color:#66d9ef">uint64</span>   <span style="color:#75715e">//客户端选择的序列号
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Error</span> <span style="color:#66d9ef">string</span> <span style="color:#75715e">//服务端如果出错了就吧错误信息放到error中
-</span><span style="color:#75715e"></span>}
-
-<span style="color:#75715e">//编码器是一个接口，需要实现:关闭数据流，读，写等方法
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Codec</span> <span style="color:#66d9ef">interface</span>{
-	<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Closer</span> <span style="color:#75715e">//关闭数据流的接口，即需要一个close函数
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">ReadBody</span>(<span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span>
-	<span style="color:#a6e22e">ReadHeader</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>) <span style="color:#66d9ef">error</span>
-	<span style="color:#a6e22e">Write</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>,<span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span> <span style="color:#75715e">// 写-写头部和body
-</span><span style="color:#75715e"></span>}
-
-<span style="color:#75715e">//codec 的构造函数,传入一个io.readwritecloser 实例，返回一个codec实例
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NewCodecFunc</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>) <span style="color:#a6e22e">Codec</span>
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Type</span> <span style="color:#66d9ef">string</span>
-
-<span style="color:#75715e">//不同的序列化方法
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> (
-	<span style="color:#a6e22e">GobType</span>  <span style="color:#a6e22e">Type</span> = <span style="color:#e6db74">&#34;application/gob&#34;</span>
-	<span style="color:#a6e22e">JsonType</span> <span style="color:#a6e22e">Type</span> = <span style="color:#e6db74">&#34;application/json&#34;</span> <span style="color:#75715e">// not implemented
-</span><span style="color:#75715e"></span>)
-<span style="color:#75715e">//根据不同的序列化类型选择不同的构造函数
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">NewCodecFuncMap</span> <span style="color:#66d9ef">map</span>[<span style="color:#a6e22e">Type</span>]<span style="color:#a6e22e">NewCodecFunc</span>
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>(){
-	<span style="color:#a6e22e">NewCodecFuncMap</span> = make(<span style="color:#66d9ef">map</span>[<span style="color:#a6e22e">Type</span>]<span style="color:#a6e22e">NewCodecFunc</span>) <span style="color:#75715e">//string-func 的map
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">NewCodecFuncMap</span>[<span style="color:#a6e22e">GobType</span>] = <span style="color:#a6e22e">NewGobCodec</span> <span style="color:#75715e">//新建一个Gob编码器
-</span><span style="color:#75715e"></span>}
-</code></pre></div><p>init 是golang特殊的函数，先于main函数执行，会自动调用，一个包可以有多个init函数，不能被调用。</p>
-<hr>
-<p>不同的序列化方法都需要实现codec这个接口</p>
-<p>Gob是Go语言自己的以二进制形式序列化和反序列化程序数据的格式；可以在encoding 包中找到。</p>
-<p>Day1/codec/gob.go</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">codec</span>
-
-<span style="color:#f92672">import</span> (
-   <span style="color:#e6db74">&#34;bufio&#34;</span>
-   <span style="color:#e6db74">&#34;encoding/gob&#34;</span>
-   <span style="color:#e6db74">&#34;io&#34;</span>
-   <span style="color:#e6db74">&#34;log&#34;</span>
-)
-
-<span style="color:#75715e">//gob实现了codec接口
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">GobCodec</span> <span style="color:#66d9ef">struct</span> {
-   <span style="color:#a6e22e">conn</span>  <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>
-   <span style="color:#a6e22e">enc</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gob</span>.<span style="color:#a6e22e">Encoder</span>
-   <span style="color:#a6e22e">dec</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gob</span>.<span style="color:#a6e22e">Decoder</span>
-   <span style="color:#a6e22e">buf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">Writer</span>
-}
-
-<span style="color:#75715e">//GobCodec 的构造方法
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewGobCodec</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>) <span style="color:#a6e22e">Codec</span>{
-   <span style="color:#a6e22e">buff</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewWriter</span>(<span style="color:#a6e22e">conn</span>)
-   <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">GobCodec</span>{
-      <span style="color:#a6e22e">conn</span>:<span style="color:#a6e22e">conn</span>,
-      <span style="color:#a6e22e">buf</span>:<span style="color:#a6e22e">buff</span>,
-      <span style="color:#a6e22e">enc</span>:<span style="color:#a6e22e">gob</span>.<span style="color:#a6e22e">NewEncoder</span>(<span style="color:#a6e22e">buff</span>), <span style="color:#75715e">//编码到buff里
-</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">dec</span>:<span style="color:#a6e22e">gob</span>.<span style="color:#a6e22e">NewDecoder</span>(<span style="color:#a6e22e">conn</span>),  <span style="color:#75715e">//从conn解码
-</span><span style="color:#75715e"></span>   }
-}
-
-<span style="color:#75715e">//实现GobCodec的读写方法
+<p>一个支持rpc调用的函数大概长下面这个样子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">T</span>) <span style="color:#a6e22e">MethodName</span>(<span style="color:#a6e22e">argType</span> <span style="color:#a6e22e">T1</span>, <span style="color:#a6e22e">replyType</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">T2</span>) <span style="color:#66d9ef">error</span>
+</code></pre></div><p>因此我们先抽象出一个调用结构体Call，包含了一次rpc调用包含的所有信息，每个call还有个done函数用来通知调用方调用已结束</p>
+<p>client/client.go</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Call</span> <span style="color:#66d9ef">struct</span>{
+   <span style="color:#a6e22e">Seq</span> <span style="color:#66d9ef">uint64</span> <span style="color:#75715e">//序列号，标志一次请求
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">ServiceMethod</span> <span style="color:#66d9ef">string</span> <span style="color:#75715e">//请求服务和方法
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">Args</span> <span style="color:#66d9ef">interface</span>{} <span style="color:#75715e">//调用参数
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">Reply</span> <span style="color:#66d9ef">interface</span>{} <span style="color:#75715e">//回复参数
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">Error</span> <span style="color:#66d9ef">error</span> <span style="color:#75715e">//错误信息
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">Done</span> <span style="color:#66d9ef">chan</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span> <span style="color:#75715e">//当一次调用完成，用于通知调用方
 </span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">GobCodec</span>) <span style="color:#a6e22e">ReadHeader</span>(<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>) <span style="color:#66d9ef">error</span> {
-   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">dec</span>.<span style="color:#a6e22e">Decode</span>(<span style="color:#a6e22e">h</span>)
 }
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">GobCodec</span>) <span style="color:#a6e22e">ReadBody</span>(<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span>{
-   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">dec</span>.<span style="color:#a6e22e">Decode</span>(<span style="color:#a6e22e">body</span>)
+<span style="color:#75715e">//支持异步调用，使用channel来通知调用方
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">call</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span>) <span style="color:#a6e22e">done</span>() {
+	<span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Done</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">call</span>
 }
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">GobCodec</span>) <span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>,<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}) (<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>){
-   <span style="color:#75715e">// 写完要从buf里flush到io然后关闭
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>(){
-      <span style="color:#a6e22e">_</span> =<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">Flush</span>()
-      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
-         <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Close</span>()
-      }
-   }()
-
-   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">h</span>);<span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc codec: gob error encoding header:&#34;</span>, <span style="color:#a6e22e">err</span>)
-      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-   }
-   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">body</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc codec: gob error encoding body:&#34;</span>, <span style="color:#a6e22e">err</span>)
-      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-   }
-   <span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">nil</span>
-}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">GobCodec</span>) <span style="color:#a6e22e">Close</span>() <span style="color:#66d9ef">error</span>{
-   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
-
-}
-</code></pre></div><p>Day1/codec/json.go</p>
-<p>json的实现和gob一样</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">codec</span>
-
-<span style="color:#f92672">import</span> (
-   <span style="color:#e6db74">&#34;bufio&#34;</span>
-   <span style="color:#e6db74">&#34;encoding/json&#34;</span>
-   <span style="color:#e6db74">&#34;io&#34;</span>
-   <span style="color:#e6db74">&#34;log&#34;</span>
-)
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">JsonCodec</span> <span style="color:#66d9ef">struct</span> {
-   <span style="color:#a6e22e">conn</span>  <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>
-   <span style="color:#a6e22e">enc</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Encoder</span>
-   <span style="color:#a6e22e">dec</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Decoder</span>
-   <span style="color:#a6e22e">buf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">Writer</span>
-}
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewJsonCodec</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>) <span style="color:#a6e22e">Codec</span>{
-   <span style="color:#a6e22e">buff</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewWriter</span>(<span style="color:#a6e22e">conn</span>)
-   <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">JsonCodec</span>{
-      <span style="color:#a6e22e">conn</span>:<span style="color:#a6e22e">conn</span>,
-      <span style="color:#a6e22e">buf</span>:<span style="color:#a6e22e">buff</span>,
-      <span style="color:#a6e22e">enc</span>:<span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewEncoder</span>(<span style="color:#a6e22e">buff</span>), <span style="color:#75715e">//编码到buff里
-</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">dec</span>:<span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewDecoder</span>(<span style="color:#a6e22e">conn</span>), <span style="color:#75715e">//从conn解码
-</span><span style="color:#75715e"></span>   }
-}
-
-<span style="color:#75715e">//实现JsonCodec的读写方法
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">JsonCodec</span>) <span style="color:#a6e22e">ReadHeader</span>(<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>) <span style="color:#66d9ef">error</span> {
-   <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">dec</span>.<span style="color:#a6e22e">Decode</span>(<span style="color:#a6e22e">h</span>)
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">JsonCodec</span>) <span style="color:#a6e22e">ReadBody</span>(<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span>{
-   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">dec</span>.<span style="color:#a6e22e">Decode</span>(<span style="color:#a6e22e">body</span>)
-}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">JsonCodec</span>) <span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Header</span>,<span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}) (<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>){
-   <span style="color:#75715e">// 写完要从buf里flush到io然后关闭
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>(){
-
-      <span style="color:#a6e22e">_</span> =<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">Flush</span>()
-      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
-         <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Close</span>()
-      }
-
-   }()
-   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">h</span>);<span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc codec: json error encoding header:&#34;</span>, <span style="color:#a6e22e">err</span>)
-      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-   }
-   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">enc</span>.<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">body</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc codec: json error encoding body:&#34;</span>, <span style="color:#a6e22e">err</span>)
-      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-   }
-   <span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">nil</span>
-}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">JsonCodec</span>) <span style="color:#a6e22e">Close</span>() <span style="color:#66d9ef">error</span>{
-   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
-
-}
-</code></pre></div><hr>
-<p>协议格式：</p>
-<p>客户端和服务器通信内容主要按照以下方式进行序列化</p>
+</code></pre></div><p>rpc客户端的重要部分是client结构，每个client可以发出多次调用，所以他需要包含下列字段：</p>
 <ul>
-<li>Option部分采用固定编码格式，Option决定了后面消息内容使用什么编码格式</li>
-<li>Header包含了调用的方法和服务名以及序列号</li>
-<li>body包含了参数argv和回复replyv的结构体</li>
+<li>Codec 是消息的编解码器，和服务端类似，用来序列化将要发送出去的请求，以及反序列化接收到的响应。</li>
+<li>sending 是一个互斥锁，和服务端类似，为了保证请求的有序发送，即防止出现多个请求报文混淆。</li>
+<li>header 是每个请求的消息头，header 只有在请求发送时才需要，而请求发送是互斥的，因此每个客户端只需要一个，声明在 Client 结构体中可以复用。</li>
+<li>seq 用于给发送的请求编号，每个请求拥有唯一编号。</li>
+<li>pending 是一个存储调用的map，存储未处理完的请求，键是编号，值是 Call 实例。</li>
+<li>Closed 和 shutdown 任意一个值置为 true，则表示 Client 处于不可用的状态，但有些许的差别，closed 是用户主动关闭的，即调用 <code>Close</code> 方法，而 shutdown 置为 true 一般是有错误发生。</li>
 </ul>
-<blockquote>
-<p>| Option{MagicNumber: xxx, CodecType: xxx} | Header{ServiceMethod &hellip;} | Body interface{} |
-| &lt;&mdash;&mdash;      固定 JSON 编码      &mdash;&mdash;&gt;  | &lt;&mdash;&mdash;-   编码方式由 CodeType 决定   &mdash;&mdash;-&gt;|</p>
-</blockquote>
-<p>决定了通信协议并且实现了编码器接口后，可以写一个简单的server来负责接收客户端的请求并进行解码和回复</p>
-<p>Day1/server.go</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">geerpc</span>
-
-<span style="color:#f92672">import</span> (
-   <span style="color:#e6db74">&#34;encoding/json&#34;</span>
-   <span style="color:#e6db74">&#34;fmt&#34;</span>
-   <span style="color:#e6db74">&#34;geerpc/codec&#34;</span>
-   <span style="color:#e6db74">&#34;io&#34;</span>
-   <span style="color:#e6db74">&#34;log&#34;</span>
-   <span style="color:#e6db74">&#34;net&#34;</span>
-   <span style="color:#e6db74">&#34;reflect&#34;</span>
-   <span style="color:#e6db74">&#34;sync&#34;</span>
-)
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MagicNumber</span> = <span style="color:#ae81ff">0x3bef5c</span>
-
-<span style="color:#75715e">//option 用于决定通信协议类型
-</span><span style="color:#75715e">//整个RPC编码的格式如下
-</span><span style="color:#75715e">//| Option{MagicNumber: xxx, CodecType: xxx} | Header{ServiceMethod ...} | Body interface{} |
-</span><span style="color:#75715e">//| &lt;------      固定 JSON 编码      ------&gt;  | &lt;-------   编码方式由 CodeType 决定   -------&gt;|
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Option</span> <span style="color:#66d9ef">struct</span> {
-   <span style="color:#a6e22e">MagicNumber</span> <span style="color:#66d9ef">int</span>        <span style="color:#75715e">// MagicNumber marks this&#39;s a geerpc request
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">CodecType</span>   <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Type</span> <span style="color:#75715e">// client may choose different Codec to encode body
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Client</span> <span style="color:#66d9ef">struct</span>{
+   <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>
+   <span style="color:#a6e22e">h</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>
+   <span style="color:#a6e22e">seq</span> <span style="color:#66d9ef">uint64</span>
+   <span style="color:#a6e22e">opt</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Option</span>
+   <span style="color:#a6e22e">sending</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
+   <span style="color:#a6e22e">mu</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>
+   <span style="color:#a6e22e">pending</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">uint64</span>]<span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span>
+   <span style="color:#a6e22e">closed</span> <span style="color:#66d9ef">bool</span>  <span style="color:#75715e">// user has called Close
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">shutdown</span> <span style="color:#66d9ef">bool</span> <span style="color:#75715e">// server has told us to stop
 </span><span style="color:#75715e"></span>}
 
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">DefaultOption</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Option</span>{
-   <span style="color:#a6e22e">MagicNumber</span>: <span style="color:#a6e22e">MagicNumber</span>,
-   <span style="color:#a6e22e">CodecType</span>:   <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">GobType</span>,
-   <span style="color:#75715e">//CodecType:   codec.JsonType,
-</span><span style="color:#75715e"></span>}
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Server</span> <span style="color:#66d9ef">struct</span> {}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewServer</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>{
-   <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Server</span>{}
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">_</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Closer</span> = (<span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>)(<span style="color:#66d9ef">nil</span>) <span style="color:#75715e">//这一步是为了保证client继承了closer接口
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ErrShutdown</span> = <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;connection is shut down&#34;</span>)
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">Close</span>() <span style="color:#66d9ef">error</span> {
+	<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+	<span style="color:#66d9ef">defer</span>  <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">closed</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ErrShutdown</span>
+	}
+	<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">closed</span> = <span style="color:#66d9ef">true</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Close</span>()
 }
-<span style="color:#75715e">// DefaultServer is the default instance of *Server. 默认的server，方便一会测试
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">DefaultServer</span> = <span style="color:#a6e22e">NewServer</span>()
 
-<span style="color:#75715e">// 服务端的任务就是接受请求，处理和回复请求
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">lis</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Listener</span>){
-   <span style="color:#75715e">// 无限循环一直监听网络
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">for</span>{
-      <span style="color:#a6e22e">conn</span>,<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">lis</span>.<span style="color:#a6e22e">Accept</span>()
-      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
-         <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: accept error:&#34;</span>, <span style="color:#a6e22e">err</span>)
-         <span style="color:#66d9ef">return</span>
+<span style="color:#75715e">// IsAvailable return true if the client does work 判断客户端是否可用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">IsAvailable</span>() <span style="color:#66d9ef">bool</span> {
+	<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+	<span style="color:#66d9ef">return</span> !<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">shutdown</span> <span style="color:#f92672">&amp;&amp;</span> !<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">closed</span>
+}
+</code></pre></div><p>client 结构内部需要有注册调用，删除调用，终止调用三个内部方法</p>
+<ul>
+<li>registerCall 把一个调用Call注册到client中pending结构中，client的seq+1</li>
+<li>removeCall 把一个调用Call从client中删除，可能是调用已结束或者出错</li>
+<li>terminateCalls client出错，把所有的Call都结束掉</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//把这个调用注册进clien实例；注册成功返回序列号
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">registerCall</span>(<span style="color:#a6e22e">call</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span>)  (<span style="color:#66d9ef">uint64</span>,<span style="color:#66d9ef">error</span>){
+   <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+   <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">shutdown</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">closed</span>{
+      <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>,<span style="color:#a6e22e">ErrShutdown</span>
+   }
+   <span style="color:#75715e">//如果客户端没有关闭
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Seq</span>=<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">seq</span>
+   <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">pending</span>[<span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Seq</span>]=<span style="color:#a6e22e">call</span>
+   <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">seq</span><span style="color:#f92672">++</span>
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Seq</span>,<span style="color:#66d9ef">nil</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">removeCall</span>(<span style="color:#a6e22e">seq</span> <span style="color:#66d9ef">uint64</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span> {
+   <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+   <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+   <span style="color:#a6e22e">call</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">pending</span>[<span style="color:#a6e22e">seq</span>]
+   delete(<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">pending</span>,<span style="color:#a6e22e">seq</span>)
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">call</span>
+}
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">terminateCalls</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>){
+   <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">sending</span>.<span style="color:#a6e22e">Lock</span>()
+   <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">sending</span>.<span style="color:#a6e22e">Unlock</span>()
+   <span style="color:#75715e">//先停止发送，再关闭
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Lock</span>()
+   <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">mu</span>.<span style="color:#a6e22e">Unlock</span>()
+   <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">shutdown</span> = <span style="color:#66d9ef">true</span>
+   <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>,<span style="color:#a6e22e">call</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">pending</span>{
+      <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Error</span>=<span style="color:#a6e22e">err</span>
+      <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">done</span>()
+   }
+
+}
+</code></pre></div><p>有了上面的三个基本函数，就可以实现客户端client最基本的功能了，发送请求和接收回复</p>
+<p>接受回复有可能有下面几种情况</p>
+<ul>
+<li>call调用不存在，即这个call可能已经被client结束了，那么把回复body接收完继续接受他的call，不管这个了</li>
+<li>call存在，但是接收到的header有错误，即服务端回复了错误，那么结束这个call并把错误信息写入call结构体</li>
+<li>正常情况，接收回复信息到reply结构中，结束这个call调用</li>
+</ul>
+<p>发送请求的流程是：</p>
+<ul>
+<li>注册Call调用到client中</li>
+<li>修改cli的header的信息用于发送这个调用</li>
+<li>编码并且发送请求</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//对一个客户端端来说，接收响应、发送请求是最重要的 2 个功能。
+</span><span style="color:#75715e">//接受请求
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">receive</span>(){
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+   <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>{
+      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">h</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ReadHeader</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">h</span>);<span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+         <span style="color:#66d9ef">break</span>
       }
-      <span style="color:#75715e">//每接受一个连接开一个goroutine处理请求
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">ServerConn</span>(<span style="color:#a6e22e">conn</span>)
-   }
-}
-<span style="color:#75715e">// Accept accepts connections on the listener and serves requests
-</span><span style="color:#75715e">// for each incoming connection.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">lis</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Listener</span>) { <span style="color:#a6e22e">DefaultServer</span>.<span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">lis</span>) }
-
-<span style="color:#75715e">// 消息的格式可能是如下| Option | Header1 | Body1 | Header2 | Body2 | ...
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">ServerConn</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ReadWriteCloser</span>) {
-   <span style="color:#75715e">//先decode Option
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">option</span> <span style="color:#a6e22e">Option</span>
-  <span style="color:#75715e">//if err := gob.NewDecoder(conn).Decode(&amp;option); err!=nil
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewDecoder</span>(<span style="color:#a6e22e">conn</span>).<span style="color:#a6e22e">Decode</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">option</span>); <span style="color:#a6e22e">err</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: options error: &#34;</span>, <span style="color:#a6e22e">err</span>)
-      <span style="color:#66d9ef">return</span>
-   }
-   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">option</span>.<span style="color:#a6e22e">MagicNumber</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">MagicNumber</span> {
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;rpc server: invalid magic number %x&#34;</span>, <span style="color:#a6e22e">option</span>.<span style="color:#a6e22e">MagicNumber</span>)
-      <span style="color:#66d9ef">return</span>
-   }
-   <span style="color:#a6e22e">f</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">NewCodecFuncMap</span>[<span style="color:#a6e22e">option</span>.<span style="color:#a6e22e">CodecType</span>] <span style="color:#75715e">//根据编码类型选择编码器初始化函数
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>{
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;rpc server: invalid codec type %s&#34;</span>, <span style="color:#a6e22e">option</span>.<span style="color:#a6e22e">CodecType</span>)
-      <span style="color:#66d9ef">return</span>
-   }
-   <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">ServerCodec</span>(<span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">conn</span>))
-}
-<span style="color:#75715e">// invalidRequest is a placeholder for response argv when error occurs
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">invalidRequest</span> = <span style="color:#66d9ef">struct</span>{ }{}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">ServerCodec</span>( <span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>){
-   <span style="color:#a6e22e">sending</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>) <span style="color:#75715e">// 添加互斥锁保证每条回复完整发送
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>)  <span style="color:#75715e">// wait until all request are handled
-</span><span style="color:#75715e"></span>
-   <span style="color:#66d9ef">for</span>{
-      <span style="color:#a6e22e">req</span>,<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">readRequest</span>(<span style="color:#a6e22e">c</span>)<span style="color:#75715e">//读请求
-</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
-         <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">req</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>{
-            <span style="color:#66d9ef">break</span>
+      <span style="color:#a6e22e">call</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">removeCall</span>(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Seq</span>)
+      <span style="color:#66d9ef">switch</span>  {
+      <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">call</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>:
+         <span style="color:#75715e">//call位nil，证明这个调用已经被停止了
+</span><span style="color:#75715e"></span>         <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ReadBody</span>(<span style="color:#66d9ef">nil</span>) <span style="color:#75715e">//把body从io读出来
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Error</span> <span style="color:#f92672">!=</span><span style="color:#e6db74">&#34;&#34;</span>:
+         <span style="color:#75715e">//call存在但是error不为空，服务端报错
+</span><span style="color:#75715e"></span>         <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Error</span> = <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Error</span>)
+         <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ReadBody</span>(<span style="color:#66d9ef">nil</span>)
+         <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">done</span>()
+      <span style="color:#66d9ef">default</span>:
+         <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ReadBody</span>(<span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Reply</span>)
+         <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Error</span> = <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;reading body &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>())
          }
-         <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Error</span> = <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>()
-         <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">sendResponse</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">invalidRequest</span>, <span style="color:#a6e22e">sending</span>)
-         <span style="color:#66d9ef">continue</span>
+         <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">done</span>()
       }
-      <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
-      <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">handleRequest</span>(<span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">sending</span>, <span style="color:#a6e22e">wg</span>)<span style="color:#75715e">//处理请求
-</span><span style="color:#75715e"></span>   }
-   <span style="color:#75715e">//没有请求了会跳出循环
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
-   <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Close</span>()
+   }
+   <span style="color:#75715e">//call 有错误，要结束这个客户端
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">terminateCalls</span>(<span style="color:#a6e22e">err</span>)
+}
+<span style="color:#75715e">// 发送请求
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">call</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span>) {
+	<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">sending</span>.<span style="color:#a6e22e">Lock</span>()
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">sending</span>.<span style="color:#a6e22e">Unlock</span>()
+	<span style="color:#a6e22e">seq</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">registerCall</span>(<span style="color:#a6e22e">call</span>)<span style="color:#75715e">//发送得先注册到client
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Error</span> = <span style="color:#a6e22e">err</span>
+		<span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">done</span>()
+		<span style="color:#66d9ef">return</span>
+	}
+	<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">ServiceMethod</span> = <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">ServiceMethod</span>
+	<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Seq</span> = <span style="color:#a6e22e">seq</span>
+	<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Error</span>=<span style="color:#e6db74">&#34;&#34;</span>
+
+	<span style="color:#75715e">//encode
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">h</span>,<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Args</span>);<span style="color:#a6e22e">err</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+		<span style="color:#a6e22e">call</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">removeCall</span>(<span style="color:#a6e22e">seq</span>)
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">call</span> <span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
+			<span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Error</span> = <span style="color:#a6e22e">err</span>
+			<span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">done</span>()
+		}
+	}
+
 }
 
-<span style="color:#75715e">//serveCodec 的过程
-</span><span style="color:#75715e">//读取请求 readRequest
-</span><span style="color:#75715e">//处理请求 handleRequest
-</span><span style="color:#75715e">//回复请求 sendResponse
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span>  <span style="color:#a6e22e">request</span> <span style="color:#66d9ef">struct</span>{
-   <span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>
-   <span style="color:#a6e22e">argv</span>,<span style="color:#a6e22e">replyv</span> <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">Value</span>
-}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">readRequstHeader</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>,<span style="color:#66d9ef">error</span>){
-   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">h</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>
-   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ReadHeader</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">h</span>) ; <span style="color:#a6e22e">err</span><span style="color:#f92672">!=</span><span style="color:#66d9ef">nil</span>{
-      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
-      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">EOF</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">ErrUnexpectedEOF</span> {
-
-         <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: read header error:&#34;</span>, <span style="color:#a6e22e">err</span>)
-      }
+</code></pre></div><p>现在客户端已经具有发送和接收的能力，接下来我们写一下客户端client的构造和初始化函数：</p>
+<p>首先new一个client实例出来然后将option发送给server，协商好通信格式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//创建Client实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewClient</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Conn</span>,<span style="color:#a6e22e">opt</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Option</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>,<span style="color:#66d9ef">error</span>){
+   <span style="color:#a6e22e">f</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">NewCodecFuncMap</span>[<span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">CodecType</span>]
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">f</span> <span style="color:#f92672">==</span><span style="color:#66d9ef">nil</span>{
+      <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;invalid codec type %s&#34;</span>, <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">CodecType</span>)
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc client: codec error:&#34;</span>, <span style="color:#a6e22e">err</span>)
       <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
    }
-   <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">h</span>,<span style="color:#66d9ef">nil</span>
+   <span style="color:#75715e">//要把option先发给服务端
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewEncoder</span>(<span style="color:#a6e22e">conn</span>).<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">opt</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc client: options error: &#34;</span>, <span style="color:#a6e22e">err</span>)
+      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+   }
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">newClientCodec</span>(<span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">conn</span>), <span style="color:#a6e22e">opt</span>), <span style="color:#66d9ef">nil</span>
 }
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">readRequest</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">request</span>, <span style="color:#66d9ef">error</span>){
-   <span style="color:#75715e">//读头部
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">h</span>,<span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">readRequstHeader</span>(<span style="color:#a6e22e">c</span>)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">newClientCodec</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>,<span style="color:#a6e22e">opt</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Option</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>{
+   <span style="color:#a6e22e">client</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Client</span>{
+      <span style="color:#a6e22e">c</span>:<span style="color:#a6e22e">c</span>,
+      <span style="color:#a6e22e">seq</span>:<span style="color:#ae81ff">1</span>,
+      <span style="color:#a6e22e">opt</span>:<span style="color:#a6e22e">opt</span>,
+      <span style="color:#a6e22e">pending</span>: make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">uint64</span>]<span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span>),
+   }
+   <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">receive</span>()
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">client</span>
+}
+</code></pre></div><p>客户端暴露出来的函数主要有以下三个：</p>
+<ul>
+<li>Dial 函数：连接server并且创建出一个client实例</li>
+<li>Call函数：发出一个RPC调用，回去掉Go执行一个调用；<code>Call</code> 是对 <code>Go</code> 的封装，阻塞 call.Done，等待响应返回，是一个同步接口</li>
+<li>Go：执行一个调用</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//发送主要是实现一个Dial函数，调用远端函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Dial</span>( <span style="color:#a6e22e">network</span>,<span style="color:#a6e22e">address</span> <span style="color:#66d9ef">string</span>,<span style="color:#a6e22e">opts</span> <span style="color:#f92672">...*</span><span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Option</span>) (<span style="color:#a6e22e">client</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>,<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>){
+   <span style="color:#a6e22e">opt</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">parseOptions</span>(<span style="color:#a6e22e">opts</span><span style="color:#f92672">...</span>)
    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
       <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
    }
-   <span style="color:#a6e22e">req</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">request</span>{<span style="color:#a6e22e">h</span>: <span style="color:#a6e22e">h</span>}
-   <span style="color:#75715e">// TODO: now we don&#39;t know the type of request argv
-</span><span style="color:#75715e"></span>   <span style="color:#75715e">// day 1, just suppose it&#39;s string暂时现使用string作为参数
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">argv</span> = <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(<span style="color:#e6db74">&#34;&#34;</span>))
-   <span style="color:#75715e">//读body
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ReadBody</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">argv</span>.<span style="color:#a6e22e">Interface</span>()); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: read argv err:&#34;</span>, <span style="color:#a6e22e">err</span>)
+   <span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#a6e22e">network</span>, <span style="color:#a6e22e">address</span>) <span style="color:#75715e">//连接服务器
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
    }
-   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">req</span>, <span style="color:#66d9ef">nil</span>
+   <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+      <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">client</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+         <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
+      }
+   }()
+   <span style="color:#75715e">//创建客户端
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">client</span>,<span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewClient</span>(<span style="color:#a6e22e">conn</span>,<span style="color:#a6e22e">opt</span>)
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">client</span>,<span style="color:#a6e22e">e</span>
 }
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">handleRequest</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">request</span>, <span style="color:#a6e22e">sending</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>, <span style="color:#a6e22e">wg</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>){
-   <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
-   <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">argv</span>.<span style="color:#a6e22e">Elem</span>())
-   <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">replyv</span> = <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">ValueOf</span>(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;geerpc resp %d&#34;</span>, <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Seq</span>))
-   <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">sendResponse</span>(<span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">h</span>,<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">replyv</span>.<span style="color:#a6e22e">Interface</span>(),<span style="color:#a6e22e">sending</span>)
-}
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">sendResponse</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Codec</span>, <span style="color:#a6e22e">h</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>, <span style="color:#a6e22e">body</span> <span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">sending</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">Mutex</span>){
-   <span style="color:#a6e22e">sending</span>.<span style="color:#a6e22e">Lock</span>()
-   <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">sending</span>.<span style="color:#a6e22e">Unlock</span>()
-   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">body</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;rpc server: write response error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+<span style="color:#75715e">//用于解析用户的option要求
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">parseOptions</span>(<span style="color:#a6e22e">opts</span> <span style="color:#f92672">...*</span><span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Option</span>)(<span style="color:#f92672">*</span><span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Option</span>,<span style="color:#66d9ef">error</span>){
+
+   <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">opts</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">opts</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">DefaultOption</span>)
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">DefaultOption</span>, <span style="color:#66d9ef">nil</span>
    }
+   <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">opts</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;number of options is more than 1&#34;</span>)
+   }
+   <span style="color:#a6e22e">opt</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">opts</span>[<span style="color:#ae81ff">0</span>]
+   <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">MagicNumber</span> = <span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">DefaultOption</span>.<span style="color:#a6e22e">MagicNumber</span>
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">CodecType</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> {
+      <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">CodecType</span> =<span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">DefaultOption</span>.<span style="color:#a6e22e">CodecType</span>
+   }
+
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">opt</span>, <span style="color:#66d9ef">nil</span>
 }
-</code></pre></div><blockquote>
-<p>sync.WaitGroup 的作用：用于阻塞等待一组Go 程的结束</p>
-<p>​	主 Go 程调用 Add() 来设置等待的 Go 程数，然后该组中的每个 Go 程都需要在运行结束时调用 Done()， 递减 WaitGroup 的 Go 程计数器 counter。当 counter 变为 0 时，主 Go 程（需要在调用wait()）被唤醒继续执行。</p>
-<p>​	waitgroup可以让住go程等待所有子go程接受然后继续执行</p>
-<p>request结构体包含了请求头和传递的参数，参数是动态变化的所以采用reflect包来定义</p>
-<p>​	type  request struct{</p>
-<p>​	  	 h *codec.Header
-argv,replyv reflect.Value
-​	}</p>
-<p>releact反射机制：</p>
-<p>​	对于每个变量都有{Type,Value}两个部分，通过TypeOf和ValueOf可以获取</p>
-</blockquote>
-<hr>
-<p>简单的接受rpc的server已经写好了，server会一直监听并且并发地处理请求，接下来写一个main函数测试一下</p>
-<p>Day1/main/main.go</p>
+
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">Go</span>(<span style="color:#a6e22e">serviceMethod</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span>, <span style="color:#a6e22e">reply</span> <span style="color:#66d9ef">interface</span>{}, <span style="color:#a6e22e">done</span> <span style="color:#66d9ef">chan</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span> {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">done</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">done</span> = make(<span style="color:#66d9ef">chan</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span>, <span style="color:#ae81ff">10</span>)
+	} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> cap(<span style="color:#a6e22e">done</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Panic</span>(<span style="color:#e6db74">&#34;rpc client: done channel is unbuffered&#34;</span>)
+	}
+	<span style="color:#a6e22e">call</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Call</span>{
+		<span style="color:#a6e22e">ServiceMethod</span>: <span style="color:#a6e22e">serviceMethod</span>,
+		<span style="color:#a6e22e">Args</span>:          <span style="color:#a6e22e">args</span>,
+		<span style="color:#a6e22e">Reply</span>:         <span style="color:#a6e22e">reply</span>,
+		<span style="color:#a6e22e">Done</span>:          <span style="color:#a6e22e">done</span>,
+	}
+	<span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">call</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">call</span>
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">cli</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>) <span style="color:#a6e22e">Call</span>(<span style="color:#a6e22e">serviceMethod</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">args</span>, <span style="color:#a6e22e">reply</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">error</span> {
+	<span style="color:#a6e22e">call</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">Go</span>(<span style="color:#a6e22e">serviceMethod</span>, <span style="color:#a6e22e">args</span>, <span style="color:#a6e22e">reply</span>, make(<span style="color:#66d9ef">chan</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Call</span>, <span style="color:#ae81ff">1</span>)).<span style="color:#a6e22e">Done</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">call</span>.<span style="color:#a6e22e">Error</span>
+}
+</code></pre></div><hr>
+<p>接下来修改一下main函数，测试我们的client：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> (
-   <span style="color:#e6db74">&#34;encoding/gob&#34;</span>
-   <span style="color:#e6db74">&#34;encoding/json&#34;</span>
    <span style="color:#e6db74">&#34;fmt&#34;</span>
    <span style="color:#e6db74">&#34;geerpc&#34;</span>
-   <span style="color:#e6db74">&#34;geerpc/codec&#34;</span>
+   <span style="color:#e6db74">&#34;geerpc/client&#34;</span>
    <span style="color:#e6db74">&#34;log&#34;</span>
    <span style="color:#e6db74">&#34;net&#34;</span>
+   <span style="color:#e6db74">&#34;sync&#34;</span>
    <span style="color:#e6db74">&#34;time&#34;</span>
 )
 
@@ -714,42 +620,70 @@ argv,replyv reflect.Value
    }
    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;start rpc server on&#34;</span>, <span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Addr</span>())
    <span style="color:#a6e22e">addr</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Addr</span>().<span style="color:#a6e22e">String</span>()
-   <span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">l</span>) <span style="color:#75715e">//调用服务器监听客户端
-</span><span style="color:#75715e"></span>}
+   <span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">Accept</span>(<span style="color:#a6e22e">l</span>)
+}
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
    <span style="color:#a6e22e">addr</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>) <span style="color:#75715e">//addr是一个 string类型的chan
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">startServer</span>(<span style="color:#a6e22e">addr</span>) <span style="color:#75715e">//一个go协程启动一个server， addr是个通道将服务器信息传出来
-</span><span style="color:#75715e"></span>
-  <span style="color:#75715e">//下面是模拟的客户端
-</span><span style="color:#75715e"></span>   <span style="color:#75715e">// in fact, following code is like a simple geerpc client
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#e6db74">&#34;tcp&#34;</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">addr</span>)<span style="color:#75715e">//连接服务器
-</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() { <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>() }()
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">startServer</span>(<span style="color:#a6e22e">addr</span>)
+
+   <span style="color:#75715e">// in fact, following code is like a simple geerpc client
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">cli</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#e6db74">&#34;tcp&#34;</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">addr</span>)<span style="color:#75715e">//连接服务器
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() { <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">Close</span>() }()
 
    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
    <span style="color:#75715e">// send options
-</span><span style="color:#75715e">// 消息的格式可能是如下| Option | Header1 | Body1 | Header2 | Body2 | ...
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">NewEncoder</span>(<span style="color:#a6e22e">conn</span>).<span style="color:#a6e22e">Encode</span>(<span style="color:#a6e22e">geerpc</span>.<span style="color:#a6e22e">DefaultOption</span>)  <span style="color:#75715e">//先发送option
-</span><span style="color:#75715e"></span>   <span style="color:#75715e">//_ = gob.NewEncoder(conn).Encode(geerpc.DefaultOption)  
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)  <span style="color:#75715e">//important！  如果option和header&amp;body用一种编码方式，可能合成一个包发送过去了，server那边解码option的时候把header忽略了，导致server在等header，client在等reply阻塞住
-</span><span style="color:#75715e"></span>   <span style="color:#75715e">//cc := codec.NewJsonCodec(conn)
-</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">cc</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">NewGobCodec</span>(<span style="color:#a6e22e">conn</span>)
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
    <span style="color:#75715e">// send request &amp; receive response
 </span><span style="color:#75715e"></span>   <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-      <span style="color:#a6e22e">h</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">codec</span>.<span style="color:#a6e22e">Header</span>{
-         <span style="color:#a6e22e">ServiceMethod</span>: <span style="color:#e6db74">&#34;Foo.Sum&#34;</span>,
-         <span style="color:#a6e22e">Seq</span>:           uint64(<span style="color:#a6e22e">i</span>),
-         <span style="color:#a6e22e">Error</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-      }
-      <span style="color:#a6e22e">t</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;geerpc req %d&#34;</span>, <span style="color:#a6e22e">h</span>.<span style="color:#a6e22e">Seq</span>)
-      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">h</span>, <span style="color:#a6e22e">t</span>)
-      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">ReadHeader</span>(<span style="color:#a6e22e">h</span>)
-      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">reply</span> <span style="color:#66d9ef">string</span>
-      <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">cc</span>.<span style="color:#a6e22e">ReadBody</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">reply</span>)
-      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;reply:&#34;</span>, <span style="color:#a6e22e">reply</span>)
+      <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+      <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>){
+         <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+         <span style="color:#a6e22e">args</span><span style="color:#f92672">:=</span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;geerpc req %d&#34;</span>, <span style="color:#a6e22e">i</span>)
+         <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">reply</span> <span style="color:#66d9ef">string</span>
+         <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cli</span>.<span style="color:#a6e22e">Call</span>(<span style="color:#e6db74">&#34;Foo.Sum&#34;</span>, <span style="color:#a6e22e">args</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">reply</span>);<span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+            <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;call Foo.Sum error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+         }
+         <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;reply:&#34;</span>, <span style="color:#a6e22e">reply</span>)
+      }(<span style="color:#a6e22e">i</span>)
+      <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
    }
 }
-</code></pre></div>
+</code></pre></div><hr>
+<p>测试结果大致如下：</p>
+<blockquote>
+<p>2022/01/24 14:09:23 start rpc server on [::]:50354
+2022/01/24 14:09:24 &amp;{Foo.Sum 1 } geerpc req 0
+2022/01/24 14:09:24 reply: geerpc resp 1
+2022/01/24 14:09:24 &amp;{Foo.Sum 2 } geerpc req 1
+2022/01/24 14:09:24 reply: geerpc resp 2
+2022/01/24 14:09:24 &amp;{Foo.Sum 3 } geerpc req 2
+2022/01/24 14:09:24 reply: geerpc resp 3
+2022/01/24 14:09:24 &amp;{Foo.Sum 4 } geerpc req 3
+2022/01/24 14:09:24 reply: geerpc resp 4
+2022/01/24 14:09:24 &amp;{Foo.Sum 5 } geerpc req 4
+2022/01/24 14:09:24 reply: geerpc resp 5</p>
+</blockquote>
+<p>但是默认编码使用gob编码会出现：</p>
+<blockquote>
+<p>2022/01/24 14:10:24 start rpc server on [::]:50437
+2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
+2022/01/24 14:10:25 &amp;{Foo.Sum 1 }
+2022/01/24 14:10:25 reply: geerpc resp 1
+2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
+2022/01/24 14:10:25 &amp;{Foo.Sum 2 }
+2022/01/24 14:10:25 reply: geerpc resp 2
+2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
+2022/01/24 14:10:25 &amp;{Foo.Sum 3 }
+2022/01/24 14:10:25 reply: geerpc resp 3
+2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
+2022/01/24 14:10:25 &amp;{Foo.Sum 4 }
+2022/01/24 14:10:25 reply: geerpc resp 4
+2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
+2022/01/24 14:10:25 &amp;{Foo.Sum 5 }
+2022/01/24 14:10:25 reply: geerpc resp 5</p>
+</blockquote>
+<p>不影响通信但还没找到原因是什么</p>
               
               
 
@@ -778,7 +712,7 @@ argv,replyv reflect.Value
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1/" data-tooltip="搭建简单Rpc框架--Day1" aria-label="NEXT: 搭建简单Rpc框架--Day1">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -786,7 +720,7 @@ argv,replyv reflect.Value
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-tooltip="如何使用hugo&#43;githubpage搭建个人博客" aria-label="PREVIOUS: 如何使用hugo&#43;githubpage搭建个人博客">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1/" data-tooltip="搭建简单Rpc框架--Day1" aria-label="PREVIOUS: 搭建简单Rpc框架--Day1">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -883,7 +817,7 @@ argv,replyv reflect.Value
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1/" data-tooltip="搭建简单Rpc框架--Day1" aria-label="NEXT: 搭建简单Rpc框架--Day1">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -891,7 +825,7 @@ argv,replyv reflect.Value
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8hugo&#43;githubpage%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-tooltip="如何使用hugo&#43;githubpage搭建个人博客" aria-label="PREVIOUS: 如何使用hugo&#43;githubpage搭建个人博客">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day1/" data-tooltip="搭建简单Rpc框架--Day1" aria-label="PREVIOUS: 搭建简单Rpc框架--Day1">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
