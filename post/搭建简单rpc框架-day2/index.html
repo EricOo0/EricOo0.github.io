@@ -652,36 +652,36 @@ if (!doNotTrack) {
 </code></pre></div><hr>
 <p>测试结果大致如下：</p>
 <blockquote>
-<p>2022/01/24 14:09:23 start rpc server on [::]:50354
-2022/01/24 14:09:24 &amp;{Foo.Sum 1 } geerpc req 0
-2022/01/24 14:09:24 reply: geerpc resp 1
-2022/01/24 14:09:24 &amp;{Foo.Sum 2 } geerpc req 1
-2022/01/24 14:09:24 reply: geerpc resp 2
-2022/01/24 14:09:24 &amp;{Foo.Sum 3 } geerpc req 2
-2022/01/24 14:09:24 reply: geerpc resp 3
-2022/01/24 14:09:24 &amp;{Foo.Sum 4 } geerpc req 3
-2022/01/24 14:09:24 reply: geerpc resp 4
-2022/01/24 14:09:24 &amp;{Foo.Sum 5 } geerpc req 4
-2022/01/24 14:09:24 reply: geerpc resp 5</p>
+<p>2022/01/24 14:09:23 start rpc server on [::]:50354</p>
+<p>2022/01/24 14:09:24 &amp;{Foo.Sum 1 } geerpc req 0</p>
+<p>2022/01/24 14:09:24 reply: geerpc resp 1</p>
+<p>2022/01/24 14:09:24 &amp;{Foo.Sum 2 } geerpc req 1</p>
+<p>2022/01/24 14:09:24 reply: geerpc resp 2</p>
+<p>2022/01/24 14:09:24 &amp;{Foo.Sum 3 } geerpc req 2</p>
+<p>2022/01/24 14:09:24 reply: geerpc resp 3</p>
+<p>2022/01/24 14:09:24 &amp;{Foo.Sum 4 } geerpc req 3</p>
+<p>2022/01/24 14:09:24 reply: geerpc resp 4</p>
+<p>2022/01/24 14:09:24 &amp;{Foo.Sum 5 } geerpc req 4</p>
+<p>2022/01/24 14:09:24 reply: geerpc resp 5</p>
 </blockquote>
 <p>但是默认编码使用gob编码会出现：</p>
 <blockquote>
-<p>2022/01/24 14:10:24 start rpc server on [::]:50437
-2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
-2022/01/24 14:10:25 &amp;{Foo.Sum 1 }
-2022/01/24 14:10:25 reply: geerpc resp 1
-2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
-2022/01/24 14:10:25 &amp;{Foo.Sum 2 }
-2022/01/24 14:10:25 reply: geerpc resp 2
-2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
-2022/01/24 14:10:25 &amp;{Foo.Sum 3 }
-2022/01/24 14:10:25 reply: geerpc resp 3
-2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
-2022/01/24 14:10:25 &amp;{Foo.Sum 4 }
-2022/01/24 14:10:25 reply: geerpc resp 4
-2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface
-2022/01/24 14:10:25 &amp;{Foo.Sum 5 }
-2022/01/24 14:10:25 reply: geerpc resp 5</p>
+<p>2022/01/24 14:10:24 start rpc server on [::]:50437</p>
+<p>2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface</p>
+<p>2022/01/24 14:10:25 &amp;{Foo.Sum 1 }</p>
+<p>2022/01/24 14:10:25 reply: geerpc resp 1</p>
+<p>2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface</p>
+<p>2022/01/24 14:10:25 &amp;{Foo.Sum 2 }</p>
+<p>2022/01/24 14:10:25 reply: geerpc resp 2</p>
+<p>2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface</p>
+<p>2022/01/24 14:10:25 &amp;{Foo.Sum 3 }</p>
+<p>2022/01/24 14:10:25 reply: geerpc resp 3</p>
+<p>2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface</p>
+<p>2022/01/24 14:10:25 &amp;{Foo.Sum 4 }</p>
+<p>2022/01/24 14:10:25 reply: geerpc resp 4</p>
+<p>2022/01/24 14:10:25 rpc server: read argv err: gob: decoding into local type *string, received remote type interface</p>
+<p>2022/01/24 14:10:25 &amp;{Foo.Sum 5 }</p>
+<p>2022/01/24 14:10:25 reply: geerpc resp 5</p>
 </blockquote>
 <p>不影响通信但还没找到原因是什么</p>
               
