@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>搭建简单Rpc框架--Day4</title>
+      <link>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day4/</link>
+      <pubDate>Tue, 25 Jan 2022 14:11:53 +0800</pubDate>
+      
+      <guid>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day4/</guid>
+      <description>&lt;p&gt;本文参考7天用Go从零实现RPC框架GeeRPC的第四篇，搭建一个简单的Rpc服务&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>搭建简单Rpc框架--Day2</title>
       <link>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day2/</link>
       <pubDate>Mon, 24 Jan 2022 14:11:53 +0800</pubDate>
