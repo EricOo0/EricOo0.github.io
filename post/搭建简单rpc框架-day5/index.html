@@ -1,0 +1,840 @@
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-217602882-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/zhifengwei.site",
+  "author": {
+    "@type": "Person",
+    "name": "Eric_wzf",
+    
+    "image": "https://zhifengwei.site/img/icon.png"
+    
+  },
+  "name":"Eric_wzf\u0027s BLOG",
+  "description":"\u003cp\u003e本文参考7天用Go从零实现RPC框架GeeRPC的第五篇，搭建一个简单的Rpc服务\u003c\/p\u003e",
+  "url":"https:\/\/zhifengwei.site\/post\/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.84.3 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Eric_wzf">
+<meta name="keywords" content="">
+<meta name="description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第五篇，搭建一个简单的Rpc服务">
+
+
+<meta property="og:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第五篇，搭建一个简单的Rpc服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建简单Rpc框架--Day5">
+<meta name="twitter:title" content="搭建简单Rpc框架--Day5">
+<meta property="og:url" content="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/">
+<meta property="twitter:url" content="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/">
+<meta property="og:site_name" content="Eric_wzf&#39;s BLOG">
+<meta property="og:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第五篇，搭建一个简单的Rpc服务">
+<meta name="twitter:description" content="本文参考7天用Go从零实现RPC框架GeeRPC的第五篇，搭建一个简单的Rpc服务">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-01-27T14:11:53">
+  
+  
+    <meta property="article:modified_time" content="2022-01-27T14:11:53">
+  
+  
+  
+    
+      <meta property="article:section" content="Go">
+    
+      <meta property="article:section" content="Rpc">
+    
+  
+  
+    
+      <meta property="article:tag" content="">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zhifengwei.site/img/icon.png">
+  <meta property="twitter:image" content="https://zhifengwei.site/img/icon.png">
+
+
+
+
+
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
+
+
+    <title>搭建简单Rpc框架--Day5</title>
+
+    <link rel="icon" href="https://zhifengwei.site/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.css" integrity="sha512-MLcK/YRapzET1qTBXrOiZE6bGBgtATMo2bIyalVJ8EKDEGNoeA3SPQkvWAR0zNS650YG13ocXBMeioDuZcSRuQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://zhifengwei.site/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://zhifengwei.site/css/toc.css">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-217602882-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+
+  <body>
+    
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zhifengwei.site/" aria-label="Go to homepage">Eric_wzf&#39;s BLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zhifengwei.site/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zhifengwei.site/img/icon.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zhifengwei.site/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://zhifengwei.site/img/icon.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Eric_wzf</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/gallery" title="Gallery">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-image" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Gallery</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/friends" title="友情链接">
+    
+      <i class="sidebar-button-icon fas fa fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">友情链接</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" target="_blank" rel="noopener" title="Stack Overflow">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-stack-overflow" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      搭建简单Rpc框架--Day5
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-01-27T14:11:53&#43;08:00">
+        
+  January 27, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://zhifengwei.site/categories/go">Go</a>, 
+    
+      <a class="category-link" href="https://zhifengwei.site/categories/rpc">Rpc</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              
+
+              
+              <p>本文参考7天用Go从零实现RPC框架GeeRPC的第五篇，搭建一个简单的Rpc服务</p>
+<h1 id="day-5">Day 5</h1>
+<p>使RPC服务支持HTTP协议建立连接
+<code>通信的流程：</code></p>
+<ul>
+<li>
+<p>客户端向服务器发送CONNECT请求</p>
+<pre><code>CONNECT 10.0.0.1:9999/_geerpc_ HTTP/1.0
+</code></pre></li>
+<li>
+<p>服务器提取出TCP连接并回复200OK</p>
+<pre><code>HTTP/1.0 200 Connected to Gee RPC
+</code></pre></li>
+<li>
+<p>客户端可以使用创建好的连接发送 RPC 报文，服务端处理RPC请求</p>
+<p><code>服务端：</code></p>
+<p>客户端发送的http请求<code>&quot;/_geeprc_&quot;</code>会触发<code>http.Handle(defaultRPCPath, server)</code>函数</p>
+<p>如果不是CONNECT则返回405错误；否则利用<code>w.(http.Hijacker).Hijack() </code>提取出这个HTTP请求的TCP连接来接管请求</p>
+<p>回复给客户端200 ok然后调用ServerConn等待处理rpc调用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">const</span> (
+	<span style="color:#a6e22e">Connected</span>        = <span style="color:#e6db74">&#34;200 Connected to Gee RPC&#34;</span>
+	<span style="color:#a6e22e">DefaultRPCPath</span>   = <span style="color:#e6db74">&#34;/_geeprc_&#34;</span>
+	<span style="color:#a6e22e">DefaultDebugPath</span> = <span style="color:#e6db74">&#34;/debug/geerpc&#34;</span>
+)
+<span style="color:#75715e">// server 实现了ServeHTTP函数，即实现了handler接口，http请求来了就会调用
+</span><span style="color:#75715e">// ServeHTTP implements an http.Handler that answers RPC requests.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">ServeHTTP</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Method</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;CONNECT&#34;</span> {
+      <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;text/plain; charset=utf-8&#34;</span>)
+      <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">WriteHeader</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusMethodNotAllowed</span>)
+      <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">WriteString</span>(<span style="color:#a6e22e">w</span>, <span style="color:#e6db74">&#34;405 must CONNECT\n&#34;</span>)
+      <span style="color:#66d9ef">return</span>
+	}
+	<span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">w</span>.(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Hijacker</span>).<span style="color:#a6e22e">Hijack</span>()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#e6db74">&#34;rpc hijacking &#34;</span>, <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">RemoteAddr</span>, <span style="color:#e6db74">&#34;: &#34;</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>())
+      <span style="color:#66d9ef">return</span>
+	}
+	<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">WriteString</span>(<span style="color:#a6e22e">conn</span>, <span style="color:#e6db74">&#34;HTTP/1.0 &#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">Connected</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;\n\n&#34;</span>)
+	<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">ServerConn</span>(<span style="color:#a6e22e">conn</span>)
+}
+
+<span style="color:#75715e">// HandleHTTP registers an HTTP handler for RPC messages on rpcPath.
+</span><span style="color:#75715e">// It is still necessary to invoke http.Serve(), typically in a go statement.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Server</span>) <span style="color:#a6e22e">HandleHTTP</span>() {
+	<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#a6e22e">DefaultRPCPath</span>, <span style="color:#a6e22e">s</span>)
+}
+
+<span style="color:#75715e">// 设置默认handler方便测试
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">HandleHTTP</span>() {
+	<span style="color:#a6e22e">DefaultServer</span>.<span style="color:#a6e22e">HandleHTTP</span>()
+}
+</code></pre></div></li>
+</ul>
+<p>​	<code>客户端测</code></p>
+<p>​	服务端侧已经可以接受Conncect请求了，客户端需要做的就是发起connect</p>
+<p>​	调用NewHttpClient使用HTTP创建一个连接</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// NewHTTPClient new a Client instance via HTTP as transport protocol
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewHTTPClient</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Conn</span>, <span style="color:#a6e22e">opt</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">Option</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">WriteString</span>(<span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;CONNECT %s HTTP/1.0\n\n&#34;</span>, <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">DefaultRPCPath</span>)) <span style="color:#75715e">//发出HTTP请求
+</span><span style="color:#75715e"></span>
+	<span style="color:#75715e">// Require successful HTTP response
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// before switching to RPC protocol.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//服务器的回复不是http格式，要转换成http格式的回复
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//ReadResponse reads and returns an HTTP response from r
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ReadResponse</span>(<span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewReader</span>(<span style="color:#a6e22e">conn</span>), <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>{<span style="color:#a6e22e">Method</span>: <span style="color:#e6db74">&#34;CONNECT&#34;</span>})
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Status</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">Connected</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NewClient</span>(<span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">opt</span>)<span style="color:#75715e">//建立一个tcp客户端
+</span><span style="color:#75715e"></span>	}
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;unexpected HTTP response: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Status</span>)
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+}
+
+<span style="color:#75715e">// DialHTTP connects to an HTTP RPC server at the specified network address
+</span><span style="color:#75715e">// listening on the default HTTP RPC path.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DialHTTP</span>(<span style="color:#a6e22e">network</span>, <span style="color:#a6e22e">address</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">opts</span> <span style="color:#f92672">...*</span><span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">Option</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dialTimeout</span>(<span style="color:#a6e22e">NewHTTPClient</span>, <span style="color:#a6e22e">network</span>, <span style="color:#a6e22e">address</span>, <span style="color:#a6e22e">opts</span><span style="color:#f92672">...</span>)
+}
+
+</code></pre></div><p>简化不同协议的可以统一调用入口：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">XDial</span>(<span style="color:#a6e22e">rpcAddr</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">opts</span> <span style="color:#f92672">...*</span><span style="color:#a6e22e">Option</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">Client</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#a6e22e">parts</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Split</span>(<span style="color:#a6e22e">rpcAddr</span>, <span style="color:#e6db74">&#34;@&#34;</span>)
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">parts</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">2</span> {
+		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;rpc client err: wrong format &#39;%s&#39;, expect protocol@addr&#34;</span>, <span style="color:#a6e22e">rpcAddr</span>)
+	}
+	<span style="color:#a6e22e">protocol</span>, <span style="color:#a6e22e">addr</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">parts</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">parts</span>[<span style="color:#ae81ff">1</span>]
+	<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">protocol</span> {
+	<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;http&#34;</span>:
+		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">DialHTTP</span>(<span style="color:#e6db74">&#34;tcp&#34;</span>, <span style="color:#a6e22e">addr</span>, <span style="color:#a6e22e">opts</span><span style="color:#f92672">...</span>)
+	<span style="color:#66d9ef">default</span>:
+		<span style="color:#75715e">// tcp, unix or other transport protocol
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Dial</span>(<span style="color:#a6e22e">protocol</span>, <span style="color:#a6e22e">addr</span>, <span style="color:#a6e22e">opts</span><span style="color:#f92672">...</span>)
+	}
+}
+</code></pre></div><p>测试demo：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;context&#34;</span>
+	<span style="color:#e6db74">&#34;geerpc/client&#34;</span>
+	<span style="color:#e6db74">&#34;geerpc/service&#34;</span>
+	<span style="color:#e6db74">&#34;log&#34;</span>
+	<span style="color:#e6db74">&#34;net&#34;</span>
+	<span style="color:#e6db74">&#34;net/http&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#75715e">//服务端测
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Foo</span> <span style="color:#66d9ef">int</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Args</span> <span style="color:#66d9ef">struct</span>{ <span style="color:#a6e22e">Num1</span>, <span style="color:#a6e22e">Num2</span> <span style="color:#66d9ef">int</span> }
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">f</span> <span style="color:#a6e22e">Foo</span>) <span style="color:#a6e22e">Sum</span>(<span style="color:#a6e22e">args</span> <span style="color:#a6e22e">Args</span>, <span style="color:#a6e22e">reply</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#f92672">*</span><span style="color:#a6e22e">reply</span> = <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">Num1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">Num2</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">startServer</span>(<span style="color:#a6e22e">addrCh</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>) {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">foo</span> <span style="color:#a6e22e">Foo</span>
+	<span style="color:#a6e22e">l</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Listen</span>(<span style="color:#e6db74">&#34;tcp&#34;</span>, <span style="color:#e6db74">&#34;:9999&#34;</span>)
+	<span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">Register</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">foo</span>)
+	<span style="color:#a6e22e">service</span>.<span style="color:#a6e22e">HandleHTTP</span>() <span style="color:#75715e">//处理http
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">addrCh</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">l</span>.<span style="color:#a6e22e">Addr</span>().<span style="color:#a6e22e">String</span>()
+	<span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Serve</span>(<span style="color:#a6e22e">l</span>, <span style="color:#66d9ef">nil</span>) <span style="color:#75715e">//相当于listenandserver函数，监听这个接口的http请求
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#75715e">//客户端测
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">addrCh</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>) {
+	<span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">DialHTTP</span>(<span style="color:#e6db74">&#34;tcp&#34;</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">addrCh</span>) <span style="color:#75715e">//使用http调用
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() { <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Close</span>() }()
+
+	<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+	<span style="color:#75715e">// send request &amp; receive response
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+		<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) {
+			<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+			<span style="color:#a6e22e">args</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Args</span>{<span style="color:#a6e22e">Num1</span>: <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">Num2</span>: <span style="color:#a6e22e">i</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">i</span>}
+			<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">reply</span> <span style="color:#66d9ef">int</span>
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Call</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#e6db74">&#34;Foo.Sum&#34;</span>, <span style="color:#a6e22e">args</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">reply</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+				<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;call Foo.Sum error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+			}
+			<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%d + %d = %d&#34;</span>, <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">Num1</span>, <span style="color:#a6e22e">args</span>.<span style="color:#a6e22e">Num2</span>, <span style="color:#a6e22e">reply</span>)
+		}(<span style="color:#a6e22e">i</span>)
+	}
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">SetFlags</span>(<span style="color:#ae81ff">0</span>)
+	<span style="color:#a6e22e">ch</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">string</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">ch</span>)
+	<span style="color:#a6e22e">startServer</span>(<span style="color:#a6e22e">ch</span>)
+}
+</code></pre></div><p>使用HTTP协议(CONNECT方法)和服务端建立了连接，之后的客户端的RPC请求应该就是普通的tcp包了</p>
+              
+              
+
+
+            </div>
+          </div>
+          
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zhifengwei.site/tags//"></a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day6/" data-tooltip="搭建简单Rpc框架--Day6" aria-label="NEXT: 搭建简单Rpc框架--Day6">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day3/" data-tooltip="搭建简单Rpc框架--Day3" aria-label="PREVIOUS: 搭建简单Rpc框架--Day3">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#gitalk" aria-label="Leave a comment">
+        <i class="fa fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="gitalk">
+      <noscript>Please enable JavaScript to view the comments powered by Gitalk.</noscript>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js" integrity="sha512-EcTCcXV46teiNwe0VcnM5A038tcY+BaQYO4nW6Gh2i7v4/HjBVg7xx3+JBLl9WofDds//INJAiEGAtdgr8PWyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+      (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('gitalk').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+          return;
+        }
+        new Gitalk({
+          clientID: '2a33128cf6c77debcaa3',
+          clientSecret: '71eb66f11b3c6d7a3da10dc5678717a3c3a51e4d',
+          repo: 'EricOo0.github.io',
+          owner: 'EricOo0',
+          admin: ['EricOo0'],
+          id: '49640f9ae4337cd469dce275c52e64d5',
+          ...{"distractionfreemode":false,"enablehotkey":true,"language":"en","pagerdirection":"first","perpage":10}
+        }).render('gitalk')
+      })()
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Eric_wzf. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day6/" data-tooltip="搭建简单Rpc框架--Day6" aria-label="NEXT: 搭建简单Rpc框架--Day6">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day3/" data-tooltip="搭建简单Rpc框架--Day3" aria-label="PREVIOUS: 搭建简单Rpc框架--Day3">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#gitalk" aria-label="Leave a comment">
+        <i class="fa fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+        
+      </div>
+      
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzhifengwei.site%2Fpost%2F%25E6%2590%25AD%25E5%25BB%25BA%25E7%25AE%2580%25E5%258D%2595rpc%25E6%25A1%2586%25E6%259E%25B6-day5%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzhifengwei.site%2Fpost%2F%25E6%2590%25AD%25E5%25BB%25BA%25E7%25AE%2580%25E5%258D%2595rpc%25E6%25A1%2586%25E6%259E%25B6-day5%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fzhifengwei.site%2Fpost%2F%25E6%2590%25AD%25E5%25BB%25BA%25E7%25AE%2580%25E5%258D%2595rpc%25E6%25A1%2586%25E6%259E%25B6-day5%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+      
+    </div>
+    
+
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zhifengwei.site/img/icon.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Eric_wzf</h4>
+    
+      <div id="about-card-bio"><strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        R&amp;D
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        China Shenzhen
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zhifengwei.site/images/cover_new.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://zhifengwei.site/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

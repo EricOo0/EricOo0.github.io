@@ -6,7 +6,34 @@
     <description>Recent content on Eric_wzf&#39;s BLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jan 2022 14:11:53 +0800</lastBuildDate><atom:link href="https://zhifengwei.site/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Jan 2022 14:11:53 +0800</lastBuildDate><atom:link href="https://zhifengwei.site/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建简单Rpc框架--Day7</title>
+      <link>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day7/</link>
+      <pubDate>Sun, 30 Jan 2022 14:11:53 +0800</pubDate>
+      
+      <guid>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day7/</guid>
+      <description>&lt;p&gt;本文参考7天用Go从零实现RPC框架GeeRPC的第七篇，搭建一个简单的Rpc服务&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建简单Rpc框架--Day6</title>
+      <link>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day6/</link>
+      <pubDate>Sat, 29 Jan 2022 14:11:53 +0800</pubDate>
+      
+      <guid>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day6/</guid>
+      <description>&lt;p&gt;本文参考7天用Go从零实现RPC框架GeeRPC的第六篇，搭建一个简单的Rpc服务&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建简单Rpc框架--Day5</title>
+      <link>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/</link>
+      <pubDate>Thu, 27 Jan 2022 14:11:53 +0800</pubDate>
+      
+      <guid>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day5/</guid>
+      <description>&lt;p&gt;本文参考7天用Go从零实现RPC框架GeeRPC的第五篇，搭建一个简单的Rpc服务&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>搭建简单Rpc框架--Day3</title>
       <link>https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day3/</link>
