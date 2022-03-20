@@ -1,0 +1,1301 @@
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-217602882-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/zhifengwei.site",
+  "author": {
+    "@type": "Person",
+    "name": "Eric_wzf",
+    
+    "image": "https://zhifengwei.site/img/icon.png"
+    
+  },
+  "name":"Eric_wzf\u0027s BLOG",
+  "description":"",
+  "url":"https:\/\/zhifengwei.site\/post\/mq\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.84.3 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Eric_wzf">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="延时队列">
+<meta name="twitter:title" content="延时队列">
+<meta property="og:url" content="https://zhifengwei.site/post/mq/">
+<meta property="twitter:url" content="https://zhifengwei.site/post/mq/">
+<meta property="og:site_name" content="Eric_wzf&#39;s BLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-03-20T14:31:53">
+  
+  
+    <meta property="article:modified_time" content="2022-03-20T14:31:53">
+  
+  
+  
+    
+      <meta property="article:section" content="Go">
+    
+      <meta property="article:section" content="MQ">
+    
+  
+  
+    
+      <meta property="article:tag" content="">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zhifengwei.site/img/icon.png">
+  <meta property="twitter:image" content="https://zhifengwei.site/img/icon.png">
+
+
+
+
+
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/japanese-test-post/peak-140.jpg">
+
+
+    <title>延时队列</title>
+
+    <link rel="icon" href="https://zhifengwei.site/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zhifengwei.site/post/mq/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.css" integrity="sha512-MLcK/YRapzET1qTBXrOiZE6bGBgtATMo2bIyalVJ8EKDEGNoeA3SPQkvWAR0zNS650YG13ocXBMeioDuZcSRuQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://zhifengwei.site/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://zhifengwei.site/css/toc.css">
+      
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-217602882-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+
+  <body>
+    
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zhifengwei.site/" aria-label="Go to homepage">Eric_wzf&#39;s BLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zhifengwei.site/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zhifengwei.site/img/icon.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zhifengwei.site/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://zhifengwei.site/img/icon.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Eric_wzf</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/gallery" title="Gallery">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-image" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Gallery</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/friends" title="友情链接">
+    
+      <i class="sidebar-button-icon fas fa fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">友情链接</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/EricOo0" target="_blank" rel="noopener" title="Stack Overflow">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-stack-overflow" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zhifengwei.site/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      延时队列
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-03-20T14:31:53&#43;08:00">
+        
+  March 20, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://zhifengwei.site/categories/go">Go</a>, 
+    
+      <a class="category-link" href="https://zhifengwei.site/categories/mq">MQ</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              
+
+              
+              <h1 id="延时队列">延时队列</h1>
+<p>常用的延时队列实现方式</p>
+<hr>
+<h1 id="延迟队列">延迟队列</h1>
+<p>生产场景中延迟队列的应用很普遍</p>
+<ul>
+<li>下单后20分钟未支付取消</li>
+<li>下单后1分钟后发送通知</li>
+</ul>
+<p>例如这些需要延迟一段时间的操作，都称作延时任务，可以使用延时队列实现</p>
+<h2 id="实现方式">实现方式：</h2>
+<p>1、数据库轮询</p>
+<p>创建一个线程去轮询订单表，查看订单时间是否符合要求，然后进行表的更新操作(如超时则修改订单为已取消等)</p>
+<p>问题：数据量大的时候，轮询数据库太慢，数据库压力大</p>
+<p>2、使用redis做延时队列</p>
+<p>redis 的有序集合zset可以用来做延时队列</p>
+<p>​	 ZADD key score1 member1 [score2 member2]</p>
+<p>​	向有序集合中的key添加成员member1，排序的依据的score1</p>
+<p>​	ZRANGE key start stop [WITHSCORES]</p>
+<p>​	通过索引区间返回有序集合指定区间内的成员,按照score从小到大</p>
+<p>​	ZREVRANGE key start stop [WITHSCORES]</p>
+<p>​	通过索引区间返回有序集合指定区间内的成员,按照score从大到小</p>
+<p>所以把商品的时间戳作为score放入redis，每次处理最小的时间戳，即最早的商品</p>
+<p>Example:</p>
+<p>​	brew services start redid &ndash;启动redis服务</p>
+<p>​	redis-cli &ndash;启动redis 客户端</p>
+<p>​	flushdb &ndash;清空数据库</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;fmt&#34;</span>
+   <span style="color:#e6db74">&#34;github.com/go-redis/redis&#34;</span>
+   <span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;github.com/go-redis/redis&#34;</span>
+   <span style="color:#e6db74">&#34;sync&#34;</span>
+   <span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#a6e22e">redisCli</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">redis</span>.<span style="color:#a6e22e">NewClient</span>(
+      <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">redis</span>.<span style="color:#a6e22e">Options</span>{
+         <span style="color:#a6e22e">Addr</span>:     <span style="color:#e6db74">&#34;127.0.0.1:6379&#34;</span>,
+         <span style="color:#a6e22e">Password</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+         <span style="color:#a6e22e">DB</span>:       <span style="color:#ae81ff">0</span>,
+      })
+
+   <span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+   <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">client</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">redis</span>.<span style="color:#a6e22e">Client</span>) {
+      <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+      <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+         <span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+         <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">ZAdd</span>(<span style="color:#e6db74">&#34;delay_queue&#34;</span>, <span style="color:#a6e22e">redis</span>.<span style="color:#a6e22e">Z</span>{float64(<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Unix</span>()), <span style="color:#a6e22e">i</span>})
+         <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;生产延时消息%d:%v \n&#34;</span>, <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Format</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>))
+         <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+      }
+   }(<span style="color:#a6e22e">redisCli</span>)
+   <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+   <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">client</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">redis</span>.<span style="color:#a6e22e">Client</span>) {
+      <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+      <span style="color:#a6e22e">tmp</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">ParseDuration</span>(<span style="color:#e6db74">&#34;-20s&#34;</span>)
+      <span style="color:#66d9ef">for</span> {
+         <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">ZRangeWithScores</span>(<span style="color:#e6db74">&#34;delay_queue&#34;</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">Result</span>()
+         <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;err:&#34;</span>, <span style="color:#a6e22e">err</span>)
+            <span style="color:#66d9ef">break</span>
+         }
+         <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">res</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+            <span style="color:#66d9ef">break</span>
+         }
+         <span style="color:#66d9ef">if</span> int64(<span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">Score</span>) &lt; <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">Add</span>(<span style="color:#a6e22e">tmp</span>).<span style="color:#a6e22e">Unix</span>() {
+            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;消费延时信息&#34;</span>, <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">Member</span>, <span style="color:#e6db74">&#34;:&#34;</span>, <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Unix</span>(int64(<span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">Score</span>), <span style="color:#ae81ff">0</span>))
+            <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">ZRem</span>(<span style="color:#e6db74">&#34;delay_queue&#34;</span>, <span style="color:#a6e22e">res</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">Member</span>)
+         }
+      }
+   }(<span style="color:#a6e22e">redisCli</span>)
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+</code></pre></div><p>3、利用rabbitmq的死信队列做延时</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5015984-367dd717d89ae5db.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="img"></p>
+<p><!-- raw HTML omitted --></p>
+<p>go get github.com/streadway/amqp</p>
+<p>先实现一个基本的生产消费队列：</p>
+<p><a href="https://blog.csdn.net/bestmy/article/details/84304964">https://blog.csdn.net/bestmy/article/details/84304964</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;fmt&#34;</span>
+   <span style="color:#e6db74">&#34;github.com/streadway/amqp&#34;</span>
+   <span style="color:#e6db74">&#34;log&#34;</span>
+   <span style="color:#e6db74">&#34;sync&#34;</span>
+)
+
+<span style="color:#66d9ef">const</span> (
+   <span style="color:#a6e22e">rmqUrl</span> = <span style="color:#e6db74">&#34;amqp://guest:guest@127.0.0.1:5672/&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">RabittMq</span> <span style="color:#66d9ef">struct</span> {
+   <span style="color:#a6e22e">Conn</span>      <span style="color:#f92672">*</span><span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Connection</span>
+   <span style="color:#a6e22e">Channel</span>   <span style="color:#f92672">*</span><span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Channel</span>
+   <span style="color:#a6e22e">QueueName</span> <span style="color:#66d9ef">string</span>
+   <span style="color:#a6e22e">Exchang</span>   <span style="color:#66d9ef">string</span>
+   <span style="color:#a6e22e">Key</span>       <span style="color:#66d9ef">string</span>
+   <span style="color:#a6e22e">Mqurl</span>     <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#75715e">//创建一个rabittmq 实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewRabitMq</span>(<span style="color:#a6e22e">queneName</span>, <span style="color:#a6e22e">exchange</span>, <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span> {
+   <span style="color:#a6e22e">rmq</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">RabittMq</span>{
+      <span style="color:#a6e22e">QueueName</span>: <span style="color:#a6e22e">queneName</span>,
+      <span style="color:#a6e22e">Exchang</span>:   <span style="color:#a6e22e">exchange</span>,
+      <span style="color:#a6e22e">Key</span>:       <span style="color:#a6e22e">key</span>,
+      <span style="color:#a6e22e">Mqurl</span>:     <span style="color:#a6e22e">rmqUrl</span>,
+   }
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+   <span style="color:#75715e">//连接消息队列mq
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#a6e22e">rmqUrl</span>)
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;Dial error:%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#75715e">//channel()开启一个处理消息的信道
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Channel</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>.<span style="color:#a6e22e">Channel</span>()
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;open channel error:%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rmq</span>
+
+}
+
+<span style="color:#75715e">// 关闭实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DestroyMq</span>(<span style="color:#a6e22e">rmq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#66d9ef">error</span> {
+   <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Close</span>()
+   <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>.<span style="color:#a6e22e">Close</span>()
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+}
+
+<span style="color:#75715e">// 简单的例子
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#a6e22e">queueName</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span> {
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NewRabitMq</span>(<span style="color:#a6e22e">queueName</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+}
+
+<span style="color:#75715e">//生成者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">mq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#a6e22e">Publish</span>(<span style="color:#a6e22e">message</span> <span style="color:#66d9ef">string</span>) {
+   <span style="color:#75715e">//申请一个queue
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(
+      <span style="color:#75715e">//队列名
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">QueueName</span>,
+      <span style="color:#75715e">//持久化
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//自动删除
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//p排他性
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//阻塞
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">nil</span>,
+   )
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;queue declare error(public):%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#75715e">//发消息到队列中
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Publish</span>(
+      <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Exchang</span>,
+      <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">QueueName</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Publishing</span>{
+         <span style="color:#a6e22e">ContentType</span>: <span style="color:#e6db74">&#34;text/plain&#34;</span>,
+         <span style="color:#a6e22e">Body</span>:        []byte(<span style="color:#a6e22e">message</span>),
+      },
+   )
+}
+
+<span style="color:#75715e">//消费者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">mq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#a6e22e">Comsume</span>() {
+   <span style="color:#75715e">//申请一个queue
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(
+      <span style="color:#75715e">//队列名
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">QueueName</span>,
+      <span style="color:#75715e">//持久化
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//自动删除
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//p排他性
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//阻塞
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">nil</span>,
+   )
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;queue declare error(consume):%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#75715e">//发消息到队列中
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">msgs</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Consume</span>(
+      <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">QueueName</span>,
+      <span style="color:#e6db74">&#34;&#34;</span>,
+      <span style="color:#66d9ef">true</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">nil</span>,
+   )
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+   }
+
+   <span style="color:#75715e">// 启用携程处理消息
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+   <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+      <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+      <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">msgs</span> {
+         <span style="color:#75715e">// 实现我们要实现的逻辑函数
+</span><span style="color:#75715e"></span>         <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Received a message: %s&#34;</span>, <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">Body</span>)
+         <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">Body</span>)
+      }
+   }()
+   <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;[*] Waiting for message, To exit press CTRL+C&#34;</span>)
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+   <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+      <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+      <span style="color:#a6e22e">rabbitmq</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#e6db74">&#34;imoocSimple&#34;</span>)
+      <span style="color:#a6e22e">rabbitmq</span>.<span style="color:#a6e22e">Publish</span>(<span style="color:#e6db74">&#34;Hello goFrame!&#34;</span>)
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;发送成功&#34;</span>)
+   }()
+   <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+      <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+      <span style="color:#a6e22e">rabbitmq</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#e6db74">&#34;imoocSimple&#34;</span>)
+
+      <span style="color:#a6e22e">rabbitmq</span>.<span style="color:#a6e22e">Comsume</span>()
+   }()
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+</code></pre></div><p>上面是使用rabittmq的默认exchange进行分发，下面定义一个exchange来转发</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+   <span style="color:#e6db74">&#34;fmt&#34;</span>
+   <span style="color:#e6db74">&#34;github.com/streadway/amqp&#34;</span>
+   <span style="color:#e6db74">&#34;log&#34;</span>
+   <span style="color:#e6db74">&#34;sync&#34;</span>
+)
+
+<span style="color:#66d9ef">const</span> (
+   <span style="color:#a6e22e">rmqUrl</span> = <span style="color:#e6db74">&#34;amqp://guest:guest@127.0.0.1:5672/&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">RabittMq</span> <span style="color:#66d9ef">struct</span> {
+   <span style="color:#a6e22e">Conn</span>      <span style="color:#f92672">*</span><span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Connection</span>
+   <span style="color:#a6e22e">Channel</span>   <span style="color:#f92672">*</span><span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Channel</span>
+   <span style="color:#a6e22e">QueueName</span> <span style="color:#66d9ef">string</span>
+   <span style="color:#a6e22e">Exchang</span>   <span style="color:#66d9ef">string</span>
+   <span style="color:#a6e22e">Key</span>       <span style="color:#66d9ef">string</span>
+   <span style="color:#a6e22e">Mqurl</span>     <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#75715e">//创建一个rabittmq 实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewRabitMq</span>(<span style="color:#a6e22e">queneName</span>, <span style="color:#a6e22e">exchange</span>, <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span> {
+   <span style="color:#a6e22e">rmq</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">RabittMq</span>{
+      <span style="color:#a6e22e">QueueName</span>: <span style="color:#a6e22e">queneName</span>,
+      <span style="color:#a6e22e">Exchang</span>:   <span style="color:#a6e22e">exchange</span>,
+      <span style="color:#a6e22e">Key</span>:       <span style="color:#a6e22e">key</span>,
+      <span style="color:#a6e22e">Mqurl</span>:     <span style="color:#a6e22e">rmqUrl</span>,
+   }
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+   <span style="color:#75715e">//连接消息队列mq
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#a6e22e">rmqUrl</span>)
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;Dial error:%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#75715e">//channel()开启一个处理消息的信道
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Channel</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>.<span style="color:#a6e22e">Channel</span>()
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;open channel error:%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rmq</span>
+
+}
+
+<span style="color:#75715e">// 关闭实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DestroyMq</span>(<span style="color:#a6e22e">rmq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#66d9ef">error</span> {
+   <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Close</span>()
+   <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>.<span style="color:#a6e22e">Close</span>()
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+}
+
+<span style="color:#75715e">// 简单的例子
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#a6e22e">queueName</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span> {
+   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NewRabitMq</span>(<span style="color:#a6e22e">queueName</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+}
+
+<span style="color:#75715e">//生成者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">mq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#a6e22e">Publish</span>(<span style="color:#a6e22e">message</span> <span style="color:#66d9ef">string</span>) {
+   <span style="color:#75715e">//申请一个exchange
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">ExchangeDeclare</span>(
+      <span style="color:#e6db74">&#34;exchange1&#34;</span>,
+      <span style="color:#e6db74">&#34;direct&#34;</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;exchange declare error :%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#75715e">//申请一个queue
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(
+      <span style="color:#75715e">//队列名
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">QueueName</span>,
+      <span style="color:#75715e">//持久化
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//自动删除
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//p排他性
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//阻塞
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">nil</span>,
+   )
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;queue declare error(public):%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#75715e">//把queue和exchange绑定，binding key 是 testkey1
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueBind</span>(<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">QueueName</span>, <span style="color:#e6db74">&#34;testkey1&#34;</span>, <span style="color:#e6db74">&#34;exchange1&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+   <span style="color:#75715e">//发消息到队列中,使用exchange1，routinekey是testkey1，因为是direc使用使用全匹配
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Publish</span>(
+      <span style="color:#e6db74">&#34;exchange1&#34;</span>,
+      <span style="color:#e6db74">&#34;testkey1&#34;</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Publishing</span>{
+         <span style="color:#a6e22e">ContentType</span>: <span style="color:#e6db74">&#34;text/plain&#34;</span>,
+         <span style="color:#a6e22e">Body</span>:        []byte(<span style="color:#a6e22e">message</span>),
+      },
+   )
+}
+
+<span style="color:#75715e">//消费者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">mq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#a6e22e">Comsume</span>() {
+   <span style="color:#75715e">//申请一个queue
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(
+      <span style="color:#75715e">//队列名
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">QueueName</span>,
+      <span style="color:#75715e">//持久化
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//自动删除
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//p排他性
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#75715e">//阻塞
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">nil</span>,
+   )
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;queue declare error(consume):%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+   }
+   <span style="color:#75715e">//到那个queue收消息
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">msgs</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Consume</span>(
+      <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">QueueName</span>,
+      <span style="color:#e6db74">&#34;any&#34;</span>,
+      <span style="color:#66d9ef">true</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">false</span>,
+      <span style="color:#66d9ef">nil</span>,
+   )
+   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+   }
+
+   <span style="color:#75715e">// 启用携程处理消息
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+   <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+      <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+      <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">msgs</span> {
+         <span style="color:#75715e">// 实现我们要实现的逻辑函数
+</span><span style="color:#75715e"></span>         <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Received a message: %s&#34;</span>, <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">Body</span>)
+         <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">Body</span>)
+      }
+   }()
+   <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;[*] Waiting for message, To exit press CTRL+C&#34;</span>)
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+   <span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+   <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+      <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+
+      <span style="color:#a6e22e">rabbitmq</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#e6db74">&#34;imoocSimple&#34;</span>)
+      <span style="color:#a6e22e">rabbitmq</span>.<span style="color:#a6e22e">Publish</span>(<span style="color:#e6db74">&#34;Hello goFrame!&#34;</span>)
+      <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;发送成功&#34;</span>)
+      <span style="color:#a6e22e">DestroyMq</span>(<span style="color:#a6e22e">rabbitmq</span>)
+   }()
+   <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+      <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+      <span style="color:#a6e22e">rabbitmq</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#e6db74">&#34;imoocSimple&#34;</span>)
+
+      <span style="color:#a6e22e">rabbitmq</span>.<span style="color:#a6e22e">Comsume</span>()
+      <span style="color:#a6e22e">DestroyMq</span>(<span style="color:#a6e22e">rabbitmq</span>)
+   }()
+   <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+</code></pre></div><p>而延时队列利用rabittmq的死信队列实现</p>
+<p><!-- raw HTML omitted --></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/streadway/amqp&#34;</span>
+	<span style="color:#e6db74">&#34;log&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+)
+
+<span style="color:#66d9ef">const</span> (
+	<span style="color:#a6e22e">rmqUrl</span> = <span style="color:#e6db74">&#34;amqp://guest:guest@127.0.0.1:5672/&#34;</span>
+)
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">RabittMq</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Conn</span>               <span style="color:#f92672">*</span><span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Connection</span>
+	<span style="color:#a6e22e">Channel</span>            <span style="color:#f92672">*</span><span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Channel</span>
+	<span style="color:#a6e22e">DeadQueueName</span>      <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">NormalQueueName</span>    <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">DeadExchangeName</span>   <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">DeadKey</span>            <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">NormalExchangeName</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">NormalKey</span>          <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">Mqurl</span>              <span style="color:#66d9ef">string</span>
+}
+
+<span style="color:#75715e">//创建一个rabittmq 实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewRabitMq</span>(<span style="color:#a6e22e">deadqueuename</span>, <span style="color:#a6e22e">deadexchange</span>, <span style="color:#a6e22e">deadkey</span>, <span style="color:#a6e22e">normalqueneName</span>, <span style="color:#a6e22e">normalexchange</span>, <span style="color:#a6e22e">normalkey</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span> {
+	<span style="color:#a6e22e">rmq</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">RabittMq</span>{
+		<span style="color:#a6e22e">DeadQueueName</span>:      <span style="color:#a6e22e">deadqueuename</span>,
+		<span style="color:#a6e22e">DeadExchangeName</span>:   <span style="color:#a6e22e">deadexchange</span>,
+		<span style="color:#a6e22e">DeadKey</span>:            <span style="color:#a6e22e">deadkey</span>,
+		<span style="color:#a6e22e">NormalQueueName</span>:    <span style="color:#a6e22e">normalqueneName</span>,
+		<span style="color:#a6e22e">NormalExchangeName</span>: <span style="color:#a6e22e">normalexchange</span>,
+		<span style="color:#a6e22e">NormalKey</span>:          <span style="color:#a6e22e">normalkey</span>,
+		<span style="color:#a6e22e">Mqurl</span>:              <span style="color:#a6e22e">rmqUrl</span>,
+	}
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+	<span style="color:#75715e">//连接消息队列mq
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#a6e22e">rmqUrl</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;Dial error:%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+	}
+	<span style="color:#75715e">//channel()开启一个处理消息的信道
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Channel</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>.<span style="color:#a6e22e">Channel</span>()
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;open channel error:%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rmq</span>
+
+}
+
+<span style="color:#75715e">// 关闭实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DestroyMq</span>(<span style="color:#a6e22e">rmq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Close</span>()
+	<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">rmq</span>.<span style="color:#a6e22e">Conn</span>.<span style="color:#a6e22e">Close</span>()
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+}
+
+<span style="color:#75715e">// 简单的例子
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#a6e22e">deadqueueName</span>, <span style="color:#a6e22e">deadexchange</span>, <span style="color:#a6e22e">deadkey</span>, <span style="color:#a6e22e">normalqueuename</span>, <span style="color:#a6e22e">normalexchange</span>, <span style="color:#a6e22e">normalkey</span> <span style="color:#66d9ef">string</span>) <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NewRabitMq</span>(<span style="color:#a6e22e">deadqueueName</span>, <span style="color:#a6e22e">deadexchange</span>, <span style="color:#a6e22e">deadkey</span>, <span style="color:#a6e22e">normalqueuename</span>, <span style="color:#a6e22e">normalexchange</span>, <span style="color:#a6e22e">normalkey</span>)
+}
+
+<span style="color:#75715e">//生成者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">mq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#a6e22e">Publish</span>(<span style="color:#a6e22e">message</span> <span style="color:#66d9ef">string</span>) {
+	<span style="color:#75715e">//申请一个deadexchange
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">ExchangeDeclare</span>(
+		<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadExchangeName</span>,
+		<span style="color:#e6db74">&#34;direct&#34;</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;exchange declare error :%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+	}
+	<span style="color:#75715e">//申请一个noramlxchange
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">ExchangeDeclare</span>(
+		<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">NormalExchangeName</span>,
+		<span style="color:#e6db74">&#34;direct&#34;</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;exchange declare error :%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+	}
+	<span style="color:#75715e">//申请一个queue
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(
+		<span style="color:#75715e">//队列名
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadQueueName</span>,
+		<span style="color:#75715e">//持久化
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//自动删除
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//p排他性
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//阻塞
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">nil</span>,
+	)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;queue declare error(public):%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+	}
+	<span style="color:#75715e">//申请一个normalqueue; 到期后放入私信队列
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(
+		<span style="color:#75715e">//队列名
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">NormalQueueName</span>,
+		<span style="color:#75715e">//持久化
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//自动删除
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//p排他性
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//阻塞
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Table</span>{
+			<span style="color:#e6db74">&#34;x-message-ttl&#34;</span>:             <span style="color:#ae81ff">5000</span>,                <span style="color:#75715e">// 消息过期时间,毫秒
+</span><span style="color:#75715e"></span>			<span style="color:#e6db74">&#34;x-dead-letter-exchange&#34;</span>:    <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadExchangeName</span>, <span style="color:#75715e">// 指定死信交换机
+</span><span style="color:#75715e"></span>			<span style="color:#e6db74">&#34;x-dead-letter-routing-key&#34;</span>: <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadKey</span>,          <span style="color:#75715e">// 指定死信routing-key
+</span><span style="color:#75715e"></span>		},
+	)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;queue declare error(public):%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+	}
+	<span style="color:#75715e">//把queue和exchange绑定，设置binding key
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueBind</span>(<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">NormalQueueName</span>, <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">NormalKey</span>, <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">NormalExchangeName</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+
+	<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueBind</span>(<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadQueueName</span>, <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadKey</span>, <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadExchangeName</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+	<span style="color:#75715e">//发消息到队列中,使用exchange1，routinekey是testkey1，因为是direc使用使用全匹配
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Publish</span>(
+		<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">NormalExchangeName</span>,
+		<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">NormalKey</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Publishing</span>{
+			<span style="color:#a6e22e">ContentType</span>: <span style="color:#e6db74">&#34;text/plain&#34;</span>,
+			<span style="color:#a6e22e">Body</span>:        []byte(<span style="color:#a6e22e">message</span>),
+		},
+	)
+}
+
+<span style="color:#75715e">//消费者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">mq</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">RabittMq</span>) <span style="color:#a6e22e">Comsume</span>() {
+	<span style="color:#75715e">//申请一个queue
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(
+		<span style="color:#75715e">//队列名
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadQueueName</span>,
+		<span style="color:#75715e">//持久化
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//自动删除
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//p排他性
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#75715e">//阻塞
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">nil</span>,
+	)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		panic(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;queue declare error(consume):%v&#34;</span>, <span style="color:#a6e22e">err</span>))
+	}
+	<span style="color:#75715e">//收消息
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">msgs</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">Channel</span>.<span style="color:#a6e22e">Consume</span>(
+		<span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">DeadQueueName</span>,
+		<span style="color:#e6db74">&#34;any&#34;</span>,
+		<span style="color:#66d9ef">true</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">false</span>,
+		<span style="color:#66d9ef">nil</span>,
+	)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+	}
+
+	<span style="color:#75715e">// 启用携程处理消息
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">1</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">msgs</span> {
+			<span style="color:#75715e">// 实现我们要实现的逻辑函数
+</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Received a message from dead: %s&#34;</span>, <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">Body</span>)
+			<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">Body</span>)
+		}
+	}()
+	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;[*] Waiting for message, To exit press CTRL+C&#34;</span>)
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#a6e22e">wg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>{}
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+
+		<span style="color:#a6e22e">rabbitmq</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#e6db74">&#34;deadqueue&#34;</span>, <span style="color:#e6db74">&#34;deadexchange&#34;</span>, <span style="color:#e6db74">&#34;deadkey&#34;</span>, <span style="color:#e6db74">&#34;normalqueue&#34;</span>, <span style="color:#e6db74">&#34;normalexchange&#34;</span>, <span style="color:#e6db74">&#34;normalkey&#34;</span>)
+		<span style="color:#a6e22e">rabbitmq</span>.<span style="color:#a6e22e">Publish</span>(<span style="color:#e6db74">&#34;Hello goFrame!&#34;</span>)
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;发送成功&#34;</span>)
+		<span style="color:#a6e22e">DestroyMq</span>(<span style="color:#a6e22e">rabbitmq</span>)
+	}()
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#a6e22e">rabbitmq</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewSimpleMq</span>(<span style="color:#e6db74">&#34;deadqueue&#34;</span>, <span style="color:#e6db74">&#34;deadexchange&#34;</span>, <span style="color:#e6db74">&#34;deadkey&#34;</span>, <span style="color:#e6db74">&#34;normalqueue&#34;</span>, <span style="color:#e6db74">&#34;normalexchange&#34;</span>, <span style="color:#e6db74">&#34;normalkey&#34;</span>)
+
+		<span style="color:#a6e22e">rabbitmq</span>.<span style="color:#a6e22e">Comsume</span>()
+		<span style="color:#a6e22e">DestroyMq</span>(<span style="color:#a6e22e">rabbitmq</span>)
+	}()
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+
+</code></pre></div>
+              
+              
+
+
+            </div>
+          </div>
+          
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zhifengwei.site/tags//"></a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day7/" data-tooltip="搭建简单Rpc框架--Day7" aria-label="PREVIOUS: 搭建简单Rpc框架--Day7">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zhifengwei.site/post/mq/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zhifengwei.site/post/mq/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://zhifengwei.site/post/mq/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#gitalk" aria-label="Leave a comment">
+        <i class="fa fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="gitalk">
+      <noscript>Please enable JavaScript to view the comments powered by Gitalk.</noscript>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js" integrity="sha512-EcTCcXV46teiNwe0VcnM5A038tcY+BaQYO4nW6Gh2i7v4/HjBVg7xx3+JBLl9WofDds//INJAiEGAtdgr8PWyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+      (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('gitalk').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+          return;
+        }
+        new Gitalk({
+          clientID: '2a33128cf6c77debcaa3',
+          clientSecret: '71eb66f11b3c6d7a3da10dc5678717a3c3a51e4d',
+          repo: 'EricOo0.github.io',
+          owner: 'EricOo0',
+          admin: ['EricOo0'],
+          id: '83b28719ecb9f19078ea721db2c347f4',
+          ...{"distractionfreemode":false,"enablehotkey":true,"language":"en","pagerdirection":"first","perpage":10}
+        }).render('gitalk')
+      })()
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 Eric_wzf. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://zhifengwei.site/post/%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95rpc%E6%A1%86%E6%9E%B6-day7/" data-tooltip="搭建简单Rpc框架--Day7" aria-label="PREVIOUS: 搭建简单Rpc框架--Day7">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zhifengwei.site/post/mq/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://zhifengwei.site/post/mq/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://zhifengwei.site/post/mq/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#gitalk" aria-label="Leave a comment">
+        <i class="fa fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+        
+      </div>
+      
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzhifengwei.site%2Fpost%2Fmq%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fzhifengwei.site%2Fpost%2Fmq%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fzhifengwei.site%2Fpost%2Fmq%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+      
+    </div>
+    
+
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zhifengwei.site/img/icon.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Eric_wzf</h4>
+    
+      <div id="about-card-bio"><strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        R&amp;D
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        China Shenzhen
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zhifengwei.site/images/cover_new.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://zhifengwei.site/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
